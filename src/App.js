@@ -1,16 +1,30 @@
 import React, {Component} from 'react';
-import {View, Text, Button} from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
 import {connect} from 'react-redux';
+import {createAppContainer} from 'react-navigation';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {setDatabase} from './actions/localdb';
-import Sample from './components/Sample';
+
+import Routes from './Routes';
+const AppContainer = createAppContainer(Routes);
+
+const okCallback = () => {
+  console.log('OK');
+};
+const errorCallback = () => {
+  console.log('ERROR');
+};
 
 class App extends Component {
   componentDidMount() {
     SQLite.DEBUG(true);
     SQLite.enablePromise(true);
-    SQLite.openDatabase({name: 'test', location: 'default'})
+    SQLite.openDatabase(
+      {name: 'clinics_db', createFromLocation: '~clinics_db'},
+      okCallback,
+      errorCallback,
+    )
       .then(db => {
         this.props.setDatabase(db);
       })
@@ -20,14 +34,16 @@ class App extends Component {
   }
   render() {
     return (
-      <View>
-        <Sample />
-      </View>
+      <SafeAreaProvider>
+        <AppContainer />
+      </SafeAreaProvider>
     );
   }
 }
 
-const mapStateToProps = state => {};
+const mapStateToProps = state => {
+  return {};
+};
 
 const mapDispatchToProps = {
   setDatabase,
