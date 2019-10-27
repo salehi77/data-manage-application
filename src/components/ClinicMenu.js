@@ -37,15 +37,15 @@ class ClinicMenu extends Component {
         <TouchableOpacity
           style={styles.item}
           onPress={() => {
-            this.props.navigation.navigate('Algo', {
-              tree: this.state.data.algorithm,
+            this.props.navigation.navigate('Algorithm', {
+              tree: JSON.parse(this.state.data.algorithm),
             });
           }}>
           <Text>ورود</Text>
         </TouchableOpacity>
       </View>
     ) : (
-      <Text>idloading...</Text>
+      <Text>isloading...</Text>
     );
   }
 }
