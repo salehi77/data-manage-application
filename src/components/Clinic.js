@@ -67,7 +67,7 @@ class Clinic extends Component {
                   size={50}
                   color={clinic.icon_color}
                 />
-                <Text>{clinic.name}</Text>
+                <Text style={{fontFamily: 'BYekan'}}>{clinic.name}</Text>
               </TouchableOpacity>
             </View>
           );
