@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {connect} from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 class Clinic extends Component {
   static navigationOptions = {
@@ -42,26 +43,39 @@ class Clinic extends Component {
 
   render() {
     return this.state.data ? (
-      <SafeAreaView>
-        <FlatList
-          data={this.state.data}
-          keyExtractor={item => item.ID.toString()}
-          renderItem={({item}) => {
-            return (
+      <View
+        style={{
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'space-evenly',
+          marginTop: '10%',
+        }}>
+        {this.state.data.map((clinic, i) => {
+          return (
+            <View
+              key={clinic.ID}
+              style={{
+                marginHorizontal: 5,
+                marginVertical: 10,
+                width: '30%',
+              }}>
               <TouchableOpacity
-                onPress={() => this.clinicSelected(item.ID)}
-                style={styles.item}>
-                <Text style={styles.title}>{item.name}</Text>
+                style={{width: '100%', alignItems: 'center'}}
+                onPress={() => this.clinicSelected(clinic.ID)}>
+                <Icon
+                  name={clinic.icon_name}
+                  size={50}
+                  color={clinic.icon_color}
+                />
+                <Text>{clinic.name}</Text>
               </TouchableOpacity>
-            );
-          }}
-        />
-      </SafeAreaView>
+            </View>
+          );
+        })}
+      </View>
     ) : (
       <Text>isloaing...</Text>
     );
-
-    // <Text>clinic</Text>
   }
 }
 

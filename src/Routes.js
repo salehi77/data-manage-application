@@ -13,7 +13,7 @@ const HomeStack = createStackNavigator(
     ClinicMenu: ClinicMenuScreen,
     Algorithm: AlgorithmScreen,
   },
-  {initialRouteName: 'Home'},
+  {initialRouteName: 'Clinic'},
 );
 
 export default HomeStack;

@@ -3,6 +3,7 @@ import SQLite from 'react-native-sqlite-storage';
 import {connect} from 'react-redux';
 import {createAppContainer} from 'react-navigation';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {I18nManager} from 'react-native';
 
 import {setDatabase} from './actions/localdb';
 
@@ -17,6 +18,11 @@ const errorCallback = () => {
 };
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    I18nManager.forceRTL(true);
+  }
+
   componentDidMount() {
     SQLite.DEBUG(true);
     SQLite.enablePromise(true);
