@@ -42,62 +42,69 @@ class Clinic extends Component {
   };
 
   render() {
-    return this.state.data ? (
+    console.log(this.props.theme.PRIMARY_FONT_FAMILY);
+    return (
       <View
         style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'space-evenly',
-          marginTop: '10%',
+          flex: 1,
+          backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
         }}>
-        {this.state.data.map((clinic, i) => {
-          return (
-            <View
-              key={clinic.ID}
-              style={{
-                marginHorizontal: 5,
-                marginVertical: 10,
-                width: '30%',
-              }}>
-              <TouchableOpacity
-                style={{width: '100%', alignItems: 'center'}}
-                onPress={() => this.clinicSelected(clinic.ID)}>
-                <Icon
-                  name={clinic.icon_name}
-                  size={50}
-                  color={clinic.icon_color}
-                />
-                <Text style={{fontFamily: 'BYekan'}}>{clinic.name}</Text>
-              </TouchableOpacity>
-            </View>
-          );
-        })}
+        {this.state.data ? (
+          <View style={styles.clinicsWrapper}>
+            {this.state.data.map((clinic, i) => {
+              return (
+                <TouchableOpacity
+                  key={clinic.ID}
+                  style={styles.clinicButton}
+                  onPress={() => this.clinicSelected(clinic.ID)}>
+                  <Icon
+                    name={clinic.icon_name}
+                    size={50}
+                    color={clinic.icon_color}
+                  />
+                  <Text
+                    style={{
+                      fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+                      color: this.props.theme.PRIMARY_TEXT_COLOR,
+                      fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                    }}>
+                    {clinic.name}
+                  </Text>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        ) : (
+          <Text>isloaing...</Text>
+        )}
       </View>
-    ) : (
-      <Text>isloaing...</Text>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
   },
-  item: {
-    backgroundColor: '#cccccc',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    borderRadius: 10,
+  clinicsWrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    marginTop: '10%',
   },
-  title: {
-    fontSize: 32,
+  clinicButton: {
+    marginHorizontal: 5,
+    marginVertical: 10,
+    width: '30%',
+    alignItems: 'center',
   },
+  clinicText: {},
 });
 
 const mapStateToProps = state => {
   return {
     sqlite: state.localdb.sqlite,
+    theme: state.theme,
   };
 };
 
