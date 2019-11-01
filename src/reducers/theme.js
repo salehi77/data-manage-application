@@ -10,11 +10,11 @@ export const base = {
   FONT_WEIGHT_MEDIUM: '500',
   FONT_WEIGHT_BOLD: '700',
 
-  PRIMARY_FONT_FAMILY: 'BMorvarid',
-  PRIMARY_FONT_FAMILY_BOLD: 'XBYagut-Bold',
+  PRIMARY_FONT_FAMILY: 'XMYekan',
+  PRIMARY_FONT_FAMILY_BOLD: 'XMYekan-Bold',
 
-  SECONDARY_FONT_FAMILY: 'Product-Sans-Regular',
-  SECONDARY_FONT_FAMILY_ITALIC: 'Product-Sans-Italic',
+  SECONDARY_FONT_FAMILY: 'XBRoya',
+  SECONDARY_FONT_FAMILY_BOLD: 'XBRoya-Bold',
 };
 
 export const darkTheme = {

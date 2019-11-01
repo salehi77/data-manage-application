@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   Button,
+  ScrollView,
 } from 'react-native';
 import {connect} from 'react-redux';
 
@@ -23,9 +24,21 @@ class Description extends Component {
           flex: 1,
           backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
         }}>
-        <View>
-          <Text>{desc}</Text>
-        </View>
+        <ScrollView
+          style={{
+            marginTop: 10,
+            marginHorizontal: 15,
+          }}>
+          <Text
+            style={{
+              textAlign: 'justify',
+              fontFamily: this.props.theme.SECONDARY_FONT_FAMILY,
+              fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+              lineHeight: 25,
+            }}>
+            {desc}
+          </Text>
+        </ScrollView>
       </View>
     );
   }

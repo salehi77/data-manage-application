@@ -2,8 +2,52 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/BMorvarid.ttf",
-      "sha1": "eb83cdbd9e54ef2fb812a18525d7cc41de1a8cb8"
+      "path": "src/assets/fonts/XBRoya-Bold.ttf",
+      "sha1": "4ee1e9d6953bc9eda0f909555047b49a92fc36f8"
+    },
+    {
+      "path": "src/assets/fonts/XBRoya-BoldItalic.ttf",
+      "sha1": "d09b2098260695021781bbebb10d5512c5921a0f"
+    },
+    {
+      "path": "src/assets/fonts/XBRoya-Italic.ttf",
+      "sha1": "24f6a1bb3942134adde3709673fef9f1de829466"
+    },
+    {
+      "path": "src/assets/fonts/XBRoya.ttf",
+      "sha1": "664ed521c4270f517bc0bb206c390775608d1cf4"
+    },
+    {
+      "path": "src/assets/fonts/XMTraffic-Bold.ttf",
+      "sha1": "18b45e590339353645c6b541456672b56a52c023"
+    },
+    {
+      "path": "src/assets/fonts/XMTraffic-BoldItalic.ttf",
+      "sha1": "becf9937838df948e53d127ededa8a976d379f31"
+    },
+    {
+      "path": "src/assets/fonts/XMTraffic-Italic.ttf",
+      "sha1": "3c041be1b9929dc708b81d223a3e2277a6a434e4"
+    },
+    {
+      "path": "src/assets/fonts/XMTraffic.ttf",
+      "sha1": "d8dda299234fe8263db11b255d18ee24be01dd1f"
+    },
+    {
+      "path": "src/assets/fonts/XMYekan-Bold.ttf",
+      "sha1": "66779665caa3a1c5afc6f120b7ef4b038895aadd"
+    },
+    {
+      "path": "src/assets/fonts/XMYekan-BoldItalic.ttf",
+      "sha1": "7c1fb0dc6c958758f1d9006a7864555b7c79feed"
+    },
+    {
+      "path": "src/assets/fonts/XMYekan-Italic.ttf",
+      "sha1": "c3a3eef60285f550871745782cf3665fbb7f762d"
+    },
+    {
+      "path": "src/assets/fonts/XMYekan.ttf",
+      "sha1": "eb2274ecdba1b7b1533f803bc08d63454a1abaae"
     }
   ]
 }

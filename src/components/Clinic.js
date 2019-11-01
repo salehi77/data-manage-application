@@ -61,7 +61,7 @@ class Clinic extends Component {
                   />
                   <Text
                     style={{
-                      fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+                      fontFamily: this.props.theme.PRIMARY_FONT_FAMILY_BOLD,
                       color: this.props.theme.PRIMARY_TEXT_COLOR,
                       fontSize: this.props.theme.FONT_SIZE_MEDIUM,
                     }}>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
-    marginTop: '10%',
+    marginTop: '3%',
   },
   clinicButton: {
     marginHorizontal: 5,

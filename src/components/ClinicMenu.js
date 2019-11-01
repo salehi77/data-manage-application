@@ -56,7 +56,7 @@ class ClinicMenu extends Component {
               <Text
                 style={{
                   fontSize: this.props.theme.FONT_SIZE_MASSIVE,
-                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY_BOLD,
                   color: this.props.theme.PRIMARY_FOREGROUND_COLOR,
                 }}>
                 ورود
@@ -65,7 +65,11 @@ class ClinicMenu extends Component {
 
             <TouchableOpacity style={styles.diagramButton}>
               <Text
-                style={{fontSize: 16, fontFamily: 'BMorvarid', color: 'white'}}>
+                style={{
+                  fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+                  color: 'white',
+                }}>
                 مشاهده روال کلی
               </Text>
             </TouchableOpacity>
@@ -74,11 +78,15 @@ class ClinicMenu extends Component {
               style={styles.descriptionButton}
               onPress={() => {
                 this.props.navigation.navigate('Description', {
-                  description: this.state.data.algorithm,
+                  description: this.state.data.description,
                 });
               }}>
               <Text
-                style={{fontSize: 16, fontFamily: 'BMorvarid', color: 'white'}}>
+                style={{
+                  fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+                  color: 'white',
+                }}>
                 توضیحات
               </Text>
             </TouchableOpacity>
