@@ -35,14 +35,7 @@ class Clinic extends Component {
     });
   }
 
-  clinicSelected = id => {
-    this.props.navigation.navigate('ClinicMenu', {
-      clinicID: id,
-    });
-  };
-
   render() {
-    console.log(this.props.theme.PRIMARY_FONT_FAMILY);
     return (
       <View
         style={{
@@ -56,7 +49,11 @@ class Clinic extends Component {
                 <TouchableOpacity
                   key={clinic.ID}
                   style={styles.clinicButton}
-                  onPress={() => this.clinicSelected(clinic.ID)}>
+                  onPress={() => {
+                    this.props.navigation.navigate('ClinicMenu', {
+                      clinicID: clinic.ID,
+                    });
+                  }}>
                   <Icon
                     name={clinic.icon_name}
                     size={50}

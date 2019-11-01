@@ -32,44 +32,106 @@ class ClinicMenu extends Component {
     });
   }
   render() {
-    return this.state.data ? (
-      <View>
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => {
-            this.props.navigation.navigate('Algorithm', {
-              tree: JSON.parse(this.state.data.algorithm),
-            });
-          }}>
-          <Text>ورود</Text>
-        </TouchableOpacity>
+    return (
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
+        }}>
+        {this.state.data ? (
+          <View style={{}}>
+            <TouchableOpacity
+              style={[
+                styles.algorithmButton,
+                {
+                  backgroundColor: this.props.theme.PRIMARY_COLOR,
+                  borderColor: this.props.theme.PRIMARY_COLOR_BOLD,
+                },
+              ]}
+              onPress={() => {
+                this.props.navigation.navigate('Algorithm', {
+                  tree: JSON.parse(this.state.data.algorithm),
+                });
+              }}>
+              <Text
+                style={{
+                  fontSize: this.props.theme.FONT_SIZE_MASSIVE,
+                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+                  color: this.props.theme.PRIMARY_FOREGROUND_COLOR,
+                }}>
+                ورود
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.diagramButton}>
+              <Text
+                style={{fontSize: 16, fontFamily: 'BMorvarid', color: 'white'}}>
+                مشاهده روال کلی
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.descriptionButton}
+              onPress={() => {
+                this.props.navigation.navigate('Description', {
+                  description: this.state.data.algorithm,
+                });
+              }}>
+              <Text
+                style={{fontSize: 16, fontFamily: 'BMorvarid', color: 'white'}}>
+                توضیحات
+              </Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <Text>isloading...</Text>
+        )}
       </View>
-    ) : (
-      <Text>isloading...</Text>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  item: {
-    backgroundColor: '#32a852',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+  algorithmButton: {
+    width: '50%',
+    height: 120,
+    alignSelf: 'center',
+    marginTop: '10%',
+    alignItems: 'center',
+    paddingTop: 30,
     borderRadius: 10,
-    // color: 'white',
+    borderWidth: 2,
   },
-  title: {
-    fontSize: 32,
+  diagramButton: {
+    backgroundColor: '#2196F3',
+    width: '67%',
+    alignSelf: 'flex-start',
+    marginTop: 40,
+    paddingVertical: 10,
+    paddingStart: 10,
+    borderTopEndRadius: 10,
+    borderBottomEndRadius: 10,
+    borderColor: '#2196E3',
+    borderWidth: 2,
+  },
+  descriptionButton: {
+    backgroundColor: '#2196F3',
+    width: '67%',
+    alignSelf: 'flex-end',
+    marginTop: 10,
+    paddingVertical: 10,
+    paddingStart: 10,
+    borderTopStartRadius: 10,
+    borderBottomStartRadius: 10,
+    borderColor: '#2196e3',
+    borderWidth: 2,
   },
 });
 
 const mapStateToProps = state => {
   return {
     sqlite: state.localdb.sqlite,
+    theme: state.theme,
   };
 };
 

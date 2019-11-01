@@ -3,7 +3,7 @@ import {base, darkTheme, lightTheme, bluishTheme, colorOptions} from './theme';
 const initialState = {
   ...base,
   ...bluishTheme,
-  ...colorOptions.blue,
+  ...colorOptions.green,
 };
 
 const themeReducer = (state = initialState, action) => {
