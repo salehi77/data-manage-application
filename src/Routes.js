@@ -1,5 +1,5 @@
 import React from 'react';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import HomeScreen from './components/Home';
 import ClinicScreen from './components/Clinic';
@@ -15,7 +15,7 @@ const HomeStack = createStackNavigator(
     Algorithm: AlgorithmScreen,
     Description: DescriptionScreen,
   },
-  {initialRouteName: 'Clinic'},
+  { initialRouteName: 'Clinic' },
 );
 
 export default HomeStack;

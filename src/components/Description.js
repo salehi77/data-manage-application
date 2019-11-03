@@ -26,8 +26,8 @@ class Description extends Component {
         }}>
         <ScrollView
           style={{
-            marginTop: 10,
-            marginHorizontal: 15,
+            paddingTop: 10,
+            paddingHorizontal: 20,
           }}>
           <Text
             style={{
