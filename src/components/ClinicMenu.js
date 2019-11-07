@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,22 +8,27 @@ import {
   TouchableOpacity,
   Button,
 } from 'react-native';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import BackButton from './elements/BackButton';
 
 class ClinicMenu extends Component {
   state = {
     data: null,
   };
   componentDidMount() {
-    const { sqlite } = this.props;
+    const {sqlite} = this.props;
 
     let clinicID = this.props.navigation.getParam('clinicID');
 
     sqlite.transaction(tx => {
       tx.executeSql(`SELECT * FROM clinic WHERE ID = ${clinicID}`)
         .then(res => {
+          // this.props.navigation.navigate('Algorithm', {
+          //   tree: JSON.parse(res[1].rows.item(0).algorithm),
+          //   pathToThis: [],
+          // });
           this.setState({
-            data: { ...res[1].rows.item(0) },
+            data: {...res[1].rows.item(0)},
           });
         })
         .catch(error => {
@@ -38,6 +43,7 @@ class ClinicMenu extends Component {
           flex: 1,
           backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
         }}>
+        <BackButton {...this.props} />
         {this.state.data ? (
           <View style={{}}>
             <TouchableOpacity
@@ -51,6 +57,7 @@ class ClinicMenu extends Component {
               onPress={() => {
                 this.props.navigation.navigate('Algorithm', {
                   tree: JSON.parse(this.state.data.algorithm),
+                  pathToThis: [],
                 });
               }}>
               <Text
@@ -92,8 +99,8 @@ class ClinicMenu extends Component {
             </TouchableOpacity>
           </View>
         ) : (
-            <Text>isloading...</Text>
-          )}
+          <Text>isloading...</Text>
+        )}
       </View>
     );
   }

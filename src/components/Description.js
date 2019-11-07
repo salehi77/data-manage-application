@@ -24,18 +24,15 @@ class Description extends Component {
           flex: 1,
           backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
         }}>
-        <ScrollView
-          style={{
-            paddingTop: 10,
-            paddingHorizontal: 20,
-          }}>
+        <ScrollView style={styles.mainView}>
           <Text
-            style={{
-              textAlign: 'justify',
-              fontFamily: this.props.theme.SECONDARY_FONT_FAMILY,
-              fontSize: this.props.theme.FONT_SIZE_MEDIUM,
-              lineHeight: 25,
-            }}>
+            style={[
+              styles.descriptionText,
+              {
+                fontFamily: this.props.theme.SECONDARY_FONT_FAMILY,
+                fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+              },
+            ]}>
             {desc}
           </Text>
         </ScrollView>
@@ -44,7 +41,16 @@ class Description extends Component {
   }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  mainView: {
+    paddingTop: 10,
+    paddingHorizontal: 20,
+  },
+  descriptionText: {
+    textAlign: 'justify',
+    lineHeight: 25,
+  },
+});
 
 const mapStateToProps = state => {
   return {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation-stack';
+import {createStackNavigator} from 'react-navigation-stack';
 
 import HomeScreen from './components/Home';
 import ClinicScreen from './components/Clinic';
@@ -15,7 +15,17 @@ const HomeStack = createStackNavigator(
     Algorithm: AlgorithmScreen,
     Description: DescriptionScreen,
   },
-  { initialRouteName: 'Clinic' },
+  {
+    initialRouteName: 'Clinic',
+    defaultNavigationOptions: {
+      headerTintColor: '#005',
+      headerStyle: {
+        backgroundColor: '#689',
+      },
+      headerLeft: null,
+      headerRight: null,
+    },
+  },
 );
 
 export default HomeStack;
