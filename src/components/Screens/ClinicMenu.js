@@ -9,12 +9,19 @@ import {
   Button,
 } from 'react-native';
 import {connect} from 'react-redux';
-import BackButton from './elements/BackButton';
 
 class ClinicMenu extends Component {
+  static navigationOptions = ({navigation, navigationOptions}) => {
+    const {params} = navigation.state;
+    return {
+      title: params ? params.clinicName : '',
+    };
+  };
+
   state = {
     data: null,
   };
+
   componentDidMount() {
     const {sqlite} = this.props;
 
@@ -43,7 +50,8 @@ class ClinicMenu extends Component {
           flex: 1,
           backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
         }}>
-        <BackButton {...this.props} />
+        {/* <BackButton {...this.props} /> */}
+
         {this.state.data ? (
           <View style={{}}>
             <TouchableOpacity

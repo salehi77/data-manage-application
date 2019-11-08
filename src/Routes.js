@@ -1,11 +1,11 @@
 import React from 'react';
 import {createStackNavigator} from 'react-navigation-stack';
 
-import HomeScreen from './components/Home';
-import ClinicScreen from './components/Clinic';
-import ClinicMenuScreen from './components/ClinicMenu';
-import AlgorithmScreen from './components/Algorithm';
-import DescriptionScreen from './components/Description';
+import HomeScreen from './components/Screens/Home';
+import ClinicScreen from './components/Screens/Clinic';
+import ClinicMenuScreen from './components/Screens/ClinicMenu';
+import AlgorithmScreen from './components/Screens/Algorithm';
+import DescriptionScreen from './components/Screens/Description';
 
 const HomeStack = createStackNavigator(
   {
@@ -17,14 +17,12 @@ const HomeStack = createStackNavigator(
   },
   {
     initialRouteName: 'Clinic',
-    defaultNavigationOptions: {
-      headerTintColor: '#005',
-      headerStyle: {
-        backgroundColor: '#689',
-      },
-      headerLeft: null,
-      headerRight: null,
-    },
+    // defaultNavigationOptions: {
+    //   headerTintColor: '#fff',
+    //   headerStyle: {
+    //     backgroundColor: '#689',
+    //   },
+    // },
   },
 );
 

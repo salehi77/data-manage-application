@@ -52,6 +52,7 @@ class Clinic extends Component {
                   onPress={() => {
                     this.props.navigation.navigate('ClinicMenu', {
                       clinicID: clinic.ID,
+                      clinicName: clinic.name,
                     });
                   }}>
                   <Icon

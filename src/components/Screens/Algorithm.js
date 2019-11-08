@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
 import {
-  SafeAreaView,
   View,
-  FlatList,
   StyleSheet,
   Text,
   TouchableOpacity,
-  Button,
   ScrollView,
 } from 'react-native';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import BackButton from './elements/BackButton';
 
 class Algorithm extends Component {
   render() {
@@ -24,7 +20,6 @@ class Algorithm extends Component {
           flex: 1,
           backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
         }}>
-        <BackButton {...this.props} />
         <ScrollView>
           {tree.options.length === 0 ? (
             <>
@@ -43,10 +38,10 @@ class Algorithm extends Component {
                     alignItems: 'center',
                     marginVertical: 8,
                     marginHorizontal: 16,
-                    fontSize: this.props.theme.FONT_SIZE_MEDIUM,
-                    fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
                     color: 'black',
                     alignSelf: 'flex-start',
+                    fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                    fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
                   }}>
                   نتیجه نهایی:
                 </Text>
@@ -113,6 +108,9 @@ class Algorithm extends Component {
             <>
               <Text
                 style={{
+                  fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+                  borderColor: this.props.theme.PRIMARY_COLOR,
                   paddingTop: 10,
                   paddingBottom: 5,
                   paddingHorizontal: 15,
@@ -120,11 +118,8 @@ class Algorithm extends Component {
                   alignItems: 'center',
                   marginVertical: 8,
                   marginHorizontal: 16,
-                  fontSize: this.props.theme.FONT_SIZE_MEDIUM,
-                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
                   color: 'black',
                   borderWidth: 2,
-                  borderColor: this.props.theme.PRIMARY_COLOR,
                   borderRadius: 25,
                   alignSelf: 'flex-start',
                 }}>
@@ -149,7 +144,6 @@ class Algorithm extends Component {
                         ...this.props.navigation.getParam('pathToThis'),
                       ];
                       pathToThis.push(option.Text);
-                      console.log(pathToThis);
                       this.props.navigation.push('Algorithm', {
                         tree: option,
                         pathToThis,
