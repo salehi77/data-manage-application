@@ -132,7 +132,8 @@ class Algorithm extends Component {
                     key={option.ID}
                     style={{
                       backgroundColor: '#2196F3',
-                      padding: 20,
+                      paddingHorizontal: 20,
+                      paddingVertical: 10,
                       marginVertical: 8,
                       marginHorizontal: 16,
                       borderRadius: 10,
