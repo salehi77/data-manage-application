@@ -18,7 +18,11 @@ const HeaderElement = props => {
     <View style={{ height: 50 }}>
       <Header noShadow style={{ height: '100%' }}>
         <Left>
-          <Button transparent>
+          <Button transparent
+            onPress={() => {
+              props.navigation.toggleDrawer()
+            }}
+          >
             <Icon name="menu" />
           </Button>
         </Left>

@@ -31,57 +31,64 @@ const HomeScreen = props => {
     });
   }, []);
 
-  console.info(props.theme.PRIMARY_FONT_FAMILY);
 
   return (
+
     <View
       style={{
         flex: 1,
         backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
       }}>
-      {data ? (
-        <SectionGrid
-          itemDimension={180}
-          spacing={0}
-          sections={[
-            {
-              title: 'Title1',
-              data: data.slice(0),
-            },
-          ]}
-          style={styles.gridView}
-          renderItem={({ item, section, index }) => {
-            return (
-              <TouchableOpacity
-                style={styles.itemContainer}
-                onPress={() => {
-                  props.navigation.navigate('ClinicMenu', {
-                    clinicID: item.ID,
-                    clinicName: item.name,
-                  });
-                }}>
-                <View style={styles.itemView}>
-                  <Icon
-                    name={item.icon_name}
-                    type="FontAwesome5"
-                    style={{ fontSize: 50, color: item.icon_color }}
-                  />
-                  <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>{item.name}</Text>
-                </View>
-              </TouchableOpacity>
-            );
-          }}
-        />
-      ) : (
-          <Text>Loading...</Text>
-        )}
+
+      {
+        data
+          ?
+          (
+            <SectionGrid
+              itemDimension={180}
+              spacing={0}
+              sections={[
+                {
+                  title: 'Title1',
+                  data: data.slice(0),
+                },
+              ]}
+              style={styles.gridView}
+              renderItem={({ item, section, index }) => {
+                return (
+                  <TouchableOpacity
+                    style={styles.itemContainer}
+                    onPress={() => {
+                      props.navigation.navigate('ClinicMenu', {
+                        clinicID: item.ID,
+                        clinicName: item.name,
+                      });
+                    }}>
+                    <View style={styles.itemView}>
+                      <Icon
+                        name={item.icon_name}
+                        type="FontAwesome5"
+                        style={{ fontSize: 50, color: item.icon_color }}
+                      />
+                      <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>{item.name}</Text>
+                    </View>
+                  </TouchableOpacity>
+                );
+              }}
+            />
+          )
+          :
+          (
+            <Text>Loading...</Text>
+          )
+      }
+
     </View>
+
   );
 };
 
 HomeScreen.navigationOptions = ({ navigation }) => {
-  // console.info(Object.keys(props));
-  // console.info(props.screenProps);
 
   return {
     header: <HeaderElement navigation={navigation} />,
