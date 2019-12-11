@@ -160,7 +160,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ClinicMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(ClinicMenu);

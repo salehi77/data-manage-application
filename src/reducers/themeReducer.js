@@ -2,7 +2,7 @@ import {base, darkTheme, lightTheme, bluishTheme, colorOptions} from './theme';
 
 const initialState = {
   ...base,
-  ...bluishTheme,
+  ...lightTheme,
   ...colorOptions.green,
 };
 

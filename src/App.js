@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import SQLite from 'react-native-sqlite-storage';
-import {connect} from 'react-redux';
-import {createAppContainer} from 'react-navigation';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {I18nManager} from 'react-native';
+import { connect } from 'react-redux';
+import { createAppContainer } from 'react-navigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { I18nManager } from 'react-native';
 
-import {setDatabase} from './actions/localdb';
+import { setDatabase } from './actions/localdb';
 
 import Routes from './Routes';
 const AppContainer = createAppContainer(Routes);
@@ -24,10 +24,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    SQLite.DEBUG(true);
+    // SQLite.DEBUG(true);
     SQLite.enablePromise(true);
     SQLite.openDatabase(
-      {name: 'clinics_db', createFromLocation: '~clinics_db'},
+      { name: 'clinics_db', createFromLocation: '~clinics_db' },
       okCallback,
       errorCallback,
     )
@@ -55,7 +55,4 @@ const mapDispatchToProps = {
   setDatabase,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

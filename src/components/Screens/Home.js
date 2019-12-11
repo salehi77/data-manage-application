@@ -1,89 +1,93 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-  SafeAreaView,
   View,
-  FlatList,
   StyleSheet,
   Text,
   TouchableOpacity,
   TouchableHighlight,
 } from 'react-native';
 
-import {Button, Card} from 'native-base';
+import { Button, Card, Icon } from 'native-base';
 
-import {connect} from 'react-redux';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import {SectionGrid} from 'react-native-super-grid';
+import { connect } from 'react-redux';
+// import Icon from 'react-native-vector-icons/FontAwesome5';
+import { SectionGrid } from 'react-native-super-grid';
+import HeaderElement from '../elements/HeaderElement';
 
-class Clinic extends Component {
-  static navigationOptions = {
-    title: 'کلینیک‌ها',
-  };
+const HomeScreen = props => {
+  const [data, setData] = React.useState(null);
 
-  state = {
-    data: null,
-  };
-
-  componentDidMount() {
-    const {sqlite} = this.props;
-
+  React.useEffect(() => {
+    const { sqlite } = props;
     sqlite.transaction(tx => {
       tx.executeSql('SELECT * FROM clinic')
         .then(res => {
-          this.setState({
-            data: [...res[1].rows.raw()],
-          });
+          let data = [...res[1].rows.raw()];
+          setData(data);
         })
         .catch(error => {
           console.error('err');
         });
     });
-  }
+  }, []);
 
-  render() {
-    return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
-        }}>
-        {this.state.data ? (
-          <View style={styles.clinicsWrapper}>
-            {this.state.data.map((clinic, i) => {
-              return (
-                <TouchableOpacity
-                  key={clinic.ID}
-                  style={styles.clinicButton}
-                  onPress={() => {
-                    this.props.navigation.navigate('ClinicMenu', {
-                      clinicID: clinic.ID,
-                      clinicName: clinic.name,
-                    });
-                  }}>
+  console.info(props.theme.PRIMARY_FONT_FAMILY);
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
+      }}>
+      {data ? (
+        <SectionGrid
+          itemDimension={180}
+          spacing={0}
+          sections={[
+            {
+              title: 'Title1',
+              data: data.slice(0),
+            },
+          ]}
+          style={styles.gridView}
+          renderItem={({ item, section, index }) => {
+            return (
+              <TouchableOpacity
+                style={styles.itemContainer}
+                onPress={() => {
+                  props.navigation.navigate('ClinicMenu', {
+                    clinicID: item.ID,
+                    clinicName: item.name,
+                  });
+                }}>
+                <View style={styles.itemView}>
                   <Icon
-                    name={clinic.icon_name}
-                    size={50}
-                    color={clinic.icon_color}
+                    name={item.icon_name}
+                    type="FontAwesome5"
+                    style={{ fontSize: 50, color: item.icon_color }}
                   />
-                  <Text
-                    style={{
-                      fontFamily: this.props.theme.PRIMARY_FONT_FAMILY_BOLD,
-                      color: this.props.theme.PRIMARY_TEXT_COLOR,
-                      fontSize: this.props.theme.FONT_SIZE_MEDIUM,
-                    }}>
-                    {clinic.name}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-        ) : (
-          <Text>isloaing...</Text>
+                  <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>{item.name}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          }}
+        />
+      ) : (
+          <Text>Loading...</Text>
         )}
-      </View>
-    );
-  }
-}
+    </View>
+  );
+};
+
+HomeScreen.navigationOptions = ({ navigation }) => {
+  // console.info(Object.keys(props));
+  // console.info(props.screenProps);
+
+  return {
+    header: <HeaderElement navigation={navigation} />,
+    // title: 'home',
+  };
+};
 
 const styles = StyleSheet.create({
   gridView: {
@@ -100,6 +104,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 10,
+    paddingTop: 20,
   },
   itemName: {
     marginTop: 10,
@@ -117,106 +122,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-
-const items = [
-  {name: 'TURQUOISE', code: '#1abc9c'},
-  {name: 'EMERALD', code: '#2ecc71'},
-  {name: 'PETER RIVER', code: '#3498db'},
-  {name: 'AMETHYST', code: '#9b59b6'},
-  {name: 'WET ASPHALT', code: '#34495e'},
-  {name: 'GREEN SEA', code: '#16a085'},
-  {name: 'NEPHRITIS', code: '#27ae60'},
-  {name: 'BELIZE HOLE', code: '#2980b9'},
-  {name: 'WISTERIA', code: '#8e44ad'},
-  {name: 'MIDNIGHT BLUE', code: '#2c3e50'},
-  {name: 'SUN FLOWER', code: '#f1c40f'},
-  {name: 'CARROT', code: '#e67e22'},
-  {name: 'ALIZARIN', code: '#e74c3c'},
-  {name: 'CLOUDS', code: '#ecf0f1'},
-  {name: 'CONCRETE', code: '#95a5a6'},
-  {name: 'ORANGE', code: '#f39c12'},
-  {name: 'PUMPKIN', code: '#d35400'},
-  {name: 'POMEGRANATE', code: '#c0392b'},
-  {name: 'SILVER', code: '#bdc3c7'},
-  {name: 'ASBESTOS', code: '#7f8c8d'},
-];
-
-const HomeScreen = props => {
-  const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    const {sqlite} = props;
-    sqlite.transaction(tx => {
-      tx.executeSql('SELECT * FROM clinic')
-        .then(res => {
-          let data = [...res[1].rows.raw()];
-          setData(data);
-        })
-        .catch(error => {
-          console.error('err');
-        });
-    });
-  }, []);
-
-  return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
-      }}>
-      {data ? (
-        <SectionGrid
-          itemDimension={180}
-          // staticDimension={300}
-          // fixed
-          spacing={0}
-          sections={[
-            {
-              title: 'Title1',
-              data: data.slice(0, 6),
-            },
-            // {
-            //   title: 'Title2',
-            //   data: data.slice(0, 3),
-            // },
-            // {
-            //   title: 'Title3',
-            //   data: items.slice(12, 20),
-            // },
-          ]}
-          style={styles.gridView}
-          renderItem={({item, section, index}) => {
-            console.log(item.icon_name);
-            return (
-              <TouchableHighlight
-                style={styles.itemContainer}
-                onPress={() => {
-                  // props.navigation.navigate('ClinicMenu', {
-                  //   clinicID: item.ID,
-                  //   clinicName: item.name,
-                  // });
-                }}>
-                <View style={styles.itemView}>
-                  <Icon
-                    name={item.icon_name}
-                    size={50}
-                    color={item.icon_color}
-                  />
-                  <Text style={styles.itemName}>{item.name}</Text>
-                </View>
-              </TouchableHighlight>
-            );
-          }}
-          renderSectionHeader={({section}) => (
-            <Text style={styles.sectionHeader}>{section.title}</Text>
-          )}
-        />
-      ) : (
-        <Text>Loading...</Text>
-      )}
-    </View>
-  );
-};
 
 const mapStateToProps = state => {
   return {

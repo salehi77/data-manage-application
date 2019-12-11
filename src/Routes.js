@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {createStackNavigator} from 'react-navigation-stack';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {createAppContainer} from 'react-navigation';
-import {Text, View, Button} from 'react-native';
+import React, { Component } from 'react';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createAppContainer } from 'react-navigation';
+import { Text, View, Button } from 'react-native';
 
 import HomeScreen from './components/Screens/Home';
 import ClinicMenuScreen from './components/Screens/ClinicMenu';
@@ -17,9 +17,16 @@ const HomeStack = createStackNavigator({
   Description: DescriptionScreen,
 });
 
-const SearchStack = createStackNavigator({
-  Search: SearchScreen,
-});
+const SearchStack = createStackNavigator(
+  {
+    Search: SearchScreen,
+  },
+  {
+    defaultNavigationOptions: {
+      header: null,
+    },
+  },
+);
 
 const TabNavigator = createAppContainer(
   createBottomTabNavigator({
