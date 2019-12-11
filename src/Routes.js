@@ -5,12 +5,12 @@ import { createDrawerNavigator } from 'react-navigation-drawer'
 import { createAppContainer } from 'react-navigation';
 import { Text, View, Button } from 'react-native';
 
-import HomeScreen from './components/Screens/Home';
-import ClinicMenuScreen from './components/Screens/ClinicMenu';
-import AlgorithmScreen from './components/Screens/Algorithm';
-import DescriptionScreen from './components/Screens/Description';
+import HomeScreen from './components/Screens/HomeScreen';
+import ClinicMenuScreen from './components/Screens/ClinicMenuScreen';
+import AlgorithmScreen from './components/Screens/AlgorithmScreen';
+import DescriptionScreen from './components/Screens/DescriptionScreen';
 
-import SearchScreen from './components/Screens/Search';
+import SearchScreen from './components/Screens/SearchScreen';
 
 
 import SettingScreen from './components/Screens/SettingScreen'
@@ -56,6 +56,8 @@ const SearchStack = createStackNavigator(
     initialRouteName: 'Search'
   }
 );
+
+
 
 const TabNavigator = createBottomTabNavigator({
   Home: DrawerNavigate,
