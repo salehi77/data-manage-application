@@ -7,12 +7,14 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-import { Button, Card, Icon } from 'native-base';
 
 import { connect } from 'react-redux';
-// import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { SectionGrid } from 'react-native-super-grid';
 import HeaderElement from '../elements/HeaderElement';
+
+
+import { ClinicIcon } from '../../config/icon-font'
 
 const HomeScreen = props => {
   const [data, setData] = React.useState(null);
@@ -39,6 +41,12 @@ const HomeScreen = props => {
         flex: 1,
         backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
       }}>
+
+      <ClinicIcon
+        name={'emo-devil'}
+        size={20}
+        color={'#000'} />
+
 
       {
         data
@@ -67,8 +75,9 @@ const HomeScreen = props => {
                     <View style={styles.itemView}>
                       <Icon
                         name={item.icon_name}
-                        type="FontAwesome5"
-                        style={{ fontSize: 50, color: item.icon_color }}
+                        // style={{ fontSize: 50, color: item.icon_color }}
+                        size={50}
+                        color={item.icon_color}
                       />
                       <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>{item.name}</Text>
                     </View>

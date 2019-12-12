@@ -1,24 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Text, View, TouchableOpacity } from 'react-native';
-import {
-  Container,
-  Header,
-  Title,
-  Button,
-  Icon,
-  Left,
-  Right,
-  Body,
-} from 'native-base';
+// import {
+//   Container,
+//   Header,
+//   Title,
+//   Button,
+//   Icon,
+//   Left,
+//   Right,
+//   Body,
+// } from 'native-base';
+import { Header } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 
 const HeaderElement = props => {
 
-  props.navigation.toggleDrawer()
+  // props.navigation.toggleDrawer()
 
   return (
     <View style={{ height: 50 }}>
-      <Header noShadow style={{ height: '100%' }}>
+      {/* <Header noShadow style={{ height: '100%' }}>
         <Left>
           <Button transparent
             onPress={() => {
@@ -42,7 +45,36 @@ const HeaderElement = props => {
             <Icon name="arrow-back" />
           </Button>
         </Right>
+      </Header> */}
+
+
+
+      <Header
+        leftComponent={{ icon: 'menu', color: '#fff' }}
+        centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+        rightComponent={{ icon: 'home', color: '#fff' }}
+
+        containerStyle={{
+          // backgroundColor: 'red',
+          height: 50
+        }}
+
+      >
+
+        <View>
+          <Icon name='bars' />
+        </View>
+
+        <Text>center</Text>
+
+        <Text>right</Text>
+
       </Header>
+
+
+
+
+
     </View>
   );
 };

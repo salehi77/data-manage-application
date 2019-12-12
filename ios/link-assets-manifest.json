@@ -48,6 +48,10 @@
     {
       "path": "src/assets/fonts/XMYekan.ttf",
       "sha1": "eb2274ecdba1b7b1533f803bc08d63454a1abaae"
+    },
+    {
+      "path": "src/assets/fonts/clinic_icon.ttf",
+      "sha1": "29b15b6924d2abb01f2c583581f29273f6a911af"
     }
   ]
 }

@@ -4,6 +4,10 @@ import { Text, View, StyleSheet, ImageBackground } from 'react-native'
 
 const DrawerElement = (props) => {
 
+  console.log(Object.keys(props.descriptors.Home.options))
+
+  console.log(props.descriptors.Home.options.title)
+
 
   return (
     <View>
@@ -32,7 +36,7 @@ const DrawerElement = (props) => {
                 <Text
                   onPress={() => props.navigation.navigate(descriptor)}
                 >
-                  {descriptor}
+                  {props.descriptors[descriptor].options.title ? props.descriptors[descriptor].options.title : descriptor}
                 </Text>
               </View>
             )

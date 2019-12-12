@@ -40,8 +40,19 @@ const SettingStack = createStackNavigator({
 
 
 const DrawerNavigate = createDrawerNavigator({
-  Home: HomeStack,
-  Setting: SettingStack,
+  Home: {
+    screen: HomeStack,
+    navigationOptions: {
+      title: 'خانه',
+      icon: 'home'
+    },
+  },
+  Setting: {
+    screen: SettingStack,
+    navigationOptions: {
+      title: 'تنظیمات',
+    },
+  },
 },
   {
     initialRouteName: 'Home',
