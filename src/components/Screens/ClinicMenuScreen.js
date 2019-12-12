@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,11 +8,11 @@ import {
   TouchableOpacity,
   Button,
 } from 'react-native';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-class ClinicMenu extends Component {
-  static navigationOptions = ({navigation, navigationOptions}) => {
-    const {params} = navigation.state;
+class ClinicMenuScreen extends Component {
+  static navigationOptions = ({ navigation, navigationOptions }) => {
+    const { params } = navigation.state;
     return {
       title: params ? params.clinicName : '',
     };
@@ -23,7 +23,7 @@ class ClinicMenu extends Component {
   };
 
   componentDidMount() {
-    const {sqlite} = this.props;
+    const { sqlite } = this.props;
 
     let clinicID = this.props.navigation.getParam('clinicID');
 
@@ -35,7 +35,7 @@ class ClinicMenu extends Component {
           //   pathToThis: [],
           // });
           this.setState({
-            data: {...res[1].rows.item(0)},
+            data: { ...res[1].rows.item(0) },
           });
         })
         .catch(error => {
@@ -107,8 +107,8 @@ class ClinicMenu extends Component {
             </TouchableOpacity>
           </View>
         ) : (
-          <Text>isloading...</Text>
-        )}
+            <Text>isloading...</Text>
+          )}
       </View>
     );
   }
@@ -160,4 +160,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClinicMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(ClinicMenuScreen);

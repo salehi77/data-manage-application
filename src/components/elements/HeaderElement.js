@@ -13,7 +13,9 @@ import {
 } from 'native-base';
 
 const HeaderElement = props => {
-  console.info(Object.keys(props));
+
+  props.navigation.toggleDrawer()
+
   return (
     <View style={{ height: 50 }}>
       <Header noShadow style={{ height: '100%' }}>
@@ -26,7 +28,7 @@ const HeaderElement = props => {
             <Icon name="menu" />
           </Button>
         </Left>
-        <Body style={{ marginTop: 10 }}>
+        <Body style={{ marginTop: 20 }}>
           <Title
             style={{
               fontFamily: props.theme.PRIMARY_FONT_FAMILY_BOLD,

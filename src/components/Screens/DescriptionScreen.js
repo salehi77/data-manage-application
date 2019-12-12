@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   View,
@@ -9,9 +9,9 @@ import {
   Button,
   ScrollView,
 } from 'react-native';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-class Description extends Component {
+class DescriptionScreen extends Component {
   state = {
     data: null,
   };
@@ -63,4 +63,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Description);
+)(DescriptionScreen);

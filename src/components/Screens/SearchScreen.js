@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 
-export default class Search extends Component {
+class SearchScreen extends Component {
   render() {
     return (
       <View>
@@ -10,3 +10,5 @@ export default class Search extends Component {
     );
   }
 }
+
+export default SearchScreen

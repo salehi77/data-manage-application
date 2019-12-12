@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   StyleSheet,
@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-class Algorithm extends Component {
+class AlgorithmScreen extends Component {
   render() {
     let pathToThis = this.props.navigation.getParam('pathToThis');
     let tree = this.props.navigation.getParam('tree');
@@ -62,7 +62,7 @@ class Algorithm extends Component {
                   {tree.Text}
                 </Text>
               </View>
-              <View style={{marginHorizontal: 5}}>
+              <View style={{ marginHorizontal: 5 }}>
                 <Text
                   style={{
                     marginTop: 10,
@@ -96,7 +96,7 @@ class Algorithm extends Component {
                         <Icon
                           name="arrow-down"
                           size={20}
-                          style={{alignSelf: 'center'}}
+                          style={{ alignSelf: 'center' }}
                         />
                       )}
                     </View>
@@ -105,72 +105,72 @@ class Algorithm extends Component {
               </View>
             </>
           ) : (
-            <>
-              <Text
-                style={{
-                  fontSize: this.props.theme.FONT_SIZE_MEDIUM,
-                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
-                  borderColor: this.props.theme.PRIMARY_COLOR,
-                  paddingTop: 10,
-                  paddingBottom: 5,
-                  paddingHorizontal: 15,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginVertical: 8,
-                  marginHorizontal: 16,
-                  color: 'black',
-                  borderWidth: 2,
-                  borderRadius: 25,
-                  alignSelf: 'flex-start',
-                }}>
-                {tree.Text}
-              </Text>
+              <>
+                <Text
+                  style={{
+                    fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                    fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+                    borderColor: this.props.theme.PRIMARY_COLOR,
+                    paddingTop: 10,
+                    paddingBottom: 5,
+                    paddingHorizontal: 15,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginVertical: 8,
+                    marginHorizontal: 16,
+                    color: 'black',
+                    borderWidth: 2,
+                    borderRadius: 25,
+                    alignSelf: 'flex-start',
+                  }}>
+                  {tree.Text}
+                </Text>
 
-              {tree.options.map(option => {
-                return (
-                  <TouchableOpacity
-                    key={option.ID}
-                    style={{
-                      backgroundColor: '#2196F3',
-                      paddingHorizontal: 20,
-                      paddingVertical: 10,
-                      marginVertical: 8,
-                      marginHorizontal: 16,
-                      borderRadius: 10,
-                      flex: 1,
-                      flexDirection: 'row',
-                    }}
-                    onPress={() => {
-                      let pathToThis = [
-                        ...this.props.navigation.getParam('pathToThis'),
-                      ];
-                      pathToThis.push(option.Text);
-                      this.props.navigation.push('Algorithm', {
-                        tree: option,
-                        pathToThis,
-                      });
-                    }}>
-                    <Text
+                {tree.options.map(option => {
+                  return (
+                    <TouchableOpacity
+                      key={option.ID}
                       style={{
-                        flexGrow: 1,
-                        fontSize: this.props.theme.FONT_SIZE_MEDIUM,
-                        fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
-                        color: 'white',
-                        maxWidth: '90%',
+                        backgroundColor: '#2196F3',
+                        paddingHorizontal: 20,
+                        paddingVertical: 10,
+                        marginVertical: 8,
+                        marginHorizontal: 16,
+                        borderRadius: 10,
+                        flex: 1,
+                        flexDirection: 'row',
+                      }}
+                      onPress={() => {
+                        let pathToThis = [
+                          ...this.props.navigation.getParam('pathToThis'),
+                        ];
+                        pathToThis.push(option.Text);
+                        this.props.navigation.push('Algorithm', {
+                          tree: option,
+                          pathToThis,
+                        });
                       }}>
-                      {option.Text}
-                    </Text>
-                    <Icon
-                      style={{flexGrow: 1}}
-                      name="arrow-left"
-                      size={25}
-                      color="#ededed"
-                    />
-                  </TouchableOpacity>
-                );
-              })}
-            </>
-          )}
+                      <Text
+                        style={{
+                          flexGrow: 1,
+                          fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                          fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+                          color: 'white',
+                          maxWidth: '90%',
+                        }}>
+                        {option.Text}
+                      </Text>
+                      <Icon
+                        style={{ flexGrow: 1 }}
+                        name="arrow-left"
+                        size={25}
+                        color="#ededed"
+                      />
+                    </TouchableOpacity>
+                  );
+                })}
+              </>
+            )}
         </ScrollView>
       </View>
     );
@@ -191,4 +191,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Algorithm);
+)(AlgorithmScreen);

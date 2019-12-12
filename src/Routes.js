@@ -15,6 +15,7 @@ import SearchScreen from './components/Screens/SearchScreen';
 
 import SettingScreen from './components/Screens/SettingScreen'
 
+import DrawerElement from './components/elements/DrawerElement'
 
 
 
@@ -42,7 +43,15 @@ const DrawerNavigate = createDrawerNavigator({
   Home: HomeStack,
   Setting: SettingStack,
 },
-  { initialRouteName: 'Home' }
+  {
+    initialRouteName: 'Home',
+    // drawerType: 'back',
+    // drawerWidth: 250,
+    // edgeWidth: 200,
+    // hideStatusBar: true,
+    // keyboardDismissMode: 'none',
+    contentComponent: DrawerElement
+  }
 )
 
 

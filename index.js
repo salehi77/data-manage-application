@@ -1,10 +1,12 @@
-import {AppRegistry} from 'react-native';
+import { AppRegistry } from 'react-native';
 import App from './src/App';
-import {name as appName} from './app.json';
+import { name as appName } from './app.json';
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
+
 
 import React from 'react';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 import rootReducer from './src/rootReducer';
 
@@ -16,4 +18,4 @@ const AppContainer = () => (
   </Provider>
 );
 
-AppRegistry.registerComponent(appName, () => AppContainer);
+AppRegistry.registerComponent(appName, () => gestureHandlerRootHOC(AppContainer))
