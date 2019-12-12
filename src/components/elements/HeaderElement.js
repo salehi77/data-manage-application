@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 // import {
 //   Container,
 //   Header,
@@ -12,7 +12,8 @@ import { Text, View, TouchableOpacity } from 'react-native';
 //   Body,
 // } from 'native-base';
 import { Header } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import AwesomeIcon from 'react-native-vector-icons/FontAwesome5';
+import { ClinicIcon } from '../../config/icon-font'
 
 
 const HeaderElement = props => {
@@ -21,57 +22,53 @@ const HeaderElement = props => {
 
   return (
     <View style={{ height: 50 }}>
-      {/* <Header noShadow style={{ height: '100%' }}>
-        <Left>
-          <Button transparent
-            onPress={() => {
-              props.navigation.toggleDrawer()
-            }}
-          >
-            <Icon name="menu" />
-          </Button>
-        </Left>
-        <Body style={{ marginTop: 20 }}>
-          <Title
-            style={{
-              fontFamily: props.theme.PRIMARY_FONT_FAMILY_BOLD,
-              fontSize: props.theme.FONT_SIZE_EXTRA_LARGE,
-            }}>
-            کلینیک
-          </Title>
-        </Body>
-        <Right style={{ display: 'none' }}>
-          <Button transparent onPress={() => props.navigation.goBack()}>
-            <Icon name="arrow-back" />
-          </Button>
-        </Right>
-      </Header> */}
-
 
 
       <Header
-        leftComponent={{ icon: 'menu', color: '#fff' }}
-        centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-        rightComponent={{ icon: 'home', color: '#fff' }}
-
         containerStyle={{
-          // backgroundColor: 'red',
-          height: 50
+          height: '100%',
+          paddingBottom: 25
         }}
 
       >
 
         <View>
-          <Icon name='bars' />
+          <TouchableWithoutFeedback
+            onPress={() => {
+              props.navigation.toggleDrawer()
+            }}
+          >
+            <View
+              style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
+            >
+
+              <AwesomeIcon name='bars' size={30} color='white' />
+
+              <Text
+
+                style={{
+                  fontFamily: props.theme.PRIMARY_FONT_FAMILY_BOLD,
+                  fontSize: props.theme.FONT_SIZE_EXTRA_LARGE,
+                  marginStart: 10,
+                  marginTop: 10,
+                  color: 'white'
+                }}
+              >
+                کلینیک
+            </Text>
+
+            </View>
+
+
+          </TouchableWithoutFeedback>
+
         </View>
 
-        <Text>center</Text>
+        <Text></Text>
 
-        <Text>right</Text>
+        <Text></Text>
 
       </Header>
-
-
 
 
 

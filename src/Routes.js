@@ -51,6 +51,7 @@ const DrawerNavigate = createDrawerNavigator({
     screen: SettingStack,
     navigationOptions: {
       title: 'تنظیمات',
+      icon: 'settings'
     },
   },
 },

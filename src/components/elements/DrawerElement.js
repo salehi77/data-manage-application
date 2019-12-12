@@ -6,7 +6,7 @@ const DrawerElement = (props) => {
 
   console.log(Object.keys(props.descriptors.Home.options))
 
-  console.log(props.descriptors.Home.options.title)
+  console.log(props.descriptors.Setting.options.icon)
 
 
   return (

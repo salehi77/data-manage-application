@@ -45,7 +45,7 @@
 		96EB8A1E151E4782931D416E /* XMYekan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6F77B1FD8E4207BC7C207A /* XMYekan-Bold.ttf */; };
 		87F3687A3FF14DBB8F71EA41 /* XMYekan-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69951E4615F4454983B6A411 /* XMYekan-BoldItalic.ttf */; };
 		225E9AAD806D4FE5A6124993 /* XMYekan-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 986814F67BD24E81B1D13458 /* XMYekan-Italic.ttf */; };
-		55388C69285D4490A95C5100 /* clinic_icon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB4E062CA1804A24A038F9A8 /* clinic_icon.ttf */; };
+		F503313BBC934B5D8C7B173D /* clinic_icon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 536A1122814C41CE94D87475 /* clinic_icon.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,7 +111,7 @@
 		0A6F77B1FD8E4207BC7C207A /* XMYekan-Bold.ttf */ = {isa = PBXFileReference; name = "XMYekan-Bold.ttf"; path = "../src/assets/fonts/XMYekan-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		69951E4615F4454983B6A411 /* XMYekan-BoldItalic.ttf */ = {isa = PBXFileReference; name = "XMYekan-BoldItalic.ttf"; path = "../src/assets/fonts/XMYekan-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		986814F67BD24E81B1D13458 /* XMYekan-Italic.ttf */ = {isa = PBXFileReference; name = "XMYekan-Italic.ttf"; path = "../src/assets/fonts/XMYekan-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CB4E062CA1804A24A038F9A8 /* clinic_icon.ttf */ = {isa = PBXFileReference; name = "clinic_icon.ttf"; path = "../src/assets/fonts/clinic_icon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		536A1122814C41CE94D87475 /* clinic_icon.ttf */ = {isa = PBXFileReference; name = "clinic_icon.ttf"; path = "../src/assets/fonts/clinic_icon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,7 +252,7 @@
 				0A6F77B1FD8E4207BC7C207A /* XMYekan-Bold.ttf */,
 				69951E4615F4454983B6A411 /* XMYekan-BoldItalic.ttf */,
 				986814F67BD24E81B1D13458 /* XMYekan-Italic.ttf */,
-				CB4E062CA1804A24A038F9A8 /* clinic_icon.ttf */,
+				536A1122814C41CE94D87475 /* clinic_icon.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -424,7 +424,7 @@
 				96EB8A1E151E4782931D416E /* XMYekan-Bold.ttf in Resources */,
 				87F3687A3FF14DBB8F71EA41 /* XMYekan-BoldItalic.ttf in Resources */,
 				225E9AAD806D4FE5A6124993 /* XMYekan-Italic.ttf in Resources */,
-				55388C69285D4490A95C5100 /* clinic_icon.ttf in Resources */,
+				F503313BBC934B5D8C7B173D /* clinic_icon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

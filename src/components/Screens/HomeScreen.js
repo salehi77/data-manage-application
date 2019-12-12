@@ -14,8 +14,6 @@ import { SectionGrid } from 'react-native-super-grid';
 import HeaderElement from '../elements/HeaderElement';
 
 
-import { ClinicIcon } from '../../config/icon-font'
-
 const HomeScreen = props => {
   const [data, setData] = React.useState(null);
 
@@ -41,11 +39,6 @@ const HomeScreen = props => {
         flex: 1,
         backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
       }}>
-
-      <ClinicIcon
-        name={'emo-devil'}
-        size={20}
-        color={'#000'} />
 
 
       {
