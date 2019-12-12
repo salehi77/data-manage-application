@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   View,
   StyleSheet,
@@ -6,12 +7,9 @@ import {
   TouchableOpacity,
   TouchableHighlight,
 } from 'react-native';
-
-
-import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import { SectionGrid } from 'react-native-super-grid';
-import HeaderElement from '../elements/HeaderElement';
+import HomeHeaderElement from '../elements/Headers/HomeHeaderElement';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 const HomeScreen = props => {
@@ -41,12 +39,13 @@ const HomeScreen = props => {
       }}>
 
 
+
       {
         data
           ?
           (
             <SectionGrid
-              itemDimension={180}
+              itemDimension={120}
               spacing={0}
               sections={[
                 {
@@ -66,9 +65,8 @@ const HomeScreen = props => {
                       });
                     }}>
                     <View style={styles.itemView}>
-                      <Icon
+                      <FontAwesome5Icon
                         name={item.icon_name}
-                        // style={{ fontSize: 50, color: item.icon_color }}
                         size={50}
                         color={item.icon_color}
                       />
@@ -93,7 +91,7 @@ const HomeScreen = props => {
 HomeScreen.navigationOptions = ({ navigation }) => {
 
   return {
-    header: <HeaderElement navigation={navigation} />,
+    header: <HomeHeaderElement navigation={navigation} />,
     // title: 'home',
   };
 };

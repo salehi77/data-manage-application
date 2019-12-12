@@ -8,7 +8,7 @@ import { I18nManager } from 'react-native';
 import { setDatabase } from './actions/localdb';
 
 import Routes from './Routes';
-const AppContainer = createAppContainer(Routes);
+const AppContainer = Routes;
 
 const okCallback = () => {
   console.log('OK');

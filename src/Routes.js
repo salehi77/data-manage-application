@@ -27,63 +27,72 @@ const HomeStack = createStackNavigator({
   ClinicMenu: ClinicMenuScreen,
   Algorithm: AlgorithmScreen,
   Description: DescriptionScreen,
+  Setting: SettingScreen,
+  Search: SearchScreen,
 }, {
   initialRouteName: 'Home'
 });
 
 
-const SettingStack = createStackNavigator({
-  Setting: SettingScreen
-}, {
-  initialRouteName: 'Setting'
-});
+// const SettingStack = createStackNavigator({
+//   Setting: SettingScreen
+// }, {
+//   initialRouteName: 'Setting'
+// });
 
 
-const DrawerNavigate = createDrawerNavigator({
-  Home: {
-    screen: HomeStack,
-    navigationOptions: {
-      title: 'خانه',
-      icon: 'home'
-    },
-  },
-  Setting: {
-    screen: SettingStack,
-    navigationOptions: {
-      title: 'تنظیمات',
-      icon: 'settings'
-    },
-  },
-},
-  {
-    initialRouteName: 'Home',
-    // drawerType: 'back',
-    // drawerWidth: 250,
-    // edgeWidth: 200,
-    // hideStatusBar: true,
-    // keyboardDismissMode: 'none',
-    contentComponent: DrawerElement
-  }
-)
+// const DrawerNavigate = createDrawerNavigator({
+//   Home: {
+//     screen: HomeStack,
+//     navigationOptions: {
+//       title: 'خانه'
+//     },
+//   },
+//   Setting: {
+//     screen: SettingStack,
+//     navigationOptions: {
+//       title: 'تنظیمات'
+//     },
+//   },
+// },
+//   {
+//     initialRouteName: 'Home',
+//     contentComponent: DrawerElement
+//   }
+// )
 
 
 
 
-const SearchStack = createStackNavigator(
-  {
-    Search: SearchScreen,
-  },
-  {
-    initialRouteName: 'Search'
-  }
-);
+// const SearchStack = createStackNavigator(
+//   {
+//     Search: SearchScreen,
+//   },
+//   {
+//     initialRouteName: 'Search'
+//   }
+// );
 
 
 
-const TabNavigator = createBottomTabNavigator({
-  Home: DrawerNavigate,
-  Search: SearchStack,
-})
+// const nnn = createStackNavigator({
+//   Home: HomeStack,
+//   Search: SearchStack,
+//   Setting: SettingStack,
+// },
+//   {
+//     initialRouteName: 'Home',
+//     defaultNavigationOptions: {
+//       header: null
+//     }
+//   }
+// )
 
 
-export default createAppContainer(TabNavigator);
+// const TabNavigator = createBottomTabNavigator({
+//   Home: DrawerNavigate,
+//   Search: SearchStack,
+// })
+
+
+export default createAppContainer(HomeStack);

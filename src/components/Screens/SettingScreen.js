@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import HeaderElement from '../elements/HeaderElement'
+import SettingHeaderElement from '../elements/Headers/SettingHeaderElement'
 
 const SettingScreen = (props) => {
 
@@ -12,10 +12,12 @@ const SettingScreen = (props) => {
   )
 }
 
+
+
 SettingScreen.navigationOptions = ({ navigation }) => {
 
   return {
-    header: <HeaderElement navigation={navigation} />,
+    header: <SettingHeaderElement navigation={navigation} />,
     // title: 'home',
   };
 };

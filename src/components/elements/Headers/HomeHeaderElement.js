@@ -1,24 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Text, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-// import {
-//   Container,
-//   Header,
-//   Title,
-//   Button,
-//   Icon,
-//   Left,
-//   Right,
-//   Body,
-// } from 'native-base';
 import { Header } from 'react-native-elements'
-import AwesomeIcon from 'react-native-vector-icons/FontAwesome5';
-import { ClinicIcon } from '../../config/icon-font'
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
-
-const HeaderElement = props => {
-
-  // props.navigation.toggleDrawer()
+const HomeHeaderElement = props => {
 
   return (
     <View style={{ height: 50 }}>
@@ -42,7 +28,7 @@ const HeaderElement = props => {
               style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
             >
 
-              <AwesomeIcon name='bars' size={30} color='white' />
+              <FontAwesome5Icon name='bars' size={30} color='white' />
 
               <Text
 
@@ -66,7 +52,31 @@ const HeaderElement = props => {
 
         <Text></Text>
 
-        <Text></Text>
+        <View style={{ flex: 1, flexDirection: 'row-reverse', alignItems: 'center' }}>
+
+          <View >
+
+            <TouchableOpacity
+              onPress={() => {
+                console.log('setting')
+                props.navigation.navigate('Setting')
+              }}
+            >
+              <FontAwesome5Icon name='cog' color='white' size={30} />
+            </TouchableOpacity>
+
+          </View>
+
+          <View style={{ marginEnd: 25 }}>
+
+            <TouchableOpacity>
+              <FontAwesome5Icon name='search' color='white' size={25} />
+            </TouchableOpacity>
+
+          </View>
+
+
+        </View>
 
       </Header>
 
@@ -84,4 +94,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderElement);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeHeaderElement);
