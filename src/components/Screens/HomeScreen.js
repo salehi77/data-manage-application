@@ -45,7 +45,7 @@ const HomeScreen = props => {
           ?
           (
             <SectionGrid
-              itemDimension={120}
+              itemDimension={180}
               spacing={0}
               sections={[
                 {

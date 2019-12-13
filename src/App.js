@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createAppContainer } from 'react-navigation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { I18nManager } from 'react-native';
+// import RNRestart from 'react-native-restart'
 
 import { setDatabase } from './actions/localdb';
 

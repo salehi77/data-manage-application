@@ -7,7 +7,7 @@ import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 const HomeHeaderElement = props => {
 
   return (
-    <View style={{ height: 50 }}>
+    <View style={{ height: 60 }}>
 
 
       <Header

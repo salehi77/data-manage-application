@@ -1,4 +1,4 @@
-import {base, darkTheme, lightTheme, bluishTheme, colorOptions} from './theme';
+import { base, darkTheme, lightTheme, bluishTheme, colorOptions } from './theme';
 
 const initialState = {
   ...base,
