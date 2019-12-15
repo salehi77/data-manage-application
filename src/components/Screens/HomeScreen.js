@@ -89,7 +89,6 @@ const HomeScreen = props => {
 };
 
 HomeScreen.navigationOptions = ({ navigation }) => {
-
   return {
     header: <HomeHeaderElement navigation={navigation} />,
     // title: 'home',

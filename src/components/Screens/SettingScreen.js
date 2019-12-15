@@ -1,77 +1,143 @@
-import React from 'react'
-import { Text, View, TextInput } from 'react-native'
+import React from 'react';
+import { connect } from 'react-redux'
+import { Animated, Text, View, ActivityIndicator } from 'react-native';
 import SettingHeaderElement from '../elements/Headers/SettingHeaderElement'
-import { Slider } from 'react-native-elements';
 
-// import Slider from "react-native-slider";
-// 
-// import Slider from '@react-native-community/slider';
+import { changeAlgFontSize } from '../../actions/themeAction'
 
+import Slider from '../elements/SliderElement'
 
 
 const SettingScreen = (props) => {
 
-  const [fontSize, setFontSize] = React.useState(14)
+  const [fontSize, setFontSize] = React.useState(16)
+
+  React.useEffect(() => {
+    if (props.theme) {
+      setFontSize(props.theme.ALGORITHM_FONT_SIZE)
+    }
+  }, [])
 
   return (
+
     <>
-      <Text
-        style={{ fontSize: fontSize }}
-      >
-        setting {fontSize}
-      </Text>
-
-
       <View
-      // style={{ direction: 'ltr' }}
-      >
-        <Text>lll</Text>
+        style={{
+          flex: 1,
+          backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
+        }}>
 
-        <TextInput
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1, width: 110 }}
-          onChangeText={text => {
-            if (/^[0-9]+$/.test(text) && parseInt(text) >= 12 && parseInt(text) <= 24) {
-              setFontSize(parseInt(text))
-            }
+
+        <View
+          style={{
+            alignItems: 'center',
+            // marginTop: 15
           }}
+        >
 
-        />
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+          >
+
+            <View
+              style={{
+                flexBasis: 20,
+                flexGrow: 2,
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <Text >
+                {fontSize}
+              </Text>
+
+            </View>
+
+            <View
+              style={{
+                flexGrow: 10,
+                flexDirection: 'column',
+                marginEnd: 15
+              }}
+            >
+              <Slider
+                minimumValue={12}
+                maximumValue={32}
+                minimumTrackTintColor='#b3b3b3'
+                maximumTrackTintColor='#3498db'
+                step={1}
+                thumbTintColor='#3498db'
+                value={fontSize}
+                onValueChange={value => {
+                  setFontSize(value)
+                  props.changeAlgFontSize(value)
+                }}
+              />
+
+            </View>
+
+          </View>
+
+          <View
+            style={{
+              height: 60,
+              width: '95%',
+              borderWidth: 1,
+              borderColor: '#3b3b3b',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 10,
+              // marginTop: 15
+            }}
+          >
+
+            <Text
+              style={{
+                fontSize,
+                fontFamily: props.theme.PRIMARY_FONT_FAMILY
+              }}
+            >
+              این یک متن است
+           </Text>
+
+          </View>
+
+        </View>
+
+
+
+
+
 
       </View>
     </>
+
   )
+
 }
 
+SettingScreen.navigationOptions = ({ navigation }) => {
+  return {
+    header: <SettingHeaderElement navigation={navigation} />,
+    // title: 'home',
+  };
+};
 
-// class SettingScreen extends React.Component {
-//   render() {
-//     return (
+const mapStateToProps = state => {
+  return {
+    theme: state.theme,
+  };
+};
 
-//       <>
+const mapDispatchToProps = {
+  changeAlgFontSize
+};
 
-//         <Slider
-//           style={{ width: 300, height: 40 }}
-//           minimumValue={0}
-//           maximumValue={1}
-//         // minimumTrackTintColor="#FFFFFF"
-//         // maximumTrackTintColor="#000000"
-//         />
-
-//         <Text>kkk</Text>
-
-//       </>
-
-//     )
-//   }
-// }
-
-
-// SettingScreen.navigationOptions = ({ navigation }) => {
-
-//   return {
-//     header: <SettingHeaderElement navigation={navigation} />,
-//     // title: 'home',
-//   };
-// };
-
-export default SettingScreen
+export default connect(mapStateToProps, mapDispatchToProps)(SettingScreen);

@@ -40,24 +40,22 @@ class AlgorithmScreen extends Component {
                     marginHorizontal: 16,
                     color: 'black',
                     alignSelf: 'flex-start',
-                    fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                    fontSize: this.props.theme.ALGORITHM_FONT_SIZE,
                     fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
                   }}>
                   نتیجه نهایی:
                 </Text>
                 <Text
                   style={{
-                    fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                    fontSize: this.props.theme.ALGORITHM_FONT_SIZE,
                     fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
-                    backgroundColor: this.props.theme.PRIMARY_COLOR,
+                    backgroundColor: '#27ae60',
                     width: '75%',
                     alignSelf: 'center',
                     alignItems: 'center',
                     paddingVertical: 30,
                     paddingHorizontal: 15,
                     borderRadius: 10,
-                    borderColor: this.props.theme.PRIMARY_COLOR_BOLD,
-                    borderWidth: 1,
                   }}>
                   {tree.Text}
                 </Text>
@@ -70,7 +68,7 @@ class AlgorithmScreen extends Component {
                     justifyContent: 'center',
                     alignItems: 'center',
                     marginHorizontal: 16,
-                    fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                    fontSize: this.props.theme.ALGORITHM_FONT_SIZE,
                     fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
                     color: 'black',
                     alignSelf: 'flex-start',
@@ -89,6 +87,8 @@ class AlgorithmScreen extends Component {
                           paddingVertical: 10,
                           alignSelf: 'center',
                           textAlign: 'justify',
+                          fontSize: this.props.theme.ALGORITHM_FONT_SIZE,
+                          fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
                         }}>
                         {option}
                       </Text>
@@ -108,9 +108,9 @@ class AlgorithmScreen extends Component {
               <>
                 <Text
                   style={{
-                    fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                    fontSize: this.props.theme.ALGORITHM_FONT_SIZE,
                     fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
-                    borderColor: this.props.theme.PRIMARY_COLOR,
+                    borderColor: '#27ae60',
                     paddingTop: 10,
                     paddingBottom: 5,
                     paddingHorizontal: 15,
@@ -153,7 +153,7 @@ class AlgorithmScreen extends Component {
                       <Text
                         style={{
                           flexGrow: 1,
-                          fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+                          fontSize: this.props.theme.ALGORITHM_FONT_SIZE,
                           fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
                           color: 'white',
                           maxWidth: '90%',

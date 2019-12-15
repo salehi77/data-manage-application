@@ -1,8 +1,8 @@
 export const base = {
   FONT_SIZE_TINY: 8,
   FONT_SIZE_SMALL: 12,
-  FONT_SIZE_MEDIUM: 14,
-  FONT_SIZE_LARGE: 18,
+  FONT_SIZE_MEDIUM: 16,
+  FONT_SIZE_LARGE: 20,
   FONT_SIZE_EXTRA_LARGE: 24,
   FONT_SIZE_MASSIVE: 34,
 
@@ -15,6 +15,8 @@ export const base = {
 
   SECONDARY_FONT_FAMILY: 'XBRoya',
   SECONDARY_FONT_FAMILY_BOLD: 'XBRoya-Bold',
+
+  ALGORITHM_FONT_SIZE: 16
 };
 
 export const darkTheme = {
