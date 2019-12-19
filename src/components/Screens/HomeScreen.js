@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   TouchableHighlight,
+  ActivityIndicator,
 } from 'react-native';
 import { SectionGrid } from 'react-native-super-grid';
 import HomeHeaderElement from '../elements/Headers/HomeHeaderElement';
@@ -16,12 +17,14 @@ const HomeScreen = props => {
   const [data, setData] = React.useState(null);
 
   React.useEffect(() => {
+
     const { sqlite } = props;
     sqlite.transaction(tx => {
       tx.executeSql('SELECT * FROM clinic')
         .then(res => {
           let data = [...res[1].rows.raw()];
           setData(data);
+          // setData(null)
         })
         .catch(error => {
           console.error('err');
@@ -79,7 +82,9 @@ const HomeScreen = props => {
           )
           :
           (
-            <Text>Loading...</Text>
+            <View style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+              <ActivityIndicator size="large" color="#0000ff" />
+            </View>
           )
       }
 

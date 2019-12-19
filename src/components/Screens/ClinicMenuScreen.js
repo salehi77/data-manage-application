@@ -7,26 +7,138 @@ import {
   Text,
   TouchableOpacity,
   Button,
+  ActivityIndicator,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { connect } from 'react-redux';
+import * as Animatable from 'react-native-animatable';
 
-class ClinicMenuScreen extends Component {
-  static navigationOptions = ({ navigation, navigationOptions }) => {
-    const { params } = navigation.state;
-    return {
-      title: params ? params.clinicName : '',
-    };
-  };
 
-  state = {
-    data: null,
-  };
+// class ClinicMenuScreen extends Component {
+//   static navigationOptions = ({ navigation, navigationOptions }) => {
+//     const { params } = navigation.state;
+//     return {
+//       title: params ? params.clinicName : '',
+//     };
+//   };
 
-  componentDidMount() {
-    const { sqlite } = this.props;
+//   state = {
+//     data: null,
+//   };
 
-    let clinicID = this.props.navigation.getParam('clinicID');
+//   componentDidMount() {
+//     const { sqlite } = this.props;
 
+//     // let clinicID = this.props.navigation.getParam('clinicID');
+//     let clinicID = 1;
+
+//     sqlite.transaction(tx => {
+//       tx.executeSql(`SELECT * FROM clinic WHERE ID = ${clinicID}`)
+//         .then(res => {
+//           // this.props.navigation.navigate('Algorithm', {
+//           //   tree: JSON.parse(res[1].rows.item(0).algorithm),
+//           //   pathToThis: [],
+//           // });
+//           this.setState({
+//             data: { ...res[1].rows.item(0) },
+//           });
+//         })
+//         .catch(error => {
+//           console.error('err');
+//         });
+//     });
+//   }
+//   render() {
+//     return (
+//       <View
+//         style={{
+//           flex: 1,
+//           backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
+//         }}>
+
+//         {this.state.data ? (
+//           <View style={{}}>
+//             <TouchableOpacity
+//               style={[
+//                 styles.algorithmButton,
+//                 {
+//                   backgroundColor: this.props.theme.PRIMARY_COLOR,
+//                   borderColor: this.props.theme.PRIMARY_COLOR_BOLD,
+//                 },
+//               ]}
+//               onPress={() => {
+//                 this.props.navigation.navigate('Algorithm', {
+//                   tree: JSON.parse(this.state.data.algorithm),
+//                   pathToThis: [],
+//                 });
+//               }}>
+//               <Text
+//                 style={{
+//                   fontSize: this.props.theme.FONT_SIZE_MASSIVE,
+//                   fontFamily: this.props.theme.PRIMARY_FONT_FAMILY_BOLD,
+//                   color: this.props.theme.PRIMARY_FOREGROUND_COLOR,
+//                 }}>
+//                 ورود
+//               </Text>
+//             </TouchableOpacity>
+
+//             <TouchableOpacity style={styles.diagramButton}>
+//               <Text
+//                 style={{
+//                   fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+//                   fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+//                   color: 'white',
+//                 }}>
+//                 مشاهده روال کلی
+//               </Text>
+//             </TouchableOpacity>
+
+//             <TouchableOpacity
+//               style={styles.descriptionButton}
+//               onPress={() => {
+//                 this.props.navigation.navigate('Description', {
+//                   description: this.state.data.description,
+//                 });
+//               }}>
+//               <Text
+//                 style={{
+//                   fontSize: this.props.theme.FONT_SIZE_MEDIUM,
+//                   fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
+//                   color: 'white',
+//                 }}>
+//                 توضیحات
+//               </Text>
+//             </TouchableOpacity>
+//           </View>
+//         ) : (
+//             <Text>isloading...</Text>
+//           )}
+//       </View>
+//     );
+//   }
+// }
+
+
+
+
+
+
+
+
+const ClinicMenuScreen = (props) => {
+  // static navigationOptions = ({ navigation, navigationOptions }) => {
+  //   const { params } = navigation.state;
+  //   return {
+  //     title: params ? params.clinicName : '',
+  //   };
+  // };
+
+  const [data, setData] = React.useState(null)
+
+  React.useEffect(() => {
+    const { sqlite } = props;
+    // let clinicID = this.props.navigation.getParam('clinicID');
+    let clinicID = 1;
     sqlite.transaction(tx => {
       tx.executeSql(`SELECT * FROM clinic WHERE ID = ${clinicID}`)
         .then(res => {
@@ -34,85 +146,66 @@ class ClinicMenuScreen extends Component {
           //   tree: JSON.parse(res[1].rows.item(0).algorithm),
           //   pathToThis: [],
           // });
-          this.setState({
-            data: { ...res[1].rows.item(0) },
-          });
+          // setData({ ...res[1].rows.item(0) })
+          // setData(null)
         })
         .catch(error => {
           console.error('err');
         });
     });
-  }
-  render() {
-    return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
-        }}>
-        {/* <BackButton {...this.props} /> */}
+  }, [])
 
-        {this.state.data ? (
-          <View style={{}}>
-            <TouchableOpacity
-              style={[
-                styles.algorithmButton,
-                {
-                  backgroundColor: this.props.theme.PRIMARY_COLOR,
-                  borderColor: this.props.theme.PRIMARY_COLOR_BOLD,
-                },
-              ]}
-              onPress={() => {
-                this.props.navigation.navigate('Algorithm', {
-                  tree: JSON.parse(this.state.data.algorithm),
-                  pathToThis: [],
-                });
-              }}>
-              <Text
-                style={{
-                  fontSize: this.props.theme.FONT_SIZE_MASSIVE,
-                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY_BOLD,
-                  color: this.props.theme.PRIMARY_FOREGROUND_COLOR,
-                }}>
-                ورود
-              </Text>
-            </TouchableOpacity>
+  let view
 
-            <TouchableOpacity style={styles.diagramButton}>
-              <Text
-                style={{
-                  fontSize: this.props.theme.FONT_SIZE_MEDIUM,
-                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
-                  color: 'white',
-                }}>
-                مشاهده روال کلی
-              </Text>
-            </TouchableOpacity>
+  const handleViewRef = ref => view = ref;
 
-            <TouchableOpacity
-              style={styles.descriptionButton}
-              onPress={() => {
-                this.props.navigation.navigate('Description', {
-                  description: this.state.data.description,
-                });
-              }}>
-              <Text
-                style={{
-                  fontSize: this.props.theme.FONT_SIZE_MEDIUM,
-                  fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
-                  color: 'white',
-                }}>
-                توضیحات
-              </Text>
-            </TouchableOpacity>
-          </View>
-        ) : (
-            <Text>isloading...</Text>
-          )}
-      </View>
-    );
-  }
+  const bounce = () => view.bounce(800).then(endState => console.log(endState.finished ? 'bounce finished' : 'bounce cancelled'));
+
+
+  // console.info(Object.keys(data))
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
+      }}>
+
+      {
+        true
+          ?
+          (
+            <View>
+
+              <TouchableWithoutFeedback onPress={bounce}>
+                <Animatable.View ref={handleViewRef}>
+                  <Text>Bounce me!</Text>
+                </Animatable.View>
+              </TouchableWithoutFeedback>
+
+            </View>
+          )
+          :
+          (
+            <View style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+              <ActivityIndicator size="large" color="#0000ff" />
+            </View>
+          )
+      }
+    </View>
+  );
+
 }
+
+
+
+
+
+
+
+
+
+
 
 const styles = StyleSheet.create({
   algorithmButton: {

@@ -17,6 +17,7 @@ import SettingScreen from './components/Screens/SettingScreen'
 
 import DrawerElement from './components/elements/DrawerElement'
 
+import CustomScreen from './components/Screens/Custom'
 
 
 
@@ -29,6 +30,7 @@ const HomeStack = createStackNavigator({
   Description: DescriptionScreen,
   Setting: SettingScreen,
   Search: SearchScreen,
+  Custom: CustomScreen
 }, {
   initialRouteName: 'Home'
 });

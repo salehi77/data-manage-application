@@ -1,10 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, TouchableOpacity, TouchableWithoutFeedback, Animated, Easing } from 'react-native';
 import { Header } from 'react-native-elements'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
+
+
+
 const HomeHeaderElement = props => {
+
+  const [rotateSetting] = React.useState(new Animated.Value(0))
+
+  React.useEffect(() => {
+    startRotateSetting()
+  }, [])
+
+
+  const startRotateSetting = () => {
+    rotateSetting.setValue(0)
+    Animated.timing(
+      rotateSetting,
+      {
+        toValue: 1,
+        duration: 8000,
+        easing: Easing.linear,
+      }
+    ).start(() => {
+      startRotateSetting()
+    })
+  }
+
 
   return (
     <View style={{ height: 60 }}>
@@ -54,7 +79,7 @@ const HomeHeaderElement = props => {
 
         <View style={{ flex: 1, flexDirection: 'row-reverse', alignItems: 'center' }}>
 
-          <View >
+          <View>
 
             <TouchableOpacity
               onPress={() => {
@@ -62,8 +87,21 @@ const HomeHeaderElement = props => {
                 props.navigation.navigate('Setting')
               }}
             >
-              <FontAwesome5Icon name='cog' color='white' size={30} />
+              <Animated.View
+                style={{
+                  transform: [{
+                    rotate: rotateSetting.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: ['0deg', '360deg']
+                    }),
+                  }]
+                }}
+              >
+                <FontAwesome5Icon name='cog' color='white' size={30} />
+              </Animated.View>
+
             </TouchableOpacity>
+
 
           </View>
 
