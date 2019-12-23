@@ -19,12 +19,6 @@ import { ListItem } from 'react-native-elements'
 
 
 // class ClinicMenuScreen extends Component {
-//   static navigationOptions = ({ navigation, navigationOptions }) => {
-//     const { params } = navigation.state;
-//     return {
-//       title: params ? params.clinicName : '',
-//     };
-//   };
 
 //   state = {
 //     data: null,
@@ -61,59 +55,14 @@ import { ListItem } from 'react-native-elements'
 //         }}>
 
 //         {this.state.data ? (
-//           <View style={{}}>
 //             <TouchableOpacity
-//               style={[
-//                 styles.algorithmButton,
-//                 {
-//                   backgroundColor: this.props.theme.PRIMARY_COLOR,
-//                   borderColor: this.props.theme.PRIMARY_COLOR_BOLD,
-//                 },
-//               ]}
 //               onPress={() => {
 //                 this.props.navigation.navigate('Algorithm', {
 //                   tree: JSON.parse(this.state.data.algorithm),
 //                   pathToThis: [],
 //                 });
 //               }}>
-//               <Text
-//                 style={{
-//                   fontSize: this.props.theme.FONT_SIZE_MASSIVE,
-//                   fontFamily: this.props.theme.PRIMARY_FONT_FAMILY_BOLD,
-//                   color: this.props.theme.PRIMARY_FOREGROUND_COLOR,
-//                 }}>
-//                 ورود
-//               </Text>
 //             </TouchableOpacity>
-
-//             <TouchableOpacity style={styles.diagramButton}>
-//               <Text
-//                 style={{
-//                   fontSize: this.props.theme.FONT_SIZE_MEDIUM,
-//                   fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
-//                   color: 'white',
-//                 }}>
-//                 مشاهده روال کلی
-//               </Text>
-//             </TouchableOpacity>
-
-//             <TouchableOpacity
-//               style={styles.descriptionButton}
-//               onPress={() => {
-//                 this.props.navigation.navigate('Description', {
-//                   description: this.state.data.description,
-//                 });
-//               }}>
-//               <Text
-//                 style={{
-//                   fontSize: this.props.theme.FONT_SIZE_MEDIUM,
-//                   fontFamily: this.props.theme.PRIMARY_FONT_FAMILY,
-//                   color: 'white',
-//                 }}>
-//                 توضیحات
-//               </Text>
-//             </TouchableOpacity>
-//           </View>
 //         ) : (
 //             <Text>isloading...</Text>
 //           )}
@@ -207,7 +156,6 @@ const ClinicMenuScreen = (props) => {
         <View
           style={{
             width: '100%',
-            display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-around',
           }}
