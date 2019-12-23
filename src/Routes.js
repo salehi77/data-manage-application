@@ -32,7 +32,7 @@ const HomeStack = createStackNavigator({
   Search: SearchScreen,
   Custom: CustomScreen
 }, {
-  initialRouteName: 'ClinicMenu'
+  initialRouteName: 'Home'
 });
 
 
