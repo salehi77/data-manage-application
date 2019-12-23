@@ -1,11 +1,12 @@
-import { base, darkTheme, lightTheme, bluishTheme, colorOptions } from './theme';
+import { base, darkTheme, lightTheme, bluishTheme, colorOptions, colorOptionsSecondary } from './theme';
 
 import { CHANGE_ALGORITHM_FONT_SIZE } from '../types'
 
 const initialState = {
   ...base,
   ...lightTheme,
-  ...colorOptions.green,
+  ...colorOptions.blue,
+  ...colorOptionsSecondary.cyan,
 };
 
 const themeReducer = (state = initialState, action) => {
