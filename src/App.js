@@ -3,7 +3,7 @@ import SQLite from 'react-native-sqlite-storage';
 import { connect } from 'react-redux';
 import { createAppContainer } from 'react-navigation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { I18nManager } from 'react-native';
+import { I18nManager, Text, View } from 'react-native';
 // import RNRestart from 'react-native-restart'
 
 import { setDatabase } from './actions/localdb';
@@ -18,35 +18,66 @@ const errorCallback = () => {
   console.log('ERROR');
 };
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    I18nManager.forceRTL(true);
-  }
 
-  componentDidMount() {
+
+
+
+
+const App = (props) => {
+  I18nManager.forceRTL(true);
+
+
+  React.useEffect(() => {
     // SQLite.DEBUG(true);
     SQLite.enablePromise(true);
     SQLite.openDatabase(
-      { name: 'clinics_db', createFromLocation: '~clinics_db' },
+      { name: 'clinics_db', createFromLocation: '~/db/clinics_db' },
       okCallback,
       errorCallback,
     )
       .then(db => {
-        this.props.setDatabase(db);
+        console.info(db)
+        // props.setDatabase(db);
+
+
+
+
+        db.transaction(tx => {
+          tx.executeSql('SELECT * FROM clinic')
+            .then(res => {
+              // let data = [...res[1].rows.raw()];
+              console.log(res)
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        });
+
+
+
+
+
       })
       .catch(error => {
         console.log(error);
       });
-  }
-  render() {
-    return (
-      <SafeAreaProvider>
-        <AppContainer />
-      </SafeAreaProvider>
-    );
-  }
+  }, [])
+
+
+  return (
+    <SafeAreaProvider>
+      <Text>kjkk</Text>
+    </SafeAreaProvider>
+  );
+
 }
+
+
+
+
+
+
+
 
 const mapStateToProps = state => {
   return {};

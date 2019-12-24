@@ -90,6 +90,21 @@ const ClinicMenuScreen = (props) => {
 
     keepAnimation()
 
+    props.sqlite.transaction(tx => {
+      tx.executeSql(`SELECT * FROM clinic WHERE ID = 1`)
+        .then(res => {
+          // this.props.navigation.navigate('Algorithm', {
+          //   tree: JSON.parse(res[1].rows.item(0).algorithm),
+          //   pathToThis: [],
+          // });
+          // this.setState({
+          //   data: { ...res[1].rows.item(0) },
+          // });
+        })
+        .catch(error => {
+          console.error('err');
+        });
+    });
 
   }, [])
 
@@ -99,7 +114,7 @@ const ClinicMenuScreen = (props) => {
         Animated.timing(
           nnn,
           {
-            toValue: 0.5,
+            toValue: 1,
             duration: 300,
             delay: 2000
           }
@@ -107,11 +122,19 @@ const ClinicMenuScreen = (props) => {
         Animated.timing(
           nnn,
           {
-            toValue: 1,
+            toValue: 2,
             duration: 300,
             delay: 2000
           }
-        )
+        ),
+        Animated.timing(
+          nnn,
+          {
+            toValue: 3,
+            duration: 300,
+            delay: 2000
+          }
+        ),
       ]
     ).start((a, b) => {
       // console.log(a, b)
@@ -178,14 +201,15 @@ const ClinicMenuScreen = (props) => {
               <Animated.View
                 style={{
                   width: nnn.interpolate({
-                    inputRange: [0, 0.05, 0.1, 0.5, 0.55, 0.6, 1],
-                    outputRange: ['90%', '100%', '90%', '90%', '100%', '90%', '90%']
+                    inputRange: [0, 0.05, 0.1, 1, 1.05, 1.1, 2, 2.05, 2.1, 3],
+                    outputRange: ['90%', '100%', '90%', '90%', '100%', '90%', '90%', '100%', '90%', '90%']
                   }),
                   height: nnn.interpolate({
-                    inputRange: [0, 0.05, 0.1, 0.5, 0.55, 0.6, 1],
-                    outputRange: ['90%', '100%', '90%', '90%', '100%', '90%', '90%']
+                    inputRange: [0, 0.05, 0.1, 1, 1.05, 1.1, 2, 2.05, 2.1, 3],
+                    outputRange: ['90%', '100%', '90%', '90%', '100%', '90%', '90%', '100%', '90%', '90%']
                   }),
                 }}
+              // style={{ width: '100%', height: '100%' }}
               >
 
 
@@ -195,6 +219,7 @@ const ClinicMenuScreen = (props) => {
                     width: '100%',
                     height: '100%',
                     backgroundColor: props.theme.SECONDARY_COLOR,
+                    // backgroundColor: 'cyan',
                     justifyContent: 'center',
                     alignItems: 'center',
                     position: 'relative',
@@ -207,44 +232,67 @@ const ClinicMenuScreen = (props) => {
                   <Animated.View
                     style={{
                       opacity: nnn.interpolate({
-                        inputRange: [0, 0.5, 1],
-                        outputRange: [1, 0, 1]
+                        inputRange: [0, 1, 2, 3],
+                        outputRange: [1, 0, 0, 1]
                       }),
                       position: 'absolute',
                       transform: [
                         {
                           rotate: nnn.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: ['0deg', '360deg']
+                            inputRange: [0, 1, 2, 3],
+                            outputRange: ['0deg', '180deg', '180deg', '360deg']
                           })
                         }
                       ]
                     }}
                   >
                     <FontAwesome5Icon
-                      name={'pagelines'} size={60} color='white'
+                      name={'heart'} size={60} color='white'
+                    />
+                  </Animated.View>
+
+
+                  <Animated.View
+                    style={{
+                      position: 'absolute',
+                      opacity: nnn.interpolate({
+                        inputRange: [0, 1, 2, 3],
+                        outputRange: [0, 1, 0, 0]
+                      }),
+                      transform: [
+                        {
+                          rotate: nnn.interpolate({
+                            inputRange: [0, 1, 2, 3],
+                            outputRange: ['180deg', '360deg', '540deg', '180deg'],
+                          })
+                        }
+                      ]
+                    }}
+                  >
+                    <FontAwesome5Icon
+                      name={'project-diagram'} size={50} color='white'
                     />
                   </Animated.View>
 
                   <Animated.View
                     style={{
                       opacity: nnn.interpolate({
-                        inputRange: [0, 0.5, 1],
-                        outputRange: [0, 1, 0]
+                        inputRange: [0, 1, 2, 3],
+                        outputRange: [0, 0, 1, 0]
                       }),
                       position: 'absolute',
                       transform: [
                         {
                           rotate: nnn.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: ['0deg', '360deg']
+                            inputRange: [0, 1, 2, 3],
+                            outputRange: ['180deg', '180deg', '360deg', '540deg'],
                           })
                         }
                       ]
                     }}
                   >
                     <FontAwesome5Icon
-                      name={'arrow-right'} size={60} color='white'
+                      name={'arrow-left'} size={60} color='white'
                     />
                   </Animated.View>
 
@@ -276,7 +324,9 @@ const ClinicMenuScreen = (props) => {
       <View>
 
 
-        <View>
+        <View style={{ borderBottomWidth: 1, borderColor: '#0004' }}>
+
+
 
 
 
@@ -286,7 +336,7 @@ const ClinicMenuScreen = (props) => {
             leftIcon={<FontAwesome5Icon name='clipboard' size={40} color='#484848' />}
             subtitle={<Text style={{ alignSelf: 'flex-start', color: 'grey', fontSize: 12 }}>توضیحات کلی درباره Something</Text>}
             containerStyle={{
-              borderBottomWidth: 1
+              // borderBottomWidth: 1
             }}
           />
 

@@ -46,7 +46,7 @@ const HomeHeaderElement = props => {
         <View>
           <TouchableWithoutFeedback
             onPress={() => {
-              props.navigation.toggleDrawer()
+              // props.navigation.toggleDrawer()
             }}
           >
             <View
