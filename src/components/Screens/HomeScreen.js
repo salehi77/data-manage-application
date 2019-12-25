@@ -22,8 +22,8 @@ const HomeScreen = (props) => {
 
       try {
         tx.executeSql('SELECT * FROM clinic', [], (tx, results) => {
-          console.log("Query completed");
-          console.log(Object.keys(results.rows.raw()[0]))
+
+          // console.log(results.rows.raw())
 
           setAllClinics(results.rows.raw())
 
@@ -64,24 +64,27 @@ const HomeScreen = (props) => {
               ]}
               style={styles.gridView}
               renderItem={({ item, section, index }) => {
+                console.log(index)
                 return (
-                  <TouchableOpacity
-                    style={styles.itemContainer}
-                    onPress={() => {
-                      props.navigation.navigate('ClinicMenu', {
-                        clinicID: item.ID,
-                        clinicName: item.name,
-                      });
-                    }}>
-                    <View style={styles.itemView}>
-                      <FontAwesome5Icon
-                        name={item.icon_name}
-                        size={50}
-                        color={item.icon_color}
-                      />
-                      <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>{item.name}</Text>
-                    </View>
-                  </TouchableOpacity>
+                  <View style={[styles.itemContainer, { borderRightWidth: index % 2 === 0 ? 1 : 0 }]}>
+                    <TouchableOpacity
+                      style={styles.itemTouch}
+                      onPress={() => {
+                        // props.navigation.navigate('ClinicMenu', {
+                        //   clinicID: item.ID,
+                        //   clinicName: item.name,
+                        // });
+                      }}>
+                      <View style={styles.itemView}>
+                        <FontAwesome5Icon
+                          name={item.icon_name}
+                          size={50}
+                          color={item.icon_color}
+                        />
+                        <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>{item.name}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
                 );
               }}
             />
@@ -114,8 +117,12 @@ const styles = StyleSheet.create({
     margin: 0,
     height: 150,
     borderColor: '#bbb',
-    borderRightWidth: 1,
+    // borderRightWidth: 1,
     borderBottomWidth: 1,
+  },
+  itemTouch: {
+    width: '100%',
+    height: '100%'
   },
   itemView: {
     justifyContent: 'flex-start',

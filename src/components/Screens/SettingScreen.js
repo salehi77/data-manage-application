@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Animated, Text, View, ActivityIndicator } from 'react-native';
 import SettingHeaderElement from '../elements/Headers/SettingHeaderElement'
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { changeAlgFontSize } from '../../actions/themeAction'
 
 import Slider from '../elements/SliderElement'
+
 
 
 const SettingScreen = (props) => {
@@ -16,6 +18,20 @@ const SettingScreen = (props) => {
     if (props.theme) {
       setFontSize(props.theme.ALGORITHM_FONT_SIZE)
     }
+
+    console.log('here', Date.now())
+
+    return () => {
+      console.log('unmount')
+      storeData = async () => {
+        try {
+          await AsyncStorage.setItem('@fontSize', fontSize)
+        } catch (e) {
+          console.log('error occured')
+        }
+      }
+    }
+
   }, [])
 
   return (
