@@ -11,62 +11,56 @@ import { setDatabase } from './actions/localdb';
 import Routes from './Routes';
 const AppContainer = Routes;
 
-const okCallback = () => {
+let okCallback = (db, { setDatabase }) => {
   console.log('OK');
-};
-const errorCallback = () => {
-  console.log('ERROR');
+
+  setDatabase(db)
+
+  // db.transaction((tx) => {
+  //   try {
+  //     tx.executeSql('SELECT * FROM clinic', [], (tx, results) => {
+  //       console.log("Query completed");
+  //       console.log(results)
+  //       var len = results.rows.length;
+  //       for (let i = 0; i < len; i++) {
+  //         let row = results.rows.item(i);
+  //         console.log(Object.keys(row))
+  //       }
+  //     });
+  //   }
+  //   catch (exp) {
+  //     console.log('exppppppppppppppp')
+  //   }
+  // });
 };
 
 
+
+const errorCallback = (err) => {
+  console.log('======================Error======================');
+}
 
 
 
 
 const App = (props) => {
-  I18nManager.forceRTL(true);
 
+  I18nManager.forceRTL(true);
 
   React.useEffect(() => {
     // SQLite.DEBUG(true);
-    SQLite.enablePromise(true);
     SQLite.openDatabase(
-      { name: 'clinics_db', createFromLocation: '~/db/clinics_db' },
-      okCallback,
+      { name: 'clinics_db', createFromLocation: '~/custom/clinics_db' },
+      (db) => okCallback(db, props),
       errorCallback,
     )
-      .then(db => {
-        console.info(db)
-        // props.setDatabase(db);
-
-
-
-
-        db.transaction(tx => {
-          tx.executeSql('SELECT * FROM clinic')
-            .then(res => {
-              // let data = [...res[1].rows.raw()];
-              console.log(res)
-            })
-            .catch(error => {
-              console.log(error);
-            });
-        });
-
-
-
-
-
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }, [])
+
 
 
   return (
     <SafeAreaProvider>
-      <Text>kjkk</Text>
+      <AppContainer />
     </SafeAreaProvider>
   );
 
@@ -79,8 +73,9 @@ const App = (props) => {
 
 
 
-const mapStateToProps = state => {
-  return {};
+const mapStateToProps = (state) => {
+  return {
+  };
 };
 
 const mapDispatchToProps = {

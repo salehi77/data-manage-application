@@ -2,6 +2,10 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "src/assets/db/clinics_db",
+      "sha1": "f1d0ffa946a8bfe0f65e63a5da68d768fc8ddc33"
+    },
+    {
       "path": "src/assets/fonts/XBRoya-Bold.ttf",
       "sha1": "4ee1e9d6953bc9eda0f909555047b49a92fc36f8"
     },
@@ -20,6 +24,10 @@
     {
       "path": "src/assets/fonts/clinic_icon.ttf",
       "sha1": "54e130e830d9f521c9c01248736fd0b3818b3145"
+    },
+    {
+      "path": "src/assets/images/cover.jpeg",
+      "sha1": "5f5ddda47a21a7e864a6985313b76f18a84beced"
     }
   ]
 }

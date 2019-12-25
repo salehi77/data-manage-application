@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
   View,
@@ -13,24 +13,30 @@ import HomeHeaderElement from '../elements/Headers/HomeHeaderElement';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 
-const HomeScreen = props => {
-  const [data, setData] = React.useState(null);
+const HomeScreen = (props) => {
+  const [allClinics, setAllClinics] = React.useState(null);
 
   React.useEffect(() => {
 
-    const { sqlite } = props;
-    sqlite.transaction(tx => {
-      tx.executeSql('SELECT * FROM clinic')
-        .then(res => {
-          let data = [...res[1].rows.raw()];
-          setData(data);
-          // setData(null)
-        })
-        .catch(error => {
-          console.error('err');
+    props.sqlite && props.sqlite.transaction((tx) => {
+
+      try {
+        tx.executeSql('SELECT * FROM clinic', [], (tx, results) => {
+          console.log("Query completed");
+          console.log(Object.keys(results.rows.raw()[0]))
+
+          setAllClinics(results.rows.raw())
+
         });
+      }
+      catch (exp) {
+        // can not read data
+      }
+
     });
+
   }, []);
+
 
 
   return (
@@ -44,7 +50,7 @@ const HomeScreen = props => {
 
 
       {
-        data
+        allClinics
           ?
           (
             <SectionGrid
@@ -53,7 +59,7 @@ const HomeScreen = props => {
               sections={[
                 {
                   title: 'Title1',
-                  data: data.slice(0),
+                  data: allClinics,
                 },
               ]}
               style={styles.gridView}

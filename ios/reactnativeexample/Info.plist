@@ -57,10 +57,10 @@
 	<array>
 		<string>BYekan.ttf</string>
 		<string>BYekan.woff</string>
-		<string>XBRoya.ttf</string>
-		<string>XMYekan.ttf</string>
 		<string>XBRoya-Bold.ttf</string>
+		<string>XBRoya.ttf</string>
 		<string>XMYekan-Bold.ttf</string>
+		<string>XMYekan.ttf</string>
 		<string>clinic_icon.ttf</string>
 	</array>
 </dict>
