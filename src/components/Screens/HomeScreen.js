@@ -70,10 +70,10 @@ const HomeScreen = (props) => {
                     <TouchableOpacity
                       style={styles.itemTouch}
                       onPress={() => {
-                        // props.navigation.navigate('ClinicMenu', {
-                        //   clinicID: item.ID,
-                        //   clinicName: item.name,
-                        // });
+                        props.navigation.navigate('ClinicMenu', {
+                          clinicID: item.ID,
+                          clinicName: item.name,
+                        });
                       }}>
                       <View style={styles.itemView}>
                         <FontAwesome5Icon

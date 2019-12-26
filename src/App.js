@@ -11,10 +11,12 @@ import { setDatabase } from './actions/localdb';
 import Routes from './Routes';
 const AppContainer = Routes;
 
-let okCallback = (db, { setDatabase }) => {
+let okCallback = (db, props) => {
   console.log('OK');
 
-  setDatabase(db)
+  if (!props.sqlite) {
+    props.setDatabase(db)
+  }
 
   // db.transaction((tx) => {
   //   try {
@@ -43,38 +45,55 @@ const errorCallback = (err) => {
 
 
 
-class App extends React.Component {
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     if (I18nManager.isRTL != true) {
+//       I18nManager.forceRTL(true);
+//       RNRestart.Restart();
+//     }
+//   }
+//   componentDidMount() {
+//     SQLite.openDatabase(
+//       { name: 'clinics_db', createFromLocation: '~/custom/clinics_db' },
+//       (db) => okCallback(db, this.props),
+//       errorCallback,
+//     )
+//   }
+//   render() {
+//     return (
+//       <SafeAreaProvider>
+//         <AppContainer />
+//       </SafeAreaProvider>
+//     );
+//   }
+// }
 
-  constructor(props) {
-    super(props)
+
+const App = (props) => {
+
+
+  React.useEffect(() => {
 
     if (I18nManager.isRTL != true) {
       I18nManager.forceRTL(true);
       RNRestart.Restart();
     }
-  }
 
 
-
-  componentDidMount() {
-    // SQLite.DEBUG(true);
     SQLite.openDatabase(
       { name: 'clinics_db', createFromLocation: '~/custom/clinics_db' },
-      (db) => okCallback(db, this.props),
+      (db) => okCallback(db, props),
       errorCallback,
     )
-  }
+  }, [])
 
 
-  render() {
-
-
-    return (
-      <SafeAreaProvider>
-        <AppContainer />
-      </SafeAreaProvider>
-    );
-  }
+  return (
+    <SafeAreaProvider>
+      <AppContainer />
+    </SafeAreaProvider>
+  );
 
 }
 
@@ -87,6 +106,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    sqlite: state.localdb.sqlite
   };
 };
 
