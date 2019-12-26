@@ -4,8 +4,7 @@ import { Animated, Text, View, ActivityIndicator } from 'react-native';
 import SettingHeaderElement from '../elements/Headers/SettingHeaderElement'
 import AsyncStorage from '@react-native-community/async-storage';
 
-import { changeAlgFontSize } from '../../actions/themeAction'
-
+import { changeMainFont } from '../../actions/themeAction'
 import Slider from '../elements/SliderElement'
 
 
@@ -15,24 +14,19 @@ const SettingScreen = (props) => {
   const [fontSize, setFontSize] = React.useState(16)
 
   React.useEffect(() => {
-    if (props.theme) {
-      setFontSize(props.theme.ALGORITHM_FONT_SIZE)
+
+
+    if (props.theme && props.theme.MAIN_FONT_SIZE) {
+      setFontSize(props.theme.MAIN_FONT_SIZE)
+    }
+    else {
+      setFontSize(16)
     }
 
-    console.log('here', Date.now())
-
-    return () => {
-      console.log('unmount')
-      storeData = async () => {
-        try {
-          await AsyncStorage.setItem('@fontSize', fontSize)
-        } catch (e) {
-          console.log('error occured')
-        }
-      }
-    }
 
   }, [])
+
+
 
   return (
 
@@ -92,7 +86,9 @@ const SettingScreen = (props) => {
                 value={fontSize}
                 onValueChange={value => {
                   setFontSize(value)
-                  props.changeAlgFontSize(value)
+                }}
+                onSlidingComplete={(value) => {
+                  props.changeMainFont(value)
                 }}
               />
 
@@ -153,7 +149,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  changeAlgFontSize
+  changeMainFont
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingScreen);

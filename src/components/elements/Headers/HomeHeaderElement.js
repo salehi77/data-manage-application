@@ -83,7 +83,6 @@ const HomeHeaderElement = props => {
 
             <TouchableOpacity
               onPress={() => {
-                console.log('setting')
                 props.navigation.navigate('Setting')
               }}
             >

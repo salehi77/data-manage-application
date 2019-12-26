@@ -1,6 +1,6 @@
 import { base, darkTheme, lightTheme, bluishTheme, colorOptions, colorOptionsSecondary } from './theme';
 
-import { CHANGE_ALGORITHM_FONT_SIZE } from '../types'
+import { CHANGE_MAIN_FONT_SIZE } from '../types'
 
 const initialState = {
   ...base,
@@ -12,8 +12,8 @@ const initialState = {
 const themeReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case CHANGE_ALGORITHM_FONT_SIZE:
-      return { ...state, ALGORITHM_FONT_SIZE: action.fontSize }
+    case CHANGE_MAIN_FONT_SIZE:
+      return { ...state, MAIN_FONT_SIZE: action.fontSize }
 
     default:
       return state;

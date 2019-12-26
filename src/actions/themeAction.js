@@ -1,8 +1,8 @@
-import { CHANGE_ALGORITHM_FONT_SIZE } from '../types'
+import { CHANGE_MAIN_FONT_SIZE } from '../types'
 
-export const changeAlgFontSize = (fontSize) => {
+export const changeMainFont = (fontSize) => {
   return {
-    type: CHANGE_ALGORITHM_FONT_SIZE,
+    type: CHANGE_MAIN_FONT_SIZE,
     fontSize,
   };
 };

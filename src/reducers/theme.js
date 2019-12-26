@@ -16,7 +16,7 @@ export const base = {
   SECONDARY_FONT_FAMILY: 'XBRoya',
   SECONDARY_FONT_FAMILY_BOLD: 'XBRoya-Bold',
 
-  ALGORITHM_FONT_SIZE: 16
+  MAIN_FONT_SIZE: 16
 };
 
 export const darkTheme = {

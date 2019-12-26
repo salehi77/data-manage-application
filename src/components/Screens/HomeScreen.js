@@ -23,8 +23,6 @@ const HomeScreen = (props) => {
       try {
         tx.executeSql('SELECT * FROM clinic', [], (tx, results) => {
 
-          // console.log(results.rows.raw())
-
           setAllClinics(results.rows.raw())
 
         });
@@ -64,7 +62,6 @@ const HomeScreen = (props) => {
               ]}
               style={styles.gridView}
               renderItem={({ item, section, index }) => {
-                console.log(index)
                 return (
                   <View style={[styles.itemContainer, { borderRightWidth: index % 2 === 0 ? 1 : 0 }]}>
                     <TouchableOpacity
