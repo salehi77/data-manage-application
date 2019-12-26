@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createAppContainer } from 'react-navigation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { I18nManager, Text, View } from 'react-native';
-// import RNRestart from 'react-native-restart'
+import RNRestart from 'react-native-restart'
 
 import { setDatabase } from './actions/localdb';
 
@@ -43,26 +43,38 @@ const errorCallback = (err) => {
 
 
 
-const App = (props) => {
+class App extends React.Component {
 
-  I18nManager.forceRTL(true);
+  constructor(props) {
+    super(props)
 
-  React.useEffect(() => {
+    if (I18nManager.isRTL != true) {
+      I18nManager.forceRTL(true);
+      RNRestart.Restart();
+    }
+  }
+
+
+
+  componentDidMount() {
     // SQLite.DEBUG(true);
     SQLite.openDatabase(
       { name: 'clinics_db', createFromLocation: '~/custom/clinics_db' },
-      (db) => okCallback(db, props),
+      (db) => okCallback(db, this.props),
       errorCallback,
     )
-  }, [])
+  }
 
 
+  render() {
 
-  return (
-    <SafeAreaProvider>
-      <AppContainer />
-    </SafeAreaProvider>
-  );
+
+    return (
+      <SafeAreaProvider>
+        <AppContainer />
+      </SafeAreaProvider>
+    );
+  }
 
 }
 
