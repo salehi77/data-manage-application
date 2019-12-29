@@ -44,7 +44,7 @@ const App = (props) => {
     }
 
     SQLite.openDatabase(
-      { name: 'clinics_db', createFromLocation: '~/custom/clinics_db' },
+      { name: 'app', createFromLocation: '~/custom/app.sqlite3' },
       (db) => okCallback(db, props),
       errorCallback,
     )

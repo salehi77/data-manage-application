@@ -2,8 +2,8 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/db/clinics_db",
-      "sha1": "f1d0ffa946a8bfe0f65e63a5da68d768fc8ddc33"
+      "path": "src/assets/db/app.sqlite3",
+      "sha1": "d0386c68c1940695ecc16226dbd378616e4c71d9"
     },
     {
       "path": "src/assets/fonts/XBRoya-Bold.ttf",

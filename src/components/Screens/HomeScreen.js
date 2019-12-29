@@ -21,10 +21,9 @@ const HomeScreen = (props) => {
     props.sqlite && props.sqlite.transaction((tx) => {
 
       try {
-        tx.executeSql('SELECT * FROM clinic', [], (tx, results) => {
-
+        tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
           setAllClinics(results.rows.raw())
-
+          props.navigation.navigate('ClinicMenu', { clinicID: 1, clinicName: 'some' })
         });
       }
       catch (exp) {
@@ -68,17 +67,18 @@ const HomeScreen = (props) => {
                       style={styles.itemTouch}
                       onPress={() => {
                         props.navigation.navigate('ClinicMenu', {
-                          clinicID: item.ID,
-                          clinicName: item.name,
+                          clinicID: item.id,
+                          clinicName: item.clinicName,
                         });
                       }}>
                       <View style={styles.itemView}>
                         <FontAwesome5Icon
-                          name={item.icon_name}
+                          // name={item.icon_name}
+                          name='heart'
                           size={50}
-                          color={item.icon_color}
+                        // color={item.icon_color}
                         />
-                        <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>{item.name}</Text>
+                        <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>{item.clinicName}</Text>
                       </View>
                     </TouchableOpacity>
                   </View>
@@ -105,6 +105,7 @@ HomeScreen.navigationOptions = ({ navigation }) => {
     // title: 'home',
   };
 };
+
 
 const styles = StyleSheet.create({
   gridView: {
@@ -143,6 +144,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
+
 
 const mapStateToProps = state => {
   return {

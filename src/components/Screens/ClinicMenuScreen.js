@@ -82,6 +82,7 @@ const ClinicMenuScreen = (props) => {
 
 
   const [nnn] = React.useState(new Animated.Value(0))
+  const [clinicData, setClinicData] = React.useState(null)
 
 
 
@@ -90,21 +91,29 @@ const ClinicMenuScreen = (props) => {
 
     keepAnimation()
 
+    let clinicID = props.navigation.state.params.clinicID
+
     props.sqlite.transaction(tx => {
-      tx.executeSql(`SELECT * FROM clinic WHERE ID = 1`)
-        .then(res => {
-          // this.props.navigation.navigate('Algorithm', {
-          //   tree: JSON.parse(res[1].rows.item(0).algorithm),
-          //   pathToThis: [],
-          // });
-          // this.setState({
-          //   data: { ...res[1].rows.item(0) },
-          // });
-        })
-        .catch(error => {
-          console.error('err');
-        });
+
+      props.sqlite && props.sqlite.transaction((tx) => {
+
+        try {
+          tx.executeSql('SELECT * FROM clinics WHERE id = ?', [clinicID], (tx, result) => {
+
+            if (result.rows.length >= 1) {
+              setClinicData(result.rows.item(0))
+              props.navigation.navigate('Algorithm', {
+                diagram: JSON.parse(result.rows.item(0).diagramParsed)
+              })
+            }
+
+          });
+        }
+        catch (exp) { }
+
+      });
     });
+
 
   }, [])
 
@@ -144,6 +153,7 @@ const ClinicMenuScreen = (props) => {
   }
 
 
+
   return (
     <ScrollView
       style={{
@@ -151,6 +161,8 @@ const ClinicMenuScreen = (props) => {
         backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
       }}
     >
+
+
 
       <View
         style={{
@@ -161,16 +173,54 @@ const ClinicMenuScreen = (props) => {
         }}
       >
 
-        <View>
+        <View
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            // backgroundColor: 'orange',
+            position: 'relative',
+          }}
+        >
 
-          <Text
+
+
+          <View
             style={{
-              fontSize: 32,
-              color: 'white'
+              // alignSelf: 'center'
+              position: 'absolute',
+              left: 20,
+              top: -10
             }}
           >
-            Something
-          </Text>
+
+            <TouchableOpacity
+              onPress={() => {
+                props.navigation.goBack()
+              }}
+            >
+
+              <FontAwesome5Icon name='home' size={35} color='white' />
+
+            </TouchableOpacity>
+
+          </View>
+
+
+          <View>
+
+            <Text
+              style={{
+                fontSize: 32,
+                color: 'white'
+              }}
+            >
+              {props.navigation.state.params.clinicName}
+            </Text>
+
+          </View>
+
 
         </View>
 
@@ -209,7 +259,6 @@ const ClinicMenuScreen = (props) => {
                     outputRange: ['90%', '100%', '90%', '90%', '100%', '90%', '90%', '100%', '90%', '90%']
                   }),
                 }}
-              // style={{ width: '100%', height: '100%' }}
               >
 
 
@@ -219,10 +268,16 @@ const ClinicMenuScreen = (props) => {
                     width: '100%',
                     height: '100%',
                     backgroundColor: props.theme.SECONDARY_COLOR,
-                    // backgroundColor: 'cyan',
                     justifyContent: 'center',
                     alignItems: 'center',
                     position: 'relative',
+                  }}
+                  onPress={() => {
+                    if (clinicData) {
+                      props.navigation.navigate('Algorithm', {
+                        diagram: JSON.parse(clinicData.diagramParsed)
+                      })
+                    }
                   }}
                 >
 
@@ -319,6 +374,8 @@ const ClinicMenuScreen = (props) => {
 
 
       </View>
+
+
 
 
       <View>
