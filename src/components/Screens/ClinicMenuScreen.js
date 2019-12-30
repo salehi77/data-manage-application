@@ -98,12 +98,15 @@ const ClinicMenuScreen = (props) => {
       props.sqlite && props.sqlite.transaction((tx) => {
 
         try {
-          tx.executeSql('SELECT * FROM clinics WHERE id = ?', [clinicID], (tx, result) => {
+          tx.executeSql('SELECT * FROM clinics WHERE id = ?', [2], (tx, result) => {
+
 
             if (result.rows.length >= 1) {
-              setClinicData(result.rows.item(0))
+
+              // setClinicData(result.rows.item(0))
+
               props.navigation.navigate('Algorithm', {
-                diagram: JSON.parse(result.rows.item(1).diagramParsed)
+                diagram: JSON.parse(result.rows.item(0).diagramParsed)
               })
             }
 
@@ -166,7 +169,7 @@ const ClinicMenuScreen = (props) => {
 
       <View
         style={{
-          height: 260,
+          height: 280,
           backgroundColor: props.theme.PRIMARY_COLOR_BOLD,
           justifyContent: 'space-evenly',
           alignItems: 'center',
@@ -201,7 +204,7 @@ const ClinicMenuScreen = (props) => {
               }}
             >
 
-              <FontAwesome5Icon name='home' size={35} color='white' />
+              <FontAwesome5Icon name='home' size={30} color='white' solid />
 
             </TouchableOpacity>
 

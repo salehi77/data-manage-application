@@ -202,6 +202,15 @@ const AlgorithmScreen = (props) => {
 
 
 
+AlgorithmScreen.navigationOptions = () => {
+  return {
+    header: null
+  }
+}
+
+
+
+
 
 
 
