@@ -103,7 +103,7 @@ const ClinicMenuScreen = (props) => {
             if (result.rows.length >= 1) {
               setClinicData(result.rows.item(0))
               props.navigation.navigate('Algorithm', {
-                diagram: JSON.parse(result.rows.item(0).diagramParsed)
+                diagram: JSON.parse(result.rows.item(1).diagramParsed)
               })
             }
 

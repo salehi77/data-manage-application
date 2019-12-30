@@ -23,7 +23,7 @@
 		7CAA78CFFDE84276AD65FE43 /* XMYekan.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8DE71C7808488C8CE5B7FD /* XMYekan.ttf */; };
 		14180AEE976F447AB277DF7E /* clinic_icon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F71E10EB5A9645DB8AC46E40 /* clinic_icon.ttf */; };
 		3826ED97D26B497880D60C62 /* cover.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E56F4374020844B0B7A900F1 /* cover.jpeg */; };
-		D82D8B9D849E4A1F921F618F /* app.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = E4F14CB7840141BDBBD2B79C /* app.sqlite3 */; };
+		62AF7B8AFD8E4142A5283A8D /* app.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 4B008509AAE744BBB216D966 /* app.sqlite3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +67,7 @@
 		9A8DE71C7808488C8CE5B7FD /* XMYekan.ttf */ = {isa = PBXFileReference; name = "XMYekan.ttf"; path = "../src/assets/fonts/XMYekan.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F71E10EB5A9645DB8AC46E40 /* clinic_icon.ttf */ = {isa = PBXFileReference; name = "clinic_icon.ttf"; path = "../src/assets/fonts/clinic_icon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E56F4374020844B0B7A900F1 /* cover.jpeg */ = {isa = PBXFileReference; name = "cover.jpeg"; path = "../src/assets/images/cover.jpeg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E4F14CB7840141BDBBD2B79C /* app.sqlite3 */ = {isa = PBXFileReference; name = "app.sqlite3"; path = "../src/assets/db/app.sqlite3"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4B008509AAE744BBB216D966 /* app.sqlite3 */ = {isa = PBXFileReference; name = "app.sqlite3"; path = "../src/assets/db/app.sqlite3"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +186,7 @@
 				9A8DE71C7808488C8CE5B7FD /* XMYekan.ttf */,
 				F71E10EB5A9645DB8AC46E40 /* clinic_icon.ttf */,
 				E56F4374020844B0B7A900F1 /* cover.jpeg */,
-				E4F14CB7840141BDBBD2B79C /* app.sqlite3 */,
+				4B008509AAE744BBB216D966 /* app.sqlite3 */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -336,7 +336,7 @@
 				7CAA78CFFDE84276AD65FE43 /* XMYekan.ttf in Resources */,
 				14180AEE976F447AB277DF7E /* clinic_icon.ttf in Resources */,
 				3826ED97D26B497880D60C62 /* cover.jpeg in Resources */,
-				D82D8B9D849E4A1F921F618F /* app.sqlite3 in Resources */,
+				62AF7B8AFD8E4142A5283A8D /* app.sqlite3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
