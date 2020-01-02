@@ -7,6 +7,8 @@ import {
   ScrollView,
 } from 'react-native';
 import { connect } from 'react-redux';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
+import { CheckBox } from 'react-native-elements'
 
 
 
@@ -189,12 +191,196 @@ import { connect } from 'react-redux';
 
 const AlgorithmScreen = (props) => {
 
+  const [options, setOptions] = React.useState([])
 
-  console.log((props.navigation.state.params.diagram))
+
+  // console.log((props.navigation.state.params.diagram))
+
+  let { diagram } = props.navigation.state.params
+  // console.log(diagram.childs)
+
+
+
+  React.useEffect(() => {
+    let o = diagram.childs.map(child => {
+      return { name: child.name, selected: false }
+    })
+    // console.log(o)
+    setOptions(o)
+  }, [])
+
+  // console.log('ojk')
 
 
   return (
-    <Text>algo</Text>
+    <ScrollView
+      style={{
+        flex: 1,
+        backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
+      }}
+    >
+
+
+      <View
+        style={{
+          flexDirection: 'row',
+          // backgroundColor: 'orange',
+          paddingVertical: 15,
+          alignItems: 'center'
+        }}
+      >
+
+        <View
+          style={{
+            marginLeft: 15
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              // backgroundColor: 'red'
+            }}
+          >
+            <FontAwesome5Icon name='arrow-right' size={25} color='#3e3e3e' />
+          </TouchableOpacity>
+        </View>
+
+        <View
+          style={{
+            marginLeft: 'auto'
+          }}
+        >
+          <View
+            style={{
+              // backgroundColor: 'orange',
+              borderWidth: 2,
+              borderColor: 'orange',
+              padding: 5,
+              borderRadius: 50,
+              width: 40,
+              height: 40,
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginRight: 10
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 18
+              }}
+            >3</Text>
+          </View>
+        </View>
+
+
+      </View>
+
+
+      <View
+        style={{
+          // backgroundColor: 'teal',
+          // height: 150,
+          alignItems: 'center',
+        }}
+      >
+        <View
+          style={{
+            alignItems: 'center',
+            // backgroundColor: 'pink',
+            flex: 1,
+            paddingVertical: 50,
+            maxWidth: '60%',
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 20,
+              textAlign: 'center',
+            }}
+          >نبنیسب سیبنسی بسی ینبمثصنبک ثمس</Text>
+        </View>
+      </View>
+
+
+
+
+      <View
+        style={{
+          // backgroundColor: 'cyan',
+          height: 350,
+        }}
+      >
+
+
+
+        <View
+          style={{
+            // backgroundColor: 'red',
+            // paddingVertical: 5,
+            // paddingLeft: 5
+          }}
+        >
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              backgroundColor: '#a1a1a1',
+              marginLeft: 10,
+              marginVertical: 5,
+              // paddingLeft: 10,
+              paddingVertical: 10,
+              paddingHorizontal: 15,
+              width: '90%',
+              borderRadius: 10,
+            }}
+          >
+
+            <Text
+              style={{
+                maxWidth: '85%'
+              }}
+            >بس یم م مس ین یسم سم سمسمسم م م م م</Text>
+
+            <View
+              style={{
+                marginLeft: 'auto',
+                // alignSelf: 'center',
+                // paddingRight: 10,
+                // width: 10
+              }}
+            >
+
+              <CheckBox checked={true}
+                containerStyle={{
+                  height: 10,
+                  width: 10,
+                  // alignSelf: 'center',
+                  // marginLeft: 5
+                }}
+              />
+            </View>
+
+          </View>
+
+        </View>
+
+
+
+      </View>
+
+
+
+      <View
+        style={{
+          backgroundColor: 'purple',
+        }}
+      >
+        <Text>Next</Text>
+      </View>
+
+
+
+
+    </ScrollView>
   )
 }
 

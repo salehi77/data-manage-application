@@ -18,58 +18,17 @@ import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import { ListItem } from 'react-native-elements'
 
 
-// class ClinicMenuScreen extends Component {
 
-//   state = {
-//     data: null,
-//   };
 
-//   componentDidMount() {
-//     const { sqlite } = this.props;
 
-//     // let clinicID = this.props.navigation.getParam('clinicID');
-//     let clinicID = 1;
 
-//     sqlite.transaction(tx => {
-//       tx.executeSql(`SELECT * FROM clinic WHERE ID = ${clinicID}`)
-//         .then(res => {
-//           // this.props.navigation.navigate('Algorithm', {
-//           //   tree: JSON.parse(res[1].rows.item(0).algorithm),
-//           //   pathToThis: [],
-//           // });
-//           this.setState({
-//             data: { ...res[1].rows.item(0) },
-//           });
-//         })
-//         .catch(error => {
-//           console.error('err');
-//         });
-//     });
-//   }
-//   render() {
-//     return (
-//       <View
-//         style={{
-//           flex: 1,
-//           backgroundColor: this.props.theme.PRIMARY_BACKGROUND_COLOR,
-//         }}>
 
-//         {this.state.data ? (
-//             <TouchableOpacity
-//               onPress={() => {
-//                 this.props.navigation.navigate('Algorithm', {
-//                   tree: JSON.parse(this.state.data.algorithm),
-//                   pathToThis: [],
-//                 });
-//               }}>
-//             </TouchableOpacity>
-//         ) : (
-//             <Text>isloading...</Text>
-//           )}
-//       </View>
-//     );
-//   }
-// }
+
+
+
+
+
+
 
 
 
@@ -98,16 +57,18 @@ const ClinicMenuScreen = (props) => {
       props.sqlite && props.sqlite.transaction((tx) => {
 
         try {
-          tx.executeSql('SELECT * FROM clinics WHERE id = ?', [2], (tx, result) => {
+          tx.executeSql('SELECT * FROM clinics WHERE id = ?', [5], (tx, result) => {
+
+            // console.log(result.rows.item(0))
 
 
             if (result.rows.length >= 1) {
 
-              // setClinicData(result.rows.item(0))
+              setClinicData(result.rows.item(0))
 
-              props.navigation.navigate('Algorithm', {
-                diagram: JSON.parse(result.rows.item(0).diagramParsed)
-              })
+              // props.navigation.navigate('Algorithm', {
+              //   diagram: JSON.parse(result.rows.item(0).diagramParsed)
+              // })
             }
 
           });
@@ -119,6 +80,7 @@ const ClinicMenuScreen = (props) => {
 
 
   }, [])
+
 
   const keepAnimation = () => {
     Animated.sequence(
@@ -167,12 +129,12 @@ const ClinicMenuScreen = (props) => {
 
 
 
+
       <View
         style={{
-          height: 280,
+          height: 250,
           backgroundColor: props.theme.PRIMARY_COLOR_BOLD,
           justifyContent: 'space-evenly',
-          alignItems: 'center',
         }}
       >
 
@@ -379,12 +341,32 @@ const ClinicMenuScreen = (props) => {
       </View>
 
 
+      {/* <View
+        style={{
+          height: 60,
+          borderBottomLeftRadius: 60,
+          borderBottomRightRadius: 60,
+          width: '15%',
+          scaleX: 7,
+          backgroundColor: props.theme.PRIMARY_COLOR_BOLD,
+          alignSelf: 'center',
+        }}
+      /> */}
 
 
-      <View>
 
 
-        <View style={{ borderBottomWidth: 1, borderColor: '#0004' }}>
+      <View
+        style={{ position: 'relative' }}
+      >
+
+
+
+        <View style={{
+          borderBottomWidth: 1,
+          borderColor: '#0004',
+        }}
+        >
 
 
 
@@ -396,9 +378,9 @@ const ClinicMenuScreen = (props) => {
             leftIcon={<FontAwesome5Icon name='clipboard' size={40} color='#484848' />}
             subtitle={<Text style={{ alignSelf: 'flex-start', color: 'grey', fontSize: 12 }}>توضیحات کلی درباره Something</Text>}
             containerStyle={{
-              // borderBottomWidth: 1
             }}
           />
+
 
 
 
@@ -408,7 +390,9 @@ const ClinicMenuScreen = (props) => {
       </View>
 
 
+
     </ScrollView>
+
   );
 
 }
@@ -416,11 +400,7 @@ const ClinicMenuScreen = (props) => {
 
 
 
-ClinicMenuScreen.navigationOptions = () => {
-  return {
-    header: null
-  }
-}
+ClinicMenuScreen.navigationOptions = () => ({ header: null })
 
 
 
@@ -475,7 +455,7 @@ const styles = StyleSheet.create({
   ratingText: {
     paddingLeft: 10,
     color: 'grey'
-  }
+  },
 });
 
 const mapStateToProps = state => {

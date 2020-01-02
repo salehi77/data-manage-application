@@ -15,22 +15,26 @@ import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 const HomeScreen = (props) => {
   const [allClinics, setAllClinics] = React.useState(null);
+  let timer = null
 
   React.useEffect(() => {
 
-    props.sqlite && props.sqlite.transaction((tx) => {
 
-      try {
-        tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
-          setAllClinics(results.rows.raw())
-          props.navigation.navigate('ClinicMenu', { clinicID: 1, clinicName: 'some' })
-        });
-      }
-      catch (exp) {
-        // can not read data
-      }
+    function readData() {
+      props.sqlite && props.sqlite.transaction((tx) => {
+        try {
+          tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
+            setAllClinics(results.rows.raw())
+            // props.navigation.navigate('ClinicMenu', { clinicID: 1, clinicName: 'some' })
+            clearInterval(timer)
+          });
+        }
+        catch (exp) {
+        }
+      });
+    }
 
-    });
+    timer = setInterval(readData, 4000)
 
   }, []);
 
