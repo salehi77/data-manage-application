@@ -66,9 +66,9 @@ const ClinicMenuScreen = (props) => {
 
               setClinicData(result.rows.item(0))
 
-              // props.navigation.navigate('Algorithm', {
-              //   diagram: JSON.parse(result.rows.item(0).diagramParsed)
-              // })
+              props.navigation.navigate('Algorithm', {
+                diagram: JSON.parse(result.rows.item(0).diagramParsed)
+              })
             }
 
           });

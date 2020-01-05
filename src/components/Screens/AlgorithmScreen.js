@@ -305,63 +305,77 @@ const AlgorithmScreen = (props) => {
 
       <View
         style={{
-          // backgroundColor: 'cyan',
-          height: 350,
+          paddingVertical: 10,
         }}
       >
 
 
+        {
+          options.map((option, index) => {
 
-        <View
-          style={{
-            // backgroundColor: 'red',
-            // paddingVertical: 5,
-            // paddingLeft: 5
-          }}
-        >
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              backgroundColor: '#a1a1a1',
-              marginLeft: 10,
-              marginVertical: 5,
-              // paddingLeft: 10,
-              paddingVertical: 10,
-              paddingHorizontal: 15,
-              width: '90%',
-              borderRadius: 10,
-            }}
-          >
 
-            <Text
-              style={{
-                maxWidth: '85%'
-              }}
-            >بس یم م مس ین یسم سم سمسمسم م م م م</Text>
 
-            <View
-              style={{
-                marginLeft: 'auto',
-                // alignSelf: 'center',
-                // paddingRight: 10,
-                // width: 10
-              }}
-            >
 
-              <CheckBox checked={true}
-                containerStyle={{
-                  height: 10,
-                  width: 10,
-                  // alignSelf: 'center',
-                  // marginLeft: 5
-                }}
-              />
-            </View>
+            return (
+              <View>
+                <TouchableOpacity
+                  onPress={() => {
 
-          </View>
+                    let oo = options.map((o, i) => {
+                      if (index === i) {
+                        return { ...o, selected: true }
+                      }
+                      else {
+                        return { ...o, selected: false }
+                      }
+                    })
 
-        </View>
+                    setOptions(oo)
+
+                  }}
+                >
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      backgroundColor: '#a1a1a1',
+                      marginLeft: 10,
+                      marginVertical: 5,
+                      paddingVertical: 10,
+                      paddingHorizontal: 15,
+                      width: '90%',
+                      borderRadius: 10,
+                    }}
+                  >
+
+                    <Text
+                      style={{
+                        maxWidth: '85%'
+                      }}
+                    >{option.name}</Text>
+
+                    <View
+                      style={{
+                        marginLeft: 'auto',
+                      }}
+                    >
+
+                      <CheckBox checked={option.selected}
+                        containerStyle={{
+                          height: 10,
+                          width: 10,
+                        }}
+                      />
+                    </View>
+
+                  </View>
+                </TouchableOpacity>
+
+              </View>
+            )
+
+          })
+        }
 
 
 
@@ -374,7 +388,15 @@ const AlgorithmScreen = (props) => {
           backgroundColor: 'purple',
         }}
       >
-        <Text>Next</Text>
+        <TouchableOpacity
+          style={{
+            backgroundColor: 'red',
+          }}
+        >
+
+          <Text>Next</Text>
+
+        </TouchableOpacity>
       </View>
 
 
