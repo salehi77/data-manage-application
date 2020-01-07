@@ -192,9 +192,10 @@ import { CheckBox } from 'react-native-elements'
 const AlgorithmScreen = (props) => {
 
   const [options, setOptions] = React.useState([])
+  const [selected, setSelected] = React.useState(null)
 
 
-  let { diagram } = props.navigation.state.params
+  let diagram = props.navigation.getParam('diagram', { ID: 0, name: 'nan', childs: [] })
 
 
   React.useEffect(() => {
@@ -286,8 +287,9 @@ const AlgorithmScreen = (props) => {
         >
           <Text
             style={{
-              fontSize: 22,
               textAlign: 'center',
+              fontFamily: props.theme.PRIMARY_FONT_FAMILY,
+              fontSize: props.theme.MAIN_FONT_SIZE + 6,
             }}
           >{diagram.name}</Text>
         </View>
@@ -312,6 +314,8 @@ const AlgorithmScreen = (props) => {
                 <TouchableOpacity
                   onPress={() => {
 
+                    setSelected(index)
+
                     let oo = options.map((o, i) => {
                       if (index === i) {
                         return { ...o, selected: true }
@@ -335,13 +339,15 @@ const AlgorithmScreen = (props) => {
                       paddingVertical: 10,
                       paddingHorizontal: 15,
                       width: '90%',
-                      borderRadius: 10,
                     }}
                   >
 
                     <Text
                       style={{
-                        maxWidth: '85%'
+                        maxWidth: '85%',
+                        color: 'white',
+                        fontFamily: props.theme.PRIMARY_FONT_FAMILY,
+                        fontSize: props.theme.MAIN_FONT_SIZE,
                       }}
                     >{option.name}</Text>
 
@@ -351,12 +357,18 @@ const AlgorithmScreen = (props) => {
                       }}
                     >
 
-                      <CheckBox checked={option.selected}
-                        containerStyle={{
-                          height: 10,
-                          width: 10,
+                      <View
+                        style={{
                         }}
-                      />
+                      >
+                        {
+                          option.selected
+                            ?
+                            <FontAwesome5Icon name='check-square' solid size={20} color='#36a5ad' />
+                            :
+                            <FontAwesome5Icon name='square' light size={20} color='#36a5ad' />
+                        }
+                      </View>
                     </View>
 
                   </View>
@@ -374,21 +386,54 @@ const AlgorithmScreen = (props) => {
 
 
 
+
+
       <View
         style={{
-          backgroundColor: 'purple',
+          marginTop: 10,
         }}
       >
         <TouchableOpacity
-          style={{
-            backgroundColor: 'red',
+          onPress={() => {
+            if (selected !== null && options[selected] && diagram.childs[selected]) {
+              props.navigation.push('Algorithm', {
+                diagram: diagram.childs[selected]
+              })
+            }
           }}
         >
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#32a885',
+              marginLeft: 10,
+              marginVertical: 5,
+              paddingVertical: 10,
+              paddingHorizontal: 15,
+              width: '90%',
+            }}
+          >
 
-          <Text>Next</Text>
+            <Text
+              style={{
+                maxWidth: '85%',
+                color: 'white',
+                fontFamily: props.theme.PRIMARY_FONT_FAMILY,
+                fontSize: props.theme.MAIN_FONT_SIZE,
+              }}
+            >بعدی</Text>
 
+
+          </View>
         </TouchableOpacity>
+
       </View>
+
+
+
+
 
 
 

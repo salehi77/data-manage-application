@@ -34,7 +34,7 @@ const HomeScreen = (props) => {
       });
     }
 
-    timer = setInterval(readData, 4000)
+    timer = setInterval(readData, 2000)
 
   }, []);
 
