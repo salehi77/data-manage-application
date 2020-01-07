@@ -194,22 +194,16 @@ const AlgorithmScreen = (props) => {
   const [options, setOptions] = React.useState([])
 
 
-  // console.log((props.navigation.state.params.diagram))
-
   let { diagram } = props.navigation.state.params
-  // console.log(diagram.childs)
-
 
 
   React.useEffect(() => {
     let o = diagram.childs.map(child => {
       return { name: child.name, selected: false }
     })
-    // console.log(o)
     setOptions(o)
   }, [])
 
-  // console.log('ojk')
 
 
   return (
@@ -224,7 +218,6 @@ const AlgorithmScreen = (props) => {
       <View
         style={{
           flexDirection: 'row',
-          // backgroundColor: 'orange',
           paddingVertical: 15,
           alignItems: 'center'
         }}
@@ -237,7 +230,11 @@ const AlgorithmScreen = (props) => {
         >
           <TouchableOpacity
             style={{
-              // backgroundColor: 'red'
+              paddingHorizontal: 8,
+              paddingVertical: 5,
+            }}
+            onPress={() => {
+              props.navigation.goBack()
             }}
           >
             <FontAwesome5Icon name='arrow-right' size={25} color='#3e3e3e' />
@@ -251,7 +248,6 @@ const AlgorithmScreen = (props) => {
         >
           <View
             style={{
-              // backgroundColor: 'orange',
               borderWidth: 2,
               borderColor: 'orange',
               padding: 5,
@@ -277,15 +273,12 @@ const AlgorithmScreen = (props) => {
 
       <View
         style={{
-          // backgroundColor: 'teal',
-          // height: 150,
           alignItems: 'center',
         }}
       >
         <View
           style={{
             alignItems: 'center',
-            // backgroundColor: 'pink',
             flex: 1,
             paddingVertical: 50,
             maxWidth: '60%',
@@ -293,10 +286,10 @@ const AlgorithmScreen = (props) => {
         >
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 22,
               textAlign: 'center',
             }}
-          >نبنیسب سیبنسی بسی ینبمثصنبک ثمس</Text>
+          >{diagram.name}</Text>
         </View>
       </View>
 
@@ -314,10 +307,8 @@ const AlgorithmScreen = (props) => {
           options.map((option, index) => {
 
 
-
-
             return (
-              <View>
+              <View key={index}>
                 <TouchableOpacity
                   onPress={() => {
 
