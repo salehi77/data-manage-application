@@ -2,32 +2,28 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/db/app.sqlite3",
-      "sha1": "195a9fd6fa7864b093e1698e8e13cda8b3120963"
+      "path": "src/assets/source/db/app.sqlite3",
+      "sha1": "acbdc93e197e2d6fbfa2c1eef9d53db43032488e"
     },
     {
-      "path": "src/assets/fonts/XBRoya-Bold.ttf",
+      "path": "src/assets/source/fonts/XBRoya-Bold.ttf",
       "sha1": "4ee1e9d6953bc9eda0f909555047b49a92fc36f8"
     },
     {
-      "path": "src/assets/fonts/XBRoya.ttf",
+      "path": "src/assets/source/fonts/XBRoya.ttf",
       "sha1": "664ed521c4270f517bc0bb206c390775608d1cf4"
     },
     {
-      "path": "src/assets/fonts/XMYekan-Bold.ttf",
+      "path": "src/assets/source/fonts/XMYekan-Bold.ttf",
       "sha1": "66779665caa3a1c5afc6f120b7ef4b038895aadd"
     },
     {
-      "path": "src/assets/fonts/XMYekan.ttf",
+      "path": "src/assets/source/fonts/XMYekan.ttf",
       "sha1": "eb2274ecdba1b7b1533f803bc08d63454a1abaae"
     },
     {
-      "path": "src/assets/fonts/clinic_icon.ttf",
+      "path": "src/assets/source/fonts/clinic_icon.ttf",
       "sha1": "54e130e830d9f521c9c01248736fd0b3818b3145"
-    },
-    {
-      "path": "src/assets/images/cover.jpeg",
-      "sha1": "5f5ddda47a21a7e864a6985313b76f18a84beced"
     }
   ]
 }

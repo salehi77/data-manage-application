@@ -17,13 +17,12 @@
 		2DCD954D1E0B4F2C00145EB5 /* reactnativeexampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* reactnativeexampleTests.m */; };
 		E416018E94AA46B6993F509C /* BYekan.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28A2724AA8964BE6995726FA /* BYekan.ttf */; };
 		7A37064B82A64813873879B5 /* BYekan.woff in Resources */ = {isa = PBXBuildFile; fileRef = 2C3B6B58A96D4247BD8672DF /* BYekan.woff */; };
-		4D3645009A74445BA10EFCF3 /* XBRoya-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 996867259271426BBB1BEA5C /* XBRoya-Bold.ttf */; };
-		2C5D2B287681492F96E9F7F6 /* XBRoya.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A594A8A5E07F49049CAEAF7C /* XBRoya.ttf */; };
-		78D10CCC6CD24024817995C5 /* XMYekan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13496165E5BB4A7284A0247D /* XMYekan-Bold.ttf */; };
-		7CAA78CFFDE84276AD65FE43 /* XMYekan.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A8DE71C7808488C8CE5B7FD /* XMYekan.ttf */; };
-		14180AEE976F447AB277DF7E /* clinic_icon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F71E10EB5A9645DB8AC46E40 /* clinic_icon.ttf */; };
-		3826ED97D26B497880D60C62 /* cover.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E56F4374020844B0B7A900F1 /* cover.jpeg */; };
-		62AF7B8AFD8E4142A5283A8D /* app.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 4B008509AAE744BBB216D966 /* app.sqlite3 */; };
+		25C330DD4BB044B98917AA6A /* XBRoya-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BFB69A32B6441CB9CDFBEAC /* XBRoya-Bold.ttf */; };
+		803CA4E16A714565A7BD1B2A /* XBRoya.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1F236EF963443CB9418868 /* XBRoya.ttf */; };
+		350CFB6CF5D94A3FA4B933C4 /* XMYekan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA45DD13B2FD4770AB8983CC /* XMYekan-Bold.ttf */; };
+		35A8FE07D1984CCF807E7398 /* XMYekan.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 786533152281473DBA19EB5A /* XMYekan.ttf */; };
+		13580B9F06464CCBBF80F499 /* clinic_icon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 468EE6A42AFD48FD8CA0AEB3 /* clinic_icon.ttf */; };
+		0A20F38675994860897830A2 /* app.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = ABF0C17D7D0F4923894387AF /* app.sqlite3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,13 +60,12 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		28A2724AA8964BE6995726FA /* BYekan.ttf */ = {isa = PBXFileReference; name = "BYekan.ttf"; path = "../src/assets/fonts/BYekan.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		2C3B6B58A96D4247BD8672DF /* BYekan.woff */ = {isa = PBXFileReference; name = "BYekan.woff"; path = "../src/assets/fonts/BYekan.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		996867259271426BBB1BEA5C /* XBRoya-Bold.ttf */ = {isa = PBXFileReference; name = "XBRoya-Bold.ttf"; path = "../src/assets/fonts/XBRoya-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A594A8A5E07F49049CAEAF7C /* XBRoya.ttf */ = {isa = PBXFileReference; name = "XBRoya.ttf"; path = "../src/assets/fonts/XBRoya.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		13496165E5BB4A7284A0247D /* XMYekan-Bold.ttf */ = {isa = PBXFileReference; name = "XMYekan-Bold.ttf"; path = "../src/assets/fonts/XMYekan-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9A8DE71C7808488C8CE5B7FD /* XMYekan.ttf */ = {isa = PBXFileReference; name = "XMYekan.ttf"; path = "../src/assets/fonts/XMYekan.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F71E10EB5A9645DB8AC46E40 /* clinic_icon.ttf */ = {isa = PBXFileReference; name = "clinic_icon.ttf"; path = "../src/assets/fonts/clinic_icon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E56F4374020844B0B7A900F1 /* cover.jpeg */ = {isa = PBXFileReference; name = "cover.jpeg"; path = "../src/assets/images/cover.jpeg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4B008509AAE744BBB216D966 /* app.sqlite3 */ = {isa = PBXFileReference; name = "app.sqlite3"; path = "../src/assets/db/app.sqlite3"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7BFB69A32B6441CB9CDFBEAC /* XBRoya-Bold.ttf */ = {isa = PBXFileReference; name = "XBRoya-Bold.ttf"; path = "../src/assets/source/fonts/XBRoya-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6E1F236EF963443CB9418868 /* XBRoya.ttf */ = {isa = PBXFileReference; name = "XBRoya.ttf"; path = "../src/assets/source/fonts/XBRoya.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BA45DD13B2FD4770AB8983CC /* XMYekan-Bold.ttf */ = {isa = PBXFileReference; name = "XMYekan-Bold.ttf"; path = "../src/assets/source/fonts/XMYekan-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		786533152281473DBA19EB5A /* XMYekan.ttf */ = {isa = PBXFileReference; name = "XMYekan.ttf"; path = "../src/assets/source/fonts/XMYekan.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		468EE6A42AFD48FD8CA0AEB3 /* clinic_icon.ttf */ = {isa = PBXFileReference; name = "clinic_icon.ttf"; path = "../src/assets/source/fonts/clinic_icon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ABF0C17D7D0F4923894387AF /* app.sqlite3 */ = {isa = PBXFileReference; name = "app.sqlite3"; path = "../src/assets/source/db/app.sqlite3"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,13 +178,12 @@
 			children = (
 				28A2724AA8964BE6995726FA /* BYekan.ttf */,
 				2C3B6B58A96D4247BD8672DF /* BYekan.woff */,
-				996867259271426BBB1BEA5C /* XBRoya-Bold.ttf */,
-				A594A8A5E07F49049CAEAF7C /* XBRoya.ttf */,
-				13496165E5BB4A7284A0247D /* XMYekan-Bold.ttf */,
-				9A8DE71C7808488C8CE5B7FD /* XMYekan.ttf */,
-				F71E10EB5A9645DB8AC46E40 /* clinic_icon.ttf */,
-				E56F4374020844B0B7A900F1 /* cover.jpeg */,
-				4B008509AAE744BBB216D966 /* app.sqlite3 */,
+				7BFB69A32B6441CB9CDFBEAC /* XBRoya-Bold.ttf */,
+				6E1F236EF963443CB9418868 /* XBRoya.ttf */,
+				BA45DD13B2FD4770AB8983CC /* XMYekan-Bold.ttf */,
+				786533152281473DBA19EB5A /* XMYekan.ttf */,
+				468EE6A42AFD48FD8CA0AEB3 /* clinic_icon.ttf */,
+				ABF0C17D7D0F4923894387AF /* app.sqlite3 */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -330,13 +327,12 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				E416018E94AA46B6993F509C /* BYekan.ttf in Resources */,
 				7A37064B82A64813873879B5 /* BYekan.woff in Resources */,
-				4D3645009A74445BA10EFCF3 /* XBRoya-Bold.ttf in Resources */,
-				2C5D2B287681492F96E9F7F6 /* XBRoya.ttf in Resources */,
-				78D10CCC6CD24024817995C5 /* XMYekan-Bold.ttf in Resources */,
-				7CAA78CFFDE84276AD65FE43 /* XMYekan.ttf in Resources */,
-				14180AEE976F447AB277DF7E /* clinic_icon.ttf in Resources */,
-				3826ED97D26B497880D60C62 /* cover.jpeg in Resources */,
-				62AF7B8AFD8E4142A5283A8D /* app.sqlite3 in Resources */,
+				25C330DD4BB044B98917AA6A /* XBRoya-Bold.ttf in Resources */,
+				803CA4E16A714565A7BD1B2A /* XBRoya.ttf in Resources */,
+				350CFB6CF5D94A3FA4B933C4 /* XMYekan-Bold.ttf in Resources */,
+				35A8FE07D1984CCF807E7398 /* XMYekan.ttf in Resources */,
+				13580B9F06464CCBBF80F499 /* clinic_icon.ttf in Resources */,
+				0A20F38675994860897830A2 /* app.sqlite3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

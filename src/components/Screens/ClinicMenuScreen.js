@@ -57,9 +57,7 @@ const ClinicMenuScreen = (props) => {
       props.sqlite && props.sqlite.transaction((tx) => {
 
         try {
-          tx.executeSql('SELECT * FROM clinics WHERE id = ?', [5], (tx, result) => {
-
-            // console.log(result.rows.item(0))
+          tx.executeSql('SELECT * FROM clinics WHERE id = ?', [1], (tx, result) => {
 
 
             if (result.rows.length >= 1) {
