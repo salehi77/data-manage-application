@@ -25,7 +25,7 @@ const HomeScreen = (props) => {
         try {
           tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
             setAllClinics(results.rows.raw())
-            props.navigation.navigate('ClinicMenu', { clinicID: 1, clinicName: 'some' })
+            // props.navigation.navigate('ClinicMenu', { clinicID: 1, clinicName: 'some' })
             clearInterval(timer)
           });
         }

@@ -68,7 +68,9 @@ const HeaderAlgo = (props) => {
             style={{
               fontSize: 18,
             }}
-          >3</Text>
+          >
+            {props.number}
+          </Text>
         </View>
       </View>
 
@@ -115,11 +117,14 @@ const SelectAlgo = (props) => {
   const [options, setoptions] = React.useState([])
 
   React.useEffect(() => {
-    let o = props.childs.map(child => {
+    let o = props.childs.map((child, index) => {
+      if (index === props.initSelect) {
+        return { name: child.name, selected: true }
+      }
       return { name: child.name, selected: false }
     })
     setoptions(o)
-  }, [])
+  }, [props.childs, props.initSelect])
 
   return (
     <View
@@ -192,8 +197,6 @@ const SelectAlgo = (props) => {
 
 
 const NextButton = (props) => {
-
-
   return (
     <View
       style={{
@@ -214,7 +217,6 @@ const NextButton = (props) => {
             width: '90%',
           }}
         >
-
           <Text
             style={{
               maxWidth: '85%',
@@ -223,13 +225,9 @@ const NextButton = (props) => {
               fontSize: props.theme.MAIN_FONT_SIZE,
             }}
           >بعدی</Text>
-
-
         </View>
       </TouchableOpacity>
-
     </View>
-
   )
 }
 
@@ -242,10 +240,26 @@ const AlgorithmScreen = (props) => {
   const [selected, setSelected] = React.useState(-1)
 
 
-  let diagram = props.navigation.getParam('diagram', { ID: 0, name: 'nan', childs: [] })
+  const [diagram, setdiagram] = React.useState({ id: 0, name: '', childs: [] })
+
+  const [pathToThis, setpathToThis] = React.useState([])
 
 
-  console.log(diagram.childs.length)
+  React.useEffect(() => {
+    setpathToThis([...props.navigation.getParam('pathToThis', []), diagram.name])
+    let d = props.navigation.getParam('diagram')
+    if (typeof (d.name) === 'string' && d.childs instanceof Array) {
+      setdiagram(d)
+      if (d.childs.length === 1) {
+        setSelected(0)
+      }
+    }
+  }, [])
+
+  React.useEffect(() => {
+    setpathToThis([...props.navigation.getParam('pathToThis', []), diagram.name])
+  }, [diagram])
+
 
 
 
@@ -258,7 +272,7 @@ const AlgorithmScreen = (props) => {
       }}
     >
 
-      <HeaderAlgo {...props} />
+      <HeaderAlgo {...props} number={pathToThis.length} />
 
 
 
@@ -266,31 +280,101 @@ const AlgorithmScreen = (props) => {
 
 
 
-      <SelectAlgo
-        {...props}
-        childs={diagram.childs}
-        changedSelected={(s) => {
-          setSelected(s)
-        }}
-      />
+      {
+        diagram.childs.length > 0
+
+          ?
+
+
+          <>
+
+
+            <SelectAlgo
+              {...props}
+              childs={diagram.childs}
+              initSelect={selected}
+              changedSelected={(s) => {
+                setSelected(s)
+              }}
+            />
 
 
 
-      <NextButton
-        {...props}
-        onPress={() => {
-          if (selected > -1 && diagram.childs[selected]) {
-            props.navigation.push('Algorithm', {
-              diagram: diagram.childs[selected]
-            })
-          }
-          else {
-            Toast.show('لطفا یک گزینه را انتخاب کنید', Toast.LONG);
-          }
-        }}
-      />
+            <NextButton
+              {...props}
+              onPress={() => {
+                if (selected > -1 && diagram.childs[selected]) {
+                  props.navigation.push('Algorithm', {
+                    diagram: diagram.childs[selected],
+                    pathToThis,
+                  })
+                }
+                else {
+                  Toast.showWithGravity('لطفا یک گزینه را انتخاب کنید', Toast.LONG, Toast.TOP);
+                }
+              }}
+            />
 
 
+          </>
+
+
+          :
+
+
+          <>
+
+
+
+
+            <View>
+              {
+                pathToThis.map((name, index) => {
+                  return (
+                    <View
+                      key={index}
+                      style={{
+                        width: '100%',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <View
+                        style={{
+                          backgroundColor: '#a1a1a1',
+                          marginVertical: 5,
+                          padding: 10,
+                          width: '90%',
+                        }}
+                      >
+                        <Text
+                          style={{
+                            color: 'white',
+                            textAlign: 'center',
+                            fontFamily: props.theme.PRIMARY_FONT_FAMILY,
+                            fontSize: props.theme.MAIN_FONT_SIZE,
+                          }}
+                        >
+                          {name}
+                        </Text>
+                      </View>
+                      {pathToThis.length !== index + 1 ?
+                        <FontAwesome5Icon name='arrow-down' color='#a1a1a1' size={20} />
+                        : null}
+                    </View>
+                  )
+                })
+              }
+            </View>
+
+          </>
+
+
+
+
+
+
+
+      }
 
     </ScrollView>
 
