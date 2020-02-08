@@ -14,10 +14,23 @@ import Routes from './Routes';
 const AppContainer = Routes;
 
 let okCallback = (db, props) => {
-  if (!props.sqlite) {
-    props.setDatabase(db)
-  }
-};
+  // if (!props.sqlite) {
+  props.setDatabase(db)
+  console.log('OK')
+
+
+  db.transaction(tx => {
+
+    tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
+      // console.log('here', results)
+    })
+
+
+  })
+
+
+}
+// }
 
 
 
@@ -38,7 +51,7 @@ const App = (props) => {
 
   React.useEffect(() => {
 
-    if (I18nManager.isRTL != true) {
+    if (I18nManager.isRTL !== true) {
       I18nManager.forceRTL(true);
       RNRestart.Restart();
     }

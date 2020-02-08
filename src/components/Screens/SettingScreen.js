@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Animated, Text, View, ActivityIndicator } from 'react-native';
+import { Animated, Text, View, ActivityIndicator, ScrollView } from 'react-native';
 import SettingHeaderElement from '../elements/Headers/SettingHeaderElement'
 import AsyncStorage from '@react-native-community/async-storage';
 
+import { TopText, SelectAlgo } from './AlgorithmScreen'
 import { changeMainFont } from '../../actions/themeAction'
 import Slider from '../elements/SliderElement'
 
@@ -14,6 +15,8 @@ const SettingScreen = (props) => {
   const [fontSize, setFontSize] = React.useState(16)
 
   React.useEffect(() => {
+
+
 
 
     if (props.theme && props.theme.MAIN_FONT_SIZE) {
@@ -31,19 +34,20 @@ const SettingScreen = (props) => {
   return (
 
     <>
-      <View
+
+
+
+
+
+
+      <ScrollView
         style={{
           flex: 1,
           backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
         }}>
 
 
-        <View
-          style={{
-            alignItems: 'center',
-            // marginTop: 15
-          }}
-        >
+        <View style={{ alignItems: 'center' }}>
 
           <View
             style={{
@@ -98,26 +102,30 @@ const SettingScreen = (props) => {
 
           <View
             style={{
-              height: 60,
-              width: '95%',
+              height: 200,
               borderWidth: 1,
               borderColor: '#3b3b3b',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 10,
-              // marginTop: 15
+              overflow: 'hidden',
             }}
           >
 
-            <Text
-              style={{
-                fontSize,
-                fontFamily: props.theme.PRIMARY_FONT_FAMILY
-              }}
-            >
-              این یک متن است
-           </Text>
+            <ScrollView>
+
+              <TopText {...props} text='بعد از عمل؟' compact />
+
+
+              <SelectAlgo
+                {...props}
+                childs={[{ name: 'بلافاصله بعد از عمل' }, { name: 'با فاصله بعد از عمل' }]}
+                initSelect={1}
+                disabled
+              />
+
+            </ScrollView>
 
           </View>
 
@@ -126,9 +134,10 @@ const SettingScreen = (props) => {
 
 
 
+      </ScrollView>
 
 
-      </View>
+
     </>
 
   )

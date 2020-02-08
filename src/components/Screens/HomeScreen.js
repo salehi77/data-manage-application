@@ -14,30 +14,70 @@ import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 const HomeScreen = (props) => {
-  const [allClinics, setAllClinics] = React.useState(null);
-  let timer = null
+  const [allClinics, setallClinics] = React.useState(null);
+
 
   React.useEffect(() => {
 
+    let timer = null
+
+
+    // function readData() {
+    //   // console.log(props.sqlite)
+    //   props.sqlite && props.sqlite.transaction((tx) => {
+    //     try {
+    //       tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
+
+    //         console.log(Object.keys(results.rows.raw()[5]))
+
+    //         setallClinics(results.rows.raw())
+    //         // props.navigation.navigate('ClinicMenu', { clinicID: 1, clinicName: 'some' })
+    //         // props.navigation.navigate('Setting')
+    //         // clearInterval(timer)
+    //       });
+    //     }
+    //     catch (exp) {
+    //       // console.log('jkjk')
+    //     }
+    //   });
+
+
+
+    //   // timer = setInterval(readData, 2000)
+
+    // }
+
+
+    // props.sqlite.transaction((tx) => {
+    //   console.log('tx')
+    //   tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
+    //     console.log(here)
+    //   })
+    // })
+
 
     function readData() {
-      props.sqlite && props.sqlite.transaction((tx) => {
-        try {
-          tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
-            setAllClinics(results.rows.raw())
-            // props.navigation.navigate('ClinicMenu', { clinicID: 1, clinicName: 'some' })
-            clearInterval(timer)
-          });
-        }
-        catch (exp) {
-        }
-      });
+
+      props.sqlite.transaction(tx => {
+
+        tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
+          // console.log(results.rows.raw())
+          setallClinics(results.rows.raw())
+        })
+
+      })
+
     }
 
-    timer = setInterval(readData, 2000)
+
+    readData()
 
   }, []);
 
+
+  // console.log(Object.keys(allClinics))
+
+  // console.log(allClinics[5])
 
 
   return (
@@ -65,24 +105,25 @@ const HomeScreen = (props) => {
               ]}
               style={styles.gridView}
               renderItem={({ item, section, index }) => {
+
                 return (
                   <View style={[styles.itemContainer, { borderRightWidth: index % 2 === 0 ? 1 : 0 }]}>
                     <TouchableOpacity
                       style={styles.itemTouch}
                       onPress={() => {
                         props.navigation.navigate('ClinicMenu', {
-                          clinicID: item.id,
-                          clinicName: item.clinicName,
+                          clinicID: item.id
                         });
                       }}>
                       <View style={styles.itemView}>
                         <FontAwesome5Icon
-                          // name={item.icon_name}
-                          name='heart'
+                          name={item.iconName ? item.iconName : 'clinic-medical'}
+                          color={item.iconColor ? item.iconColor : 'blue'}
                           size={50}
-                        // color={item.icon_color}
                         />
-                        <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>{item.clinicName}</Text>
+                        <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>
+                          {item.clinicName}
+                        </Text>
                       </View>
                     </TouchableOpacity>
                   </View>

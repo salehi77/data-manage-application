@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import Toast from 'react-native-simple-toast';
@@ -28,6 +22,7 @@ const HeaderAlgo = (props) => {
       }}
     >
 
+
       <View
         style={{
           marginLeft: 15,
@@ -45,6 +40,8 @@ const HeaderAlgo = (props) => {
           <FontAwesome5Icon name='arrow-right' size={25} color='#3e3e3e' />
         </TouchableOpacity>
       </View>
+
+
 
       <View
         style={{
@@ -81,7 +78,7 @@ const HeaderAlgo = (props) => {
 }
 
 
-const TopText = (props) => {
+export const TopText = (props) => {
   return (
     <View
       style={{
@@ -92,7 +89,7 @@ const TopText = (props) => {
         style={{
           alignItems: 'center',
           flex: 1,
-          paddingVertical: 50,
+          paddingVertical: props.compact ? 5 : 50,
           maxWidth: '60%',
         }}
       >
@@ -112,16 +109,19 @@ const TopText = (props) => {
 
 
 
-const SelectAlgo = (props) => {
+export const SelectAlgo = (props) => {
 
   const [options, setoptions] = React.useState([])
 
   React.useEffect(() => {
+
+    console.log(props.childs)
+
     let o = props.childs.map((child, index) => {
       if (index === props.initSelect) {
-        return { name: child.name, selected: true }
+        return { text: child.text, selected: true }
       }
-      return { name: child.name, selected: false }
+      return { text: child.text, selected: false }
     })
     setoptions(o)
   }, [props.childs, props.initSelect])
@@ -137,6 +137,7 @@ const SelectAlgo = (props) => {
           return (
             <View key={index}>
               <TouchableOpacity
+                disabled={props.disabled}
                 onPress={() => {
                   props.changedSelected(index)
                   const o = options.map((oo, ii) => {
@@ -168,7 +169,7 @@ const SelectAlgo = (props) => {
                       fontSize: props.theme.MAIN_FONT_SIZE,
                     }}
                   >
-                    {option.name}
+                    {option.text}
                   </Text>
                   <View
                     style={{
@@ -240,15 +241,24 @@ const AlgorithmScreen = (props) => {
   const [selected, setSelected] = React.useState(-1)
 
 
-  const [diagram, setdiagram] = React.useState({ id: 0, name: '', childs: [] })
+  const [diagram, setdiagram] = React.useState({ id: 0, text: '', childs: [] })
 
   const [pathToThis, setpathToThis] = React.useState([])
 
 
   React.useEffect(() => {
-    setpathToThis([...props.navigation.getParam('pathToThis', []), diagram.name])
+
+    // console.log(Object.keys(props.navigation))
+
+    setpathToThis([...props.navigation.getParam('pathToThis', []), diagram.text])
+
     let d = props.navigation.getParam('diagram')
-    if (typeof (d.name) === 'string' && d.childs instanceof Array) {
+
+
+    // console.log(d)
+
+
+    if (typeof (d.text) === 'string' && d.childs instanceof Array) {
       setdiagram(d)
       if (d.childs.length === 1) {
         setSelected(0)
@@ -257,7 +267,7 @@ const AlgorithmScreen = (props) => {
   }, [])
 
   React.useEffect(() => {
-    setpathToThis([...props.navigation.getParam('pathToThis', []), diagram.name])
+    setpathToThis([...props.navigation.getParam('pathToThis', []), diagram.text])
   }, [diagram])
 
 
@@ -276,7 +286,7 @@ const AlgorithmScreen = (props) => {
 
 
 
-      <TopText {...props} text={diagram.name} />
+      <TopText {...props} text={diagram.text} />
 
 
 
@@ -310,7 +320,7 @@ const AlgorithmScreen = (props) => {
                   })
                 }
                 else {
-                  Toast.showWithGravity('لطفا یک گزینه را انتخاب کنید', Toast.LONG, Toast.TOP);
+                  Toast.show('لطفا یک گزینه را انتخاب کنید')
                 }
               }}
             />
@@ -329,7 +339,7 @@ const AlgorithmScreen = (props) => {
 
             <View>
               {
-                pathToThis.map((name, index) => {
+                pathToThis.map((text, index) => {
                   return (
                     <View
                       key={index}
@@ -354,7 +364,7 @@ const AlgorithmScreen = (props) => {
                             fontSize: props.theme.MAIN_FONT_SIZE,
                           }}
                         >
-                          {name}
+                          {text}
                         </Text>
                       </View>
                       {pathToThis.length !== index + 1 ?
@@ -365,6 +375,8 @@ const AlgorithmScreen = (props) => {
                 })
               }
             </View>
+
+
 
           </>
 
@@ -380,6 +392,7 @@ const AlgorithmScreen = (props) => {
 
   )
 }
+
 
 
 

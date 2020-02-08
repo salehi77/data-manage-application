@@ -41,7 +41,7 @@ const ClinicMenuScreen = (props) => {
 
 
   const [nnn] = React.useState(new Animated.Value(0))
-  const [clinicData, setClinicData] = React.useState(null)
+  const [clinicData, setclinicData] = React.useState(null)
 
 
 
@@ -57,12 +57,14 @@ const ClinicMenuScreen = (props) => {
       props.sqlite && props.sqlite.transaction((tx) => {
 
         try {
-          tx.executeSql('SELECT * FROM clinics WHERE id = ?', [1], (tx, result) => {
+          tx.executeSql('SELECT * FROM clinics WHERE id = ?', [clinicID], (tx, result) => {
 
 
             if (result.rows.length >= 1) {
 
-              setClinicData(result.rows.item(0))
+              setclinicData(result.rows.item(0))
+
+              // console.log(result.r/ows.item(0).clinicName)
 
               // props.navigation.navigate('Algorithm', {
               //   diagram: JSON.parse(result.rows.item(0).diagramParsed)
@@ -116,8 +118,10 @@ const ClinicMenuScreen = (props) => {
   }
 
 
+  // console.info(clinicData.clinicName)
 
   return (
+
     <ScrollView
       style={{
         flex: 1,
@@ -179,13 +183,15 @@ const ClinicMenuScreen = (props) => {
                 color: 'white'
               }}
             >
-              {props.navigation.state.params.clinicName}
+              {/* {props.navigation.state.params.clinicName} */}
+              {clinicData && clinicData.clinicName}
             </Text>
 
           </View>
 
 
         </View>
+
 
 
 
@@ -236,11 +242,24 @@ const ClinicMenuScreen = (props) => {
                     position: 'relative',
                   }}
                   onPress={() => {
-                    if (clinicData) {
+
+
+                    // console.log(Object.keys(clinicData))
+
+                    try {
+                      const d = JSON.parse(clinicData.diagram)
+                      // console.log(Object.keys(d))
+
                       props.navigation.navigate('Algorithm', {
-                        diagram: JSON.parse(clinicData.diagramParsed)
+                        diagram: d
                       })
                     }
+                    catch (e) {
+
+                    }
+
+
+
                   }}
                 >
 
