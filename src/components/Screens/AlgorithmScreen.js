@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
-import { connect } from 'react-redux';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
-import Toast from 'react-native-simple-toast';
+import React from 'react'
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { connect } from 'react-redux'
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
+import Toast from 'react-native-simple-toast'
 
 
 
@@ -114,8 +114,6 @@ export const SelectAlgo = (props) => {
   const [options, setoptions] = React.useState([])
 
   React.useEffect(() => {
-
-    console.log(props.childs)
 
     let o = props.childs.map((child, index) => {
       if (index === props.initSelect) {
@@ -248,14 +246,9 @@ const AlgorithmScreen = (props) => {
 
   React.useEffect(() => {
 
-    // console.log(Object.keys(props.navigation))
-
     setpathToThis([...props.navigation.getParam('pathToThis', []), diagram.text])
 
     let d = props.navigation.getParam('diagram')
-
-
-    // console.log(d)
 
 
     if (typeof (d.text) === 'string' && d.childs instanceof Array) {
@@ -412,10 +405,10 @@ const mapStateToProps = state => {
   return {
     sqlite: state.localdb.sqlite,
     theme: state.theme,
-  };
-};
+  }
+}
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AlgorithmScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(AlgorithmScreen)

@@ -1,41 +1,28 @@
-import React, { Component } from 'react';
-import SQLite from 'react-native-sqlite-storage';
-import { connect } from 'react-redux';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { AppState, I18nManager, Text, View } from 'react-native';
+import React, { Component } from 'react'
+import SQLite from 'react-native-sqlite-storage'
+import { connect } from 'react-redux'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { AppState, I18nManager, Text, View } from 'react-native'
+import { createAppContainer } from 'react-navigation'
 import RNRestart from 'react-native-restart'
 
-import { setDatabase } from './actions/localdb';
+import { setDatabase } from './actions/localdb'
 import { changeMainFont } from './actions/themeAction'
 
 import { getFontStorage, setFontStorage } from './storages/@fontSize'
 
-import Routes from './Routes';
-const AppContainer = Routes;
+import Routes from './Routes'
+const AppContainer = createAppContainer(Routes)
 
 let okCallback = (db, props) => {
-  // if (!props.sqlite) {
   props.setDatabase(db)
   console.log('OK')
-
-
-  db.transaction(tx => {
-
-    tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
-      // console.log('here', results)
-    })
-
-
-  })
-
-
 }
-// }
 
 
 
 const errorCallback = (err) => {
-  console.log('======================Error======================');
+  console.log('======================Error======================')
 }
 
 
@@ -52,8 +39,8 @@ const App = (props) => {
   React.useEffect(() => {
 
     if (I18nManager.isRTL !== true) {
-      I18nManager.forceRTL(true);
-      RNRestart.Restart();
+      I18nManager.forceRTL(true)
+      RNRestart.Restart()
     }
 
     SQLite.openDatabase(
@@ -82,14 +69,14 @@ const App = (props) => {
     if (nextAppState.match(/inactive|background/)) {
       setFontStorage(props.theme.MAIN_FONT_SIZE)
     }
-  };
+  }
 
 
   return (
     <SafeAreaProvider>
       <AppContainer />
     </SafeAreaProvider>
-  );
+  )
 
 
 }
@@ -141,8 +128,8 @@ const App = (props) => {
 //   componentDidMount() {
 
 //     if (I18nManager.isRTL != true) {
-//       I18nManager.forceRTL(true);
-//       RNRestart.Restart();
+//       I18nManager.forceRTL(true)
+//       RNRestart.Restart()
 //     }
 
 
@@ -153,7 +140,7 @@ const App = (props) => {
 //     )
 
 
-//     AppState.addEventListener('change', this._handleAppStateChange);
+//     AppState.addEventListener('change', this._handleAppStateChange)
 
 //     getFontStorage()
 //       .then(value => {
@@ -176,7 +163,7 @@ const App = (props) => {
 //       console.log(this.props.theme.MAIN_FONT_SIZE, 'background')
 //       setFontStorage(this.props.theme.MAIN_FONT_SIZE)
 //     }
-//   };
+//   }
 
 //   render() {
 
@@ -187,7 +174,7 @@ const App = (props) => {
 //       <SafeAreaProvider>
 //         <AppContainer />
 //       </SafeAreaProvider>
-//     );
+//     )
 
 //   }
 
@@ -207,12 +194,12 @@ const mapStateToProps = (state) => {
   return {
     sqlite: state.localdb.sqlite,
     theme: state.theme,
-  };
-};
+  }
+}
 
 const mapDispatchToProps = {
   setDatabase,
   changeMainFont
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)

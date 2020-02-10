@@ -1,6 +1,6 @@
-import React from 'react';
-import {View, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import React from 'react'
+import { View, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 const BackButton = props => {
   return (
@@ -16,12 +16,12 @@ const BackButton = props => {
       }}>
       <TouchableOpacity
         onPress={() => {
-          props.navigation.pop();
+          props.navigation.pop()
         }}>
-        <Icon name="arrow-alt-circle-right" size={40} color="teal" />
+        <Icon name='arrow-alt-circle-right' size={40} color='teal' />
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 
-export default BackButton;
+export default BackButton

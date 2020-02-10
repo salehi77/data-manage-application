@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 import { connect } from 'react-redux'
-import { Animated, Text, View, ActivityIndicator, ScrollView } from 'react-native';
+import { Animated, Text, View, ActivityIndicator, ScrollView } from 'react-native'
 import SettingHeaderElement from '../elements/Headers/SettingHeaderElement'
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-community/async-storage'
 
 import { TopText, SelectAlgo } from './AlgorithmScreen'
 import { changeMainFont } from '../../actions/themeAction'
@@ -148,17 +148,17 @@ SettingScreen.navigationOptions = ({ navigation }) => {
   return {
     header: <SettingHeaderElement navigation={navigation} />,
     // title: 'home',
-  };
-};
+  }
+}
 
 const mapStateToProps = state => {
   return {
     theme: state.theme,
-  };
-};
+  }
+}
 
 const mapDispatchToProps = {
   changeMainFont
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingScreen)

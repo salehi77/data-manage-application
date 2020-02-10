@@ -1,20 +1,7 @@
-import React, { Component } from 'react';
-import {
-  SafeAreaView,
-  View,
-  ScrollView,
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Button,
-  ActivityIndicator,
-  TouchableWithoutFeedback,
-  Animated,
-  Easing,
-} from 'react-native';
-import { connect } from 'react-redux';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
+import React, { Component } from 'react'
+import { View, ScrollView, StyleSheet, Text, TouchableOpacity, ActivityIndicator, Animated, Easing, } from 'react-native'
+import { connect } from 'react-redux'
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
 import { ListItem } from 'react-native-elements'
 
 
@@ -40,7 +27,7 @@ const ClinicMenuScreen = (props) => {
 
 
 
-  const [nnn] = React.useState(new Animated.Value(0))
+  const [myanim] = React.useState(new Animated.Value(0))
   const [clinicData, setclinicData] = React.useState(null)
 
 
@@ -61,22 +48,16 @@ const ClinicMenuScreen = (props) => {
 
 
             if (result.rows.length >= 1) {
-
               setclinicData(result.rows.item(0))
 
-              // console.log(result.r/ows.item(0).clinicName)
-
-              // props.navigation.navigate('Algorithm', {
-              //   diagram: JSON.parse(result.rows.item(0).diagramParsed)
-              // })
             }
 
-          });
+          })
         }
         catch (exp) { }
 
-      });
-    });
+      })
+    })
 
 
   }, [])
@@ -86,7 +67,7 @@ const ClinicMenuScreen = (props) => {
     Animated.sequence(
       [
         Animated.timing(
-          nnn,
+          myanim,
           {
             toValue: 1,
             duration: 300,
@@ -94,7 +75,7 @@ const ClinicMenuScreen = (props) => {
           }
         ),
         Animated.timing(
-          nnn,
+          myanim,
           {
             toValue: 2,
             duration: 300,
@@ -102,7 +83,7 @@ const ClinicMenuScreen = (props) => {
           }
         ),
         Animated.timing(
-          nnn,
+          myanim,
           {
             toValue: 3,
             duration: 300,
@@ -110,15 +91,13 @@ const ClinicMenuScreen = (props) => {
           }
         ),
       ]
-    ).start((a, b) => {
-      // console.log(a, b)
-      nnn.setValue(0)
+    ).start(() => {
+      myanim.setValue(0)
       keepAnimation()
     })
   }
 
 
-  // console.info(clinicData.clinicName)
 
   return (
 
@@ -219,11 +198,11 @@ const ClinicMenuScreen = (props) => {
 
               <Animated.View
                 style={{
-                  width: nnn.interpolate({
+                  width: myanim.interpolate({
                     inputRange: [0, 0.05, 0.1, 1, 1.05, 1.1, 2, 2.05, 2.1, 3],
                     outputRange: ['90%', '100%', '90%', '90%', '100%', '90%', '90%', '100%', '90%', '90%']
                   }),
-                  height: nnn.interpolate({
+                  height: myanim.interpolate({
                     inputRange: [0, 0.05, 0.1, 1, 1.05, 1.1, 2, 2.05, 2.1, 3],
                     outputRange: ['90%', '100%', '90%', '90%', '100%', '90%', '90%', '100%', '90%', '90%']
                   }),
@@ -241,24 +220,16 @@ const ClinicMenuScreen = (props) => {
                     alignItems: 'center',
                     position: 'relative',
                   }}
+
                   onPress={() => {
-
-
-                    // console.log(Object.keys(clinicData))
 
                     try {
                       const d = JSON.parse(clinicData.diagram)
-                      // console.log(Object.keys(d))
-
                       props.navigation.navigate('Algorithm', {
                         diagram: d
                       })
                     }
-                    catch (e) {
-
-                    }
-
-
+                    catch (e) { }
 
                   }}
                 >
@@ -268,14 +239,14 @@ const ClinicMenuScreen = (props) => {
 
                   <Animated.View
                     style={{
-                      opacity: nnn.interpolate({
+                      opacity: myanim.interpolate({
                         inputRange: [0, 1, 2, 3],
                         outputRange: [1, 0, 0, 1]
                       }),
                       position: 'absolute',
                       transform: [
                         {
-                          rotate: nnn.interpolate({
+                          rotate: myanim.interpolate({
                             inputRange: [0, 1, 2, 3],
                             outputRange: ['0deg', '180deg', '180deg', '360deg']
                           })
@@ -292,13 +263,13 @@ const ClinicMenuScreen = (props) => {
                   <Animated.View
                     style={{
                       position: 'absolute',
-                      opacity: nnn.interpolate({
+                      opacity: myanim.interpolate({
                         inputRange: [0, 1, 2, 3],
                         outputRange: [0, 1, 0, 0]
                       }),
                       transform: [
                         {
-                          rotate: nnn.interpolate({
+                          rotate: myanim.interpolate({
                             inputRange: [0, 1, 2, 3],
                             outputRange: ['180deg', '360deg', '540deg', '180deg'],
                           })
@@ -313,14 +284,14 @@ const ClinicMenuScreen = (props) => {
 
                   <Animated.View
                     style={{
-                      opacity: nnn.interpolate({
+                      opacity: myanim.interpolate({
                         inputRange: [0, 1, 2, 3],
                         outputRange: [0, 0, 1, 0]
                       }),
                       position: 'absolute',
                       transform: [
                         {
-                          rotate: nnn.interpolate({
+                          rotate: myanim.interpolate({
                             inputRange: [0, 1, 2, 3],
                             outputRange: ['180deg', '180deg', '360deg', '540deg'],
                           })
@@ -408,9 +379,10 @@ const ClinicMenuScreen = (props) => {
 
 
 
+
     </ScrollView>
 
-  );
+  )
 
 }
 
@@ -473,15 +445,15 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     color: 'grey'
   },
-});
+})
 
 const mapStateToProps = state => {
   return {
     sqlite: state.localdb.sqlite,
     theme: state.theme,
-  };
-};
+  }
+}
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClinicMenuScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ClinicMenuScreen)

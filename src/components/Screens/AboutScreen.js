@@ -1,14 +1,14 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-const SearchScreen = (props) => {
+const AboutScreen = (props) => {
 
   return (
     <View>
-      <Text>Search</Text>
+      <Text>درباره ما</Text>
     </View>
   )
 
 }
 
-export default SearchScreen
+export default AboutScreen

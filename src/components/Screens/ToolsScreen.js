@@ -1,14 +1,14 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-const SearchScreen = (props) => {
+const ToolsScreen = (props) => {
 
   return (
     <View>
-      <Text>Search</Text>
+      <Text>Tools</Text>
     </View>
   )
 
 }
 
-export default SearchScreen
+export default ToolsScreen

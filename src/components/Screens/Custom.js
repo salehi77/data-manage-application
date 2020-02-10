@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Animated, Easing } from 'react-native';
+import React, { Component } from 'react'
+import { AppRegistry, StyleSheet, Text, View, Animated, Easing } from 'react-native'
 
 
 
@@ -64,7 +64,7 @@ class lottieloader2 extends React.Component {
         </View>
 
       </View>
-    );
+    )
 
   }
 }
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     margin: 10,
     color: '#ffffff'
   }
-});
+})
 
 
 export default lottieloader2

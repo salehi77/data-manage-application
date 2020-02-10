@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   SafeAreaView,
   View,
@@ -8,16 +8,16 @@ import {
   TouchableOpacity,
   Button,
   ScrollView,
-} from 'react-native';
-import { connect } from 'react-redux';
+} from 'react-native'
+import { connect } from 'react-redux'
 
 class DescriptionScreen extends Component {
   state = {
     data: null,
-  };
+  }
 
   render() {
-    let desc = this.props.navigation.getParam('description');
+    let desc = this.props.navigation.getParam('description')
     return (
       <View
         style={{
@@ -37,7 +37,7 @@ class DescriptionScreen extends Component {
           </Text>
         </ScrollView>
       </View>
-    );
+    )
   }
 }
 
@@ -50,17 +50,17 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     lineHeight: 25,
   },
-});
+})
 
 const mapStateToProps = state => {
   return {
     theme: state.theme,
-  };
-};
+  }
+}
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DescriptionScreen);
+)(DescriptionScreen)

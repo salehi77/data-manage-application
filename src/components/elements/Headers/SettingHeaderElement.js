@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Text, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Text, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import { Header } from 'react-native-elements'
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
 
 const HomeHeaderElement = props => {
 
@@ -50,15 +50,15 @@ const HomeHeaderElement = props => {
 
 
     </View>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => {
   return {
     theme: state.theme,
-  };
-};
+  }
+}
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeaderElement);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeHeaderElement)

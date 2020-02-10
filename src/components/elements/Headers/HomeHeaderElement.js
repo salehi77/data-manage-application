@@ -1,32 +1,32 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Text, View, TouchableOpacity, TouchableWithoutFeedback, Animated, Easing } from 'react-native';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Text, View, TouchableOpacity, TouchableWithoutFeedback, Animated, Easing } from 'react-native'
 import { Header } from 'react-native-elements'
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
 
 
 
 
 const HomeHeaderElement = props => {
 
-  const [rotateSetting] = React.useState(new Animated.Value(0))
+  const [rotate] = React.useState(new Animated.Value(0))
 
   React.useEffect(() => {
-    startRotateSetting()
+    keepAnimation()
   }, [])
 
 
-  const startRotateSetting = () => {
-    rotateSetting.setValue(0)
+  const keepAnimation = () => {
     Animated.timing(
-      rotateSetting,
+      rotate,
       {
         toValue: 1,
         duration: 8000,
         easing: Easing.linear,
       }
     ).start(() => {
-      startRotateSetting()
+      rotate.setValue(0)
+      keepAnimation()
     })
   }
 
@@ -46,7 +46,7 @@ const HomeHeaderElement = props => {
         <View>
           <TouchableWithoutFeedback
             onPress={() => {
-              // props.navigation.toggleDrawer()
+              props.navigation.toggleDrawer()
             }}
           >
             <View
@@ -89,7 +89,7 @@ const HomeHeaderElement = props => {
               <Animated.View
                 style={{
                   transform: [{
-                    rotate: rotateSetting.interpolate({
+                    rotate: rotate.interpolate({
                       inputRange: [0, 1],
                       outputRange: ['0deg', '360deg']
                     }),
@@ -120,15 +120,15 @@ const HomeHeaderElement = props => {
 
 
     </View>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => {
   return {
     theme: state.theme,
-  };
-};
+  }
+}
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeaderElement);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeHeaderElement)

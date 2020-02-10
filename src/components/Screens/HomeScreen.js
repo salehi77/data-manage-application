@@ -1,83 +1,27 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  TouchableHighlight,
-  ActivityIndicator,
-} from 'react-native';
-import { SectionGrid } from 'react-native-super-grid';
-import HomeHeaderElement from '../elements/Headers/HomeHeaderElement';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
+import React from 'react'
+import { connect } from 'react-redux'
+import { View, StyleSheet, Text, TouchableOpacity, ActivityIndicator, } from 'react-native'
+import { SectionGrid } from 'react-native-super-grid'
+import HomeHeaderElement from '../elements/Headers/HomeHeaderElement'
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
 
 
 const HomeScreen = (props) => {
-  const [allClinics, setallClinics] = React.useState(null);
+  const [allClinics, setallClinics] = React.useState(null)
 
 
   React.useEffect(() => {
 
-    let timer = null
-
-
-    // function readData() {
-    //   // console.log(props.sqlite)
-    //   props.sqlite && props.sqlite.transaction((tx) => {
-    //     try {
-    //       tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
-
-    //         console.log(Object.keys(results.rows.raw()[5]))
-
-    //         setallClinics(results.rows.raw())
-    //         // props.navigation.navigate('ClinicMenu', { clinicID: 1, clinicName: 'some' })
-    //         // props.navigation.navigate('Setting')
-    //         // clearInterval(timer)
-    //       });
-    //     }
-    //     catch (exp) {
-    //       // console.log('jkjk')
-    //     }
-    //   });
-
-
-
-    //   // timer = setInterval(readData, 2000)
-
-    // }
-
-
-    // props.sqlite.transaction((tx) => {
-    //   console.log('tx')
-    //   tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
-    //     console.log(here)
-    //   })
-    // })
-
-
-    function readData() {
-
-      props.sqlite.transaction(tx => {
-
-        tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
-          // console.log(results.rows.raw())
-          setallClinics(results.rows.raw())
-        })
-
+    props.sqlite && props.sqlite.transaction(tx => {
+      tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
+        setallClinics(results.rows.raw())
       })
+    })
 
-    }
-
-
-    readData()
-
-  }, []);
+  }, [props.sqlite])
 
 
-  // console.log(Object.keys(allClinics))
 
-  // console.log(allClinics[5])
 
 
   return (
@@ -113,7 +57,7 @@ const HomeScreen = (props) => {
                       onPress={() => {
                         props.navigation.navigate('ClinicMenu', {
                           clinicID: item.id
-                        });
+                        })
                       }}>
                       <View style={styles.itemView}>
                         <FontAwesome5Icon
@@ -127,29 +71,29 @@ const HomeScreen = (props) => {
                       </View>
                     </TouchableOpacity>
                   </View>
-                );
+                )
               }}
             />
           )
           :
           (
             <View style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
-              <ActivityIndicator size="large" color="#0000ff" />
+              <ActivityIndicator size='large' color='#0000ff' />
             </View>
           )
       }
 
     </View>
 
-  );
-};
+  )
+}
 
 HomeScreen.navigationOptions = ({ navigation }) => {
   return {
     header: <HomeHeaderElement navigation={navigation} />,
     // title: 'home',
-  };
-};
+  }
+}
 
 
 const styles = StyleSheet.create({
@@ -188,16 +132,16 @@ const styles = StyleSheet.create({
     color: 'white',
     padding: 10,
   },
-});
+})
 
 
 const mapStateToProps = state => {
   return {
     sqlite: state.localdb.sqlite,
     theme: state.theme,
-  };
-};
+  }
+}
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

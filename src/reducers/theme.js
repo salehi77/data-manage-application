@@ -17,7 +17,7 @@ export const base = {
   SECONDARY_FONT_FAMILY_BOLD: 'XBRoya-Bold',
 
   MAIN_FONT_SIZE: 16
-};
+}
 
 export const darkTheme = {
   PRIMARY_BACKGROUND_COLOR: '#3d3d3d',
@@ -31,7 +31,7 @@ export const darkTheme = {
   SECONDARY_TEXT_COLOR: '#3d3d3d',
   PRIMARY_TEXT_BACKGROUND_COLOR: '#3d3d3d',
   SECONDARY_TEXT_BACKGROUND_COLOR: '#ffffff',
-};
+}
 export const lightTheme = {
   PRIMARY_BACKGROUND_COLOR: '#ffffff',
   PRIMARY_BACKGROUND_COLOR_LIGHT: '#f7f7f7',
@@ -44,7 +44,7 @@ export const lightTheme = {
   SECONDARY_TEXT_COLOR: '#ffffff',
   PRIMARY_TEXT_BACKGROUND_COLOR: '#ffffff',
   SECONDARY_TEXT_BACKGROUND_COLOR: '#3d3d3d',
-};
+}
 
 
 export const colorOptions = {
@@ -104,7 +104,7 @@ export const colorOptions = {
     PRIMARY_COLOR_BOLD: '#2E7D32',
     PRIMARY_FOREGROUND_COLOR: '#ffffff',
   },
-};
+}
 
 
 export const colorOptionsSecondary = {
@@ -164,4 +164,4 @@ export const colorOptionsSecondary = {
     SECONDARY_COLOR_BOLD: '#2E7D32',
     SECONDARY_FOREGROUND_COLOR: '#ffffff',
   },
-};
+}

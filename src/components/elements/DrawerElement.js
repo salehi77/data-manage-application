@@ -1,22 +1,20 @@
-import React from 'react';
-import { Text, View, StyleSheet, ImageBackground } from 'react-native'
+import React from 'react'
+import { Text, View, StyleSheet, ImageBackground, ScrollView } from 'react-native'
 
 
 const DrawerElement = (props) => {
 
-  console.log(Object.keys(props.descriptors.Home.options))
-
-  console.log(props.descriptors.Setting.options.icon)
 
 
   return (
-    <View>
+
+    <ScrollView>
 
 
       <View style={{ height: 150 }}>
         <ImageBackground
           source={require('../../assets/images/cover.jpeg')}
-          style={{ flex: 1, width: 280, justifyContent: 'center' }}
+          style={{ flex: 1, justifyContent: 'center' }}
         >
         </ImageBackground>
       </View>
@@ -28,15 +26,21 @@ const DrawerElement = (props) => {
 
         {
 
-          Object.keys(props.descriptors).map(descriptor => {
+
+          Object.entries(props.descriptors).map((descriptor, index) => {
+
+            // console.log(index)s
+
+            // console.log(Object.keys(descriptor[1]))
+            // console.log(Object.keys(descriptor[1].options))
+
+
             return (
-              <View
-                key={descriptor}
-              >
+              <View key={index}>
                 <Text
-                  onPress={() => props.navigation.navigate(descriptor)}
+                  onPress={() => props.navigation.navigate(descriptor[0])}
                 >
-                  {props.descriptors[descriptor].options.title ? props.descriptors[descriptor].options.title : descriptor}
+                  {descriptor[1].options.title}
                 </Text>
               </View>
             )
@@ -47,7 +51,7 @@ const DrawerElement = (props) => {
       </View>
 
 
-    </View>
+    </ScrollView>
   )
 
 }
@@ -77,6 +81,6 @@ const styles = StyleSheet.create({
   activeBackgroundColor: {
     backgroundColor: 'grey'
   }
-});
+})
 
 export default DrawerElement
