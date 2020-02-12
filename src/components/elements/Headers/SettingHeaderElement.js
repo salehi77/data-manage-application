@@ -30,7 +30,7 @@ const HomeHeaderElement = props => {
             }}
           >
 
-            <FontAwesome5Icon name='long-arrow-alt-right' size={30} color='#34495e' />
+            <FontAwesome5Icon name='arrow-right' size={30} color='#34495e' />
 
           </TouchableWithoutFeedback>
 

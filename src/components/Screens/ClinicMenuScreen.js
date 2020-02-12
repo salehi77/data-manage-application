@@ -3,6 +3,7 @@ import { View, ScrollView, StyleSheet, Text, TouchableOpacity, ActivityIndicator
 import { connect } from 'react-redux'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
 import { ListItem } from 'react-native-elements'
+import Toast from 'react-native-simple-toast'
 
 
 
@@ -222,15 +223,16 @@ const ClinicMenuScreen = (props) => {
                   }}
 
                   onPress={() => {
-
                     try {
                       const d = JSON.parse(clinicData.diagram)
+                      if (d === null) throw new Error()
                       props.navigation.navigate('Algorithm', {
                         diagram: d
                       })
                     }
-                    catch (e) { }
-
+                    catch (e) {
+                      Toast.show('داده‌ای برای نمایش وجود ندارد!')
+                    }
                   }}
                 >
 

@@ -1,8 +1,12 @@
 import React from 'react'
-import { Text, View, StyleSheet, ImageBackground, ScrollView } from 'react-native'
+import { connect } from 'react-redux'
+import { Text, View, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Image } from 'react-native'
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
+import { ListItem, Divider } from 'react-native-elements'
 
 
 const DrawerElement = (props) => {
+
 
 
 
@@ -12,11 +16,33 @@ const DrawerElement = (props) => {
 
 
       <View style={{ height: 150 }}>
+
+
         <ImageBackground
           source={require('../../assets/images/cover.jpeg')}
-          style={{ flex: 1, justifyContent: 'center' }}
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
+
+
+          <TouchableOpacity>
+            <Image
+              source={require('../../assets/images/user.png')}
+              style={{
+                width: 90,
+                height: 90,
+                borderRadius: 50,
+              }}
+            />
+          </TouchableOpacity>
+
+
         </ImageBackground>
+
+
       </View>
 
 
@@ -24,29 +50,28 @@ const DrawerElement = (props) => {
       <View>
 
 
-        {
+        <ListItem
+          Component={TouchableOpacity}
+          onPress={() => props.navigation.navigate('Tools')}
+          title={<Text style={{ fontFamily: props.theme.PRIMARY_FONT_FAMILY, fontSize: props.theme.FONT_SIZE_MEDIUM }}>ابزارها</Text>}
+          leftIcon={<FontAwesome5Icon name='tools' size={35} color='#484848' style={{ marginEnd: 5 }} />}
+        />
 
 
-          Object.entries(props.descriptors).map((descriptor, index) => {
-
-            // console.log(index)s
-
-            // console.log(Object.keys(descriptor[1]))
-            // console.log(Object.keys(descriptor[1].options))
+        <Divider />
 
 
-            return (
-              <View key={index}>
-                <Text
-                  onPress={() => props.navigation.navigate(descriptor[0])}
-                >
-                  {descriptor[1].options.title}
-                </Text>
-              </View>
-            )
-          })
+        <ListItem
+          Component={TouchableOpacity}
+          onPress={() => props.navigation.navigate('About')}
+          title={<Text style={{ fontFamily: props.theme.PRIMARY_FONT_FAMILY, fontSize: props.theme.FONT_SIZE_MEDIUM }}>درباره ما</Text>}
+          leftIcon={<FontAwesome5Icon name='users' size={35} color='#484848' style={{ marginEnd: 5 }} />}
+        />
 
-        }
+
+        <Divider />
+
+
 
       </View>
 
@@ -58,29 +83,10 @@ const DrawerElement = (props) => {
 
 
 
-const styles = StyleSheet.create({
-
-
-
-  screenStyle: {
-    height: 30,
-    marginTop: 2,
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%'
-  },
-  screenTextStyle: {
-    fontSize: 20,
-    marginLeft: 20,
-    textAlign: 'center'
-  },
-  selectedTextStyle: {
-    fontWeight: 'bold',
-    color: '#00adff'
-  },
-  activeBackgroundColor: {
-    backgroundColor: 'grey'
+const mapStateToProps = (state) => {
+  return {
+    theme: state.theme
   }
-})
+}
 
-export default DrawerElement
+export default connect(mapStateToProps)(DrawerElement)

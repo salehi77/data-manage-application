@@ -178,9 +178,9 @@ export const SelectAlgo = (props) => {
                       {
                         option.selected
                           ?
-                          <FontAwesome5Icon name='check-square' solid size={20} color='#36a5ad' />
+                          <FontAwesome5Icon name='check-square' solid size={props.theme.MAIN_FONT_SIZE} color='#36a5ad' />
                           :
-                          <FontAwesome5Icon name='square' light size={20} color='#36a5ad' />
+                          <FontAwesome5Icon name='square' light size={props.theme.MAIN_FONT_SIZE} color='#36a5ad' />
                       }
                     </View>
                   </View>
