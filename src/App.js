@@ -7,9 +7,11 @@ import { createAppContainer } from 'react-navigation'
 import RNRestart from 'react-native-restart'
 
 import { setDatabase } from './actions/localdb'
-import { changeMainFont } from './actions/themeAction'
+import { changeMainFont, changePrimaryColor, changeThemeBackground } from './actions/themeAction'
 
 import { getFontStorage, setFontStorage } from './storages/@fontSize'
+import { getThemeStorage, setThemeStorage } from './storages/@theme'
+
 
 import Routes from './Routes'
 const AppContainer = createAppContainer(Routes)
@@ -57,6 +59,15 @@ const App = (props) => {
       })
       .catch(e => { })
 
+    getThemeStorage()
+      .then(value => {
+        if (value) {
+          props.changePrimaryColor({ primary: value.color, secondary: value.colorSec })
+          props.changeThemeBackground(value.mode)
+        }
+      })
+      .catch(e => { })
+
   }, [])
 
   React.useEffect(() => {
@@ -68,6 +79,7 @@ const App = (props) => {
   function _handleAppStateChange(nextAppState) {
     if (nextAppState.match(/inactive|background/)) {
       setFontStorage(props.theme.MAIN_FONT_SIZE)
+      setThemeStorage(props.theme.current)
     }
   }
 
@@ -83,113 +95,6 @@ const App = (props) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class App extends React.Component {
-
-
-//   componentDidMount() {
-
-//     if (I18nManager.isRTL != true) {
-//       I18nManager.forceRTL(true)
-//       RNRestart.Restart()
-//     }
-
-
-//     SQLite.openDatabase(
-//       { name: 'clinics_db', createFromLocation: '~/custom/clinics_db' },
-//       (db) => okCallback(db, this.props),
-//       errorCallback,
-//     )
-
-
-//     AppState.addEventListener('change', this._handleAppStateChange)
-
-//     getFontStorage()
-//       .then(value => {
-//         console.log(value)
-//         if (value) {
-//           this.props.changeMainFont(value)
-//         }
-//       })
-//       .catch(e => { })
-
-//   }
-
-//   // componentWillUnmount() {
-//   //   console.log(this.props.theme.MAIN_FONT_SIZE, 'unmount')
-//   // }
-
-
-//   _handleAppStateChange = (nextAppState) => {
-//     if (nextAppState.match(/inactive|background/)) {
-//       console.log(this.props.theme.MAIN_FONT_SIZE, 'background')
-//       setFontStorage(this.props.theme.MAIN_FONT_SIZE)
-//     }
-//   }
-
-//   render() {
-
-//     console.log(this.props.theme.MAIN_FONT_SIZE, 'render')
-
-
-//     return (
-//       <SafeAreaProvider>
-//         <AppContainer />
-//       </SafeAreaProvider>
-//     )
-
-//   }
-
-// }
-
-
-
-
-
-
-
-
-
-
-
 const mapStateToProps = (state) => {
   return {
     sqlite: state.localdb.sqlite,
@@ -199,7 +104,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   setDatabase,
-  changeMainFont
+  changeMainFont,
+  changePrimaryColor,
+  changeThemeBackground
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

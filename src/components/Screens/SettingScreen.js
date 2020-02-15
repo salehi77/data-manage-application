@@ -216,13 +216,9 @@ const SettingScreen = (props) => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: '#32a885',
-              marginLeft: 10,
-              marginVertical: 5,
               paddingVertical: 10,
-              paddingHorizontal: 15,
-              width: '90%',
+              paddingLeft: 20,
+              paddingRight: 30,
               backgroundColor: props.theme.SECONDARY_COLOR
             }}
             onPress={() => {
@@ -231,12 +227,18 @@ const SettingScreen = (props) => {
           >
             <Text
               style={{
-                maxWidth: '85%',
                 color: 'white',
                 fontFamily: props.theme.PRIMARY_FONT_FAMILY,
-                fontSize: props.theme.FONT_SIZE_LARGE,
+                fontSize: 18,
               }}
             >تغییر رنگ</Text>
+            <View
+              style={{
+                marginLeft: 'auto'
+              }}
+            >
+              <FontAwesome5Icon name='arrow-left' color='white' size={28} />
+            </View>
           </TouchableOpacity>
 
 

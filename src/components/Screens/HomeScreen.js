@@ -15,8 +15,6 @@ const HomeScreen = (props) => {
     props.sqlite && props.sqlite.transaction(tx => {
       tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
         setallClinics(results.rows.raw())
-        // props.navigation.navigate('ClinicMenu', { clinicID: 2 })
-        // props.navigation.navigate('Setting')
       })
     })
 

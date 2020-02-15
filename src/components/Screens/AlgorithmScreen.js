@@ -9,11 +9,10 @@ import Toast from 'react-native-simple-toast'
 
 
 
-
-
-
 const HeaderAlgo = (props) => {
+
   return (
+
     <View
       style={{
         flexDirection: 'row',
@@ -53,6 +52,7 @@ const HeaderAlgo = (props) => {
           style={{
             borderWidth: 2,
             borderColor: 'orange',
+            borderColor: props.theme.SECONDARY_COLOR,
             padding: 5,
             borderRadius: 50,
             width: 40,
@@ -78,6 +78,9 @@ const HeaderAlgo = (props) => {
 
   )
 }
+
+
+
 
 
 export const TopText = (props) => {
@@ -112,6 +115,8 @@ export const TopText = (props) => {
 
 
 
+
+
 export const SelectAlgo = (props) => {
 
   const [options, setoptions] = React.useState([])
@@ -126,6 +131,7 @@ export const SelectAlgo = (props) => {
     })
     setoptions(o)
   }, [props.childs, props.initSelect])
+
 
   return (
     <View
@@ -154,11 +160,11 @@ export const SelectAlgo = (props) => {
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
-                    backgroundColor: '#a1a1a1',
                     marginLeft: 10,
                     marginVertical: 5,
                     paddingVertical: 10,
                     paddingHorizontal: 15,
+                    borderRadius: 5,
                     width: '90%',
                     backgroundColor: props.theme.PRIMARY_COLOR
                   }}
@@ -199,6 +205,9 @@ export const SelectAlgo = (props) => {
 }
 
 
+
+
+
 const NextButton = (props) => {
   return (
     <View
@@ -212,11 +221,11 @@ const NextButton = (props) => {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#32a885',
             marginLeft: 10,
             marginVertical: 5,
             paddingVertical: 10,
             paddingHorizontal: 15,
+            borderRadius: 5,
             width: '90%',
             backgroundColor: props.theme.SECONDARY_COLOR
           }}

@@ -39,28 +39,18 @@ const ClinicMenuScreen = (props) => {
     keepAnimation()
 
     let clinicID = props.navigation.state.params.clinicID
-
     props.sqlite.transaction(tx => {
-
       props.sqlite && props.sqlite.transaction((tx) => {
-
         try {
           tx.executeSql('SELECT * FROM clinics WHERE id = ?', [clinicID], (tx, result) => {
-
-
             if (result.rows.length >= 1) {
               setclinicData(result.rows.item(0))
-
             }
-
           })
         }
         catch (exp) { }
-
       })
     })
-
-
   }, [])
 
 
