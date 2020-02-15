@@ -114,9 +114,9 @@ const SettingScreen = (props) => {
                 minimumValue={12}
                 maximumValue={32}
                 minimumTrackTintColor='#b3b3b3'
-                maximumTrackTintColor={props.theme.PRIMARY_COLOR_BOLD}
+                maximumTrackTintColor={props.theme.PRIMARY_COLOR}
                 step={1}
-                thumbTintColor={props.theme.PRIMARY_COLOR_BOLD}
+                thumbTintColor={props.theme.PRIMARY_COLOR}
                 value={props.theme.MAIN_FONT_SIZE}
                 onValueChange={value => {
                   setFontSize(value)
@@ -132,13 +132,14 @@ const SettingScreen = (props) => {
             style={{
               height: 200,
               width: '100%',
-              borderWidth: 1,
-              borderColor: '#b5b5b5',
+              borderColor: props.theme.PRIMARY_COLOR_LIGHT,
+              borderTopWidth: 3,
+              borderBottomWidth: 3,
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               overflow: 'hidden',
-              backgroundColor: '#d9d9d9',
+              backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR_LIGHT,
             }}
           >
 
@@ -190,6 +191,8 @@ const SettingScreen = (props) => {
             }}
           >
             <Switch
+              thumbColor={props.theme.PRIMARY_COLOR}
+              trackColor={props.theme.PRIMARY_COLOR}
               value={props.theme.current.mode === 'dark'}
               onValueChange={(e) => {
                 props.changeThemeBackground(e ? 'dark' : 'light')
@@ -220,6 +223,7 @@ const SettingScreen = (props) => {
               paddingVertical: 10,
               paddingHorizontal: 15,
               width: '90%',
+              backgroundColor: props.theme.SECONDARY_COLOR
             }}
             onPress={() => {
               props.navigation.navigate('Theme')

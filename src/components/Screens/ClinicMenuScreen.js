@@ -364,10 +364,11 @@ const ClinicMenuScreen = (props) => {
 
           <ListItem
             Component={TouchableOpacity}
-            title={<Text style={{ fontFamily: 'XMYekan', fontSize: 18 }}>توضیحات</Text>}
-            leftIcon={<FontAwesome5Icon name='clipboard' size={40} color='#484848' />}
-            subtitle={<Text style={{ alignSelf: 'flex-start', color: 'grey', fontSize: 12 }}>توضیحات کلی درباره Something</Text>}
+            title={<Text style={{ fontFamily: 'XMYekan', fontSize: 18, color: props.theme.PRIMARY_TEXT_COLOR }}>توضیحات</Text>}
+            leftIcon={<FontAwesome5Icon name='clipboard' size={40} color={props.theme.PRIMARY_TEXT_COLOR} />}
+            subtitle={<Text style={{ alignSelf: 'flex-start', color: props.theme.PRIMARY_TEXT_COLOR, fontSize: 12 }}>توضیحات کلی درباره Something</Text>}
             containerStyle={{
+              backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR_LIGHT
             }}
           />
 

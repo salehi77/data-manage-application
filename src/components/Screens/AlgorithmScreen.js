@@ -19,6 +19,7 @@ const HeaderAlgo = (props) => {
         flexDirection: 'row',
         paddingVertical: 15,
         alignItems: 'center',
+        backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
       }}
     >
 
@@ -37,7 +38,7 @@ const HeaderAlgo = (props) => {
             props.navigation.goBack()
           }}
         >
-          <FontAwesome5Icon name='arrow-right' size={25} color='#3e3e3e' />
+          <FontAwesome5Icon name='arrow-right' size={25} color={props.theme.PRIMARY_TEXT_COLOR} />
         </TouchableOpacity>
       </View>
 
@@ -64,6 +65,7 @@ const HeaderAlgo = (props) => {
           <Text
             style={{
               fontSize: 18,
+              color: props.theme.PRIMARY_TEXT_COLOR
             }}
           >
             {props.number}
@@ -98,6 +100,7 @@ export const TopText = (props) => {
             textAlign: 'center',
             fontFamily: props.theme.PRIMARY_FONT_FAMILY,
             fontSize: props.theme.MAIN_FONT_SIZE + 6,
+            color: props.theme.PRIMARY_TEXT_COLOR
           }}
         >
           {props.text}
@@ -157,6 +160,7 @@ export const SelectAlgo = (props) => {
                     paddingVertical: 10,
                     paddingHorizontal: 15,
                     width: '90%',
+                    backgroundColor: props.theme.PRIMARY_COLOR
                   }}
                 >
                   <Text
@@ -178,9 +182,9 @@ export const SelectAlgo = (props) => {
                       {
                         option.selected
                           ?
-                          <FontAwesome5Icon name='check-square' solid size={props.theme.MAIN_FONT_SIZE} color='#36a5ad' />
+                          <FontAwesome5Icon name='check-square' solid size={props.theme.MAIN_FONT_SIZE} color='white' />
                           :
-                          <FontAwesome5Icon name='square' light size={props.theme.MAIN_FONT_SIZE} color='#36a5ad' />
+                          <FontAwesome5Icon name='square' light size={props.theme.MAIN_FONT_SIZE} color='white' />
                       }
                     </View>
                   </View>
@@ -214,6 +218,7 @@ const NextButton = (props) => {
             paddingVertical: 10,
             paddingHorizontal: 15,
             width: '90%',
+            backgroundColor: props.theme.SECONDARY_COLOR
           }}
         >
           <Text
@@ -229,6 +234,63 @@ const NextButton = (props) => {
     </View>
   )
 }
+
+
+
+
+
+
+const ResultPath = (props) => {
+  return (
+
+    <View>
+      {
+        props.pathToThis.map((text, index) => {
+          return (
+            <View
+              key={index}
+              style={{
+                width: '100%',
+                alignItems: 'center',
+              }}
+            >
+              <View
+                style={{
+                  backgroundColor: '#a1a1a1',
+                  marginVertical: 5,
+                  padding: 10,
+                  width: '90%',
+                  backgroundColor: props.theme.PRIMARY_COLOR
+                }}
+              >
+                <Text
+                  style={{
+                    color: 'white',
+                    textAlign: 'center',
+                    fontFamily: props.theme.PRIMARY_FONT_FAMILY,
+                    fontSize: props.theme.MAIN_FONT_SIZE,
+                  }}
+                >
+                  {text}
+                </Text>
+              </View>
+              {
+                props.pathToThis.length !== index + 1
+                  ?
+                  <FontAwesome5Icon name='arrow-down' color={props.theme.PRIMARY_COLOR} size={20} />
+                  :
+                  null
+              }
+            </View>
+          )
+        })
+      }
+    </View>
+
+  )
+}
+
+
 
 
 
@@ -268,110 +330,78 @@ const AlgorithmScreen = (props) => {
 
   return (
 
-    <ScrollView
-      style={{
-        flex: 1,
-        backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
-      }}
-    >
+    <>
 
       <HeaderAlgo {...props} number={pathToThis.length} />
 
 
 
-      <TopText {...props} text={diagram.text} />
-
-
-
-      {
-        diagram.childs.length > 0
-
-          ?
-
-
-          <>
-
-
-            <SelectAlgo
-              {...props}
-              childs={diagram.childs}
-              initSelect={selected}
-              changedSelected={(s) => {
-                setSelected(s)
-              }}
-            />
-
-
-
-            <NextButton
-              {...props}
-              onPress={() => {
-                if (selected > -1 && diagram.childs[selected]) {
-                  props.navigation.push('Algorithm', {
-                    diagram: diagram.childs[selected],
-                    pathToThis,
-                  })
-                }
-                else {
-                  Toast.show('لطفا یک گزینه را انتخاب کنید')
-                }
-              }}
-            />
-
-
-          </>
-
-
-          :
-
-
-          <>
+      <ScrollView
+        style={{
+          flex: 1,
+          backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR,
+        }}
+      >
 
 
 
 
-            <View>
-              {
-                pathToThis.map((text, index) => {
-                  return (
-                    <View
-                      key={index}
-                      style={{
-                        width: '100%',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <View
-                        style={{
-                          backgroundColor: '#a1a1a1',
-                          marginVertical: 5,
-                          padding: 10,
-                          width: '90%',
-                        }}
-                      >
-                        <Text
-                          style={{
-                            color: 'white',
-                            textAlign: 'center',
-                            fontFamily: props.theme.PRIMARY_FONT_FAMILY,
-                            fontSize: props.theme.MAIN_FONT_SIZE,
-                          }}
-                        >
-                          {text}
-                        </Text>
-                      </View>
-                      {pathToThis.length !== index + 1 ?
-                        <FontAwesome5Icon name='arrow-down' color='#a1a1a1' size={20} />
-                        : null}
-                    </View>
-                  )
-                })
-              }
-            </View>
+        <TopText {...props} text={diagram.text} />
 
 
 
-          </>
+        {
+          diagram.childs.length > 0
+
+            ?
+
+
+            <>
+
+
+              <SelectAlgo
+                {...props}
+                childs={diagram.childs}
+                initSelect={selected}
+                changedSelected={(s) => {
+                  setSelected(s)
+                }}
+              />
+
+
+
+              <NextButton
+                {...props}
+                onPress={() => {
+                  if (selected > -1 && diagram.childs[selected]) {
+                    props.navigation.push('Algorithm', {
+                      diagram: diagram.childs[selected],
+                      pathToThis,
+                    })
+                  }
+                  else {
+                    Toast.show('لطفا یک گزینه را انتخاب کنید')
+                  }
+                }}
+              />
+
+
+            </>
+
+
+            :
+
+
+            <>
+
+
+
+              <ResultPath {...props} pathToThis={pathToThis} />
+
+
+
+
+            </>
 
 
 
@@ -379,9 +409,11 @@ const AlgorithmScreen = (props) => {
 
 
 
-      }
+        }
 
-    </ScrollView>
+      </ScrollView>
+
+    </>
 
   )
 }
