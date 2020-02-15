@@ -16,6 +16,7 @@ import ToolsScreen from './components/Screens/ToolsScreen'
 
 
 import SettingScreen from './components/Screens/SettingScreen'
+import ThemeScreen from './components/Screens/ThemeScreen'
 
 import DrawerElement from './components/elements/DrawerElement'
 
@@ -25,24 +26,29 @@ import CustomScreen from './components/Screens/Custom'
 
 
 
+const SettingStack = createStackNavigator({
+  Setting: SettingScreen,
+  Theme: ThemeScreen
+}, {
+  initialRouteName: 'Setting',
+  navigationOptions: {
+    header: null
+  }
+})
+
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   ClinicMenu: ClinicMenuScreen,
   Algorithm: AlgorithmScreen,
   Description: DescriptionScreen,
-  Setting: SettingScreen,
+  Setting: SettingStack,
+  // Setting: SettingScreen,
   Search: SearchScreen,
   Custom: CustomScreen
 }, {
   initialRouteName: 'Home'
 })
 
-
-// const SettingStack = createStackNavigator({
-//   Setting: SettingScreen
-// }, {
-//   initialRouteName: 'Setting'
-// })
 
 const ToolsStack = createStackNavigator({
   Tools: ToolsScreen
@@ -52,21 +58,12 @@ const ToolsStack = createStackNavigator({
 const DrawerNavigate = createDrawerNavigator({
   Home: {
     screen: HomeStack,
-    navigationOptions: {
-      title: 'خانه'
-    },
   },
   About: {
     screen: AboutScreen,
-    navigationOptions: {
-      title: 'درباره ما'
-    },
   },
   Tools: {
     screen: ToolsStack,
-    navigationOptions: {
-      title: 'ابزار'
-    },
   },
 },
   {

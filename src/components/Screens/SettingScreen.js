@@ -1,12 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Animated, Text, View, ActivityIndicator, ScrollView } from 'react-native'
+import { Animated, Text, View, ActivityIndicator, ScrollView, TouchableOpacity, Switch } from 'react-native'
 import { Divider } from 'react-native-elements'
+import { SectionGrid, FlatGrid } from 'react-native-super-grid'
 import SettingHeaderElement from '../elements/Headers/SettingHeaderElement'
-import AsyncStorage from '@react-native-community/async-storage'
 import { TopText, SelectAlgo } from './AlgorithmScreen'
-import { changeMainFont } from '../../actions/themeAction'
+import { changeMainFont, changePrimaryColor, changeThemeBackground } from '../../actions/themeAction'
 import Slider from '../elements/SliderElement'
+import { colorOptions } from '../../reducers/theme'
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
+
+
+
+let basicColors = Object.entries(colorOptions).map(color => {
+  return { name: color[0], value: color[1].PRIMARY_COLOR }
+})
+
+let colors = []
+basicColors.map(primary => {
+  let t = basicColors.map(secondary => {
+    if (primary !== secondary) return { primary, secondary }
+  })
+  colors = [...colors, ...t]
+})
+colors = colors.filter(color => color)
+
 
 
 
@@ -21,6 +39,7 @@ const SettingScreen = (props) => {
     else {
       setFontSize(16)
     }
+    // props.navigation.navigate('Theme')
   }, [])
 
 
@@ -95,9 +114,9 @@ const SettingScreen = (props) => {
                 minimumValue={12}
                 maximumValue={32}
                 minimumTrackTintColor='#b3b3b3'
-                maximumTrackTintColor='#3498db'
+                maximumTrackTintColor={props.theme.PRIMARY_COLOR_BOLD}
                 step={1}
-                thumbTintColor='#3498db'
+                thumbTintColor={props.theme.PRIMARY_COLOR_BOLD}
                 value={props.theme.MAIN_FONT_SIZE}
                 onValueChange={value => {
                   setFontSize(value)
@@ -118,9 +137,8 @@ const SettingScreen = (props) => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              borderRadius: 10,
               overflow: 'hidden',
-              // backgroundColor: '#d9d9d9',
+              backgroundColor: '#d9d9d9',
             }}
           >
 
@@ -149,23 +167,74 @@ const SettingScreen = (props) => {
 
 
 
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingHorizontal: 15,
+            marginTop: 20
+          }}
+        >
+          <View>
+            <Text
+              style={{
+                fontFamily: props.theme.PRIMARY_FONT_FAMILY,
+                fontSize: 18,
+              }}
+            >حالت شب</Text>
+          </View>
+          <View
+            style={{
+              marginLeft: 'auto',
+              marginRight: 10
+            }}
+          >
+            <Switch
+              value={props.theme.current.mode === 'dark'}
+              onValueChange={(e) => {
+                props.changeThemeBackground(e ? 'dark' : 'light')
+              }}
+            />
+          </View>
+        </View>
+
+
+
+        <Divider style={{ marginVertical: 20, height: 1 }} />
+
+
+
 
         <View>
 
-          <View
+
+
+          <TouchableOpacity
             style={{
-              marginHorizontal: 35,
-              marginTop: 10,
-              marginBottom: 5,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#32a885',
+              marginLeft: 10,
+              marginVertical: 5,
+              paddingVertical: 10,
+              paddingHorizontal: 15,
+              width: '90%',
+            }}
+            onPress={() => {
+              props.navigation.navigate('Theme')
             }}
           >
             <Text
               style={{
+                maxWidth: '85%',
+                color: 'white',
                 fontFamily: props.theme.PRIMARY_FONT_FAMILY,
-                fontSize: 16
+                fontSize: props.theme.FONT_SIZE_LARGE,
               }}
-            >تغییر پس‌زمینه</Text>
-          </View>
+            >تغییر رنگ</Text>
+          </TouchableOpacity>
+
 
 
         </View>
@@ -184,12 +253,19 @@ const SettingScreen = (props) => {
 
 }
 
+
+
+
+
+
+
 SettingScreen.navigationOptions = ({ navigation }) => {
   return {
     header: <SettingHeaderElement navigation={navigation} />,
     // title: 'home',
   }
 }
+
 
 const mapStateToProps = state => {
   return {
@@ -198,7 +274,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  changeMainFont
+  changeMainFont,
+  changePrimaryColor,
+  changeThemeBackground
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingScreen)

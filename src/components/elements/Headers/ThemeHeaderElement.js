@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-na
 import { Header } from 'react-native-elements'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
 
-const SettingHeaderElement = props => {
+const ThemeHeaderElement = props => {
 
   return (
     <View style={{ height: 60 }}>
@@ -26,11 +26,11 @@ const SettingHeaderElement = props => {
 
           <TouchableWithoutFeedback
             onPress={() => {
-              props.navigation.dispatch({ type: 'Navigation/BACK' })
+              props.navigation.goBack()
             }}
           >
 
-            <FontAwesome5Icon name='arrow-right' size={30} color='white' />
+            <FontAwesome5Icon name='arrow-right' size={30} color={props.theme.SECONDARY_COLOR} />
 
           </TouchableWithoutFeedback>
 
@@ -43,12 +43,12 @@ const SettingHeaderElement = props => {
           style={{
             fontFamily: props.theme.PRIMARY_FONT_FAMILY,
             fontSize: props.theme.FONT_SIZE_LARGE,
-            color: 'white'
+            color: props.theme.SECONDARY_COLOR
           }}
-        >تنظیمات</Text>
+        >انتخاب رنگ</Text>
 
         <View style={{ flex: 1, flexDirection: 'row-reverse', alignItems: 'center' }}>
-
+          <Text></Text>
         </View>
 
       </Header>
@@ -67,4 +67,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingHeaderElement)
+export default connect(mapStateToProps, mapDispatchToProps)(ThemeHeaderElement)

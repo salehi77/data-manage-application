@@ -31,6 +31,7 @@ const HomeHeaderElement = props => {
   }
 
 
+
   return (
     <View style={{ height: 60 }}>
 
@@ -38,7 +39,8 @@ const HomeHeaderElement = props => {
       <Header
         containerStyle={{
           height: '100%',
-          paddingBottom: 25
+          paddingBottom: 25,
+          backgroundColor: props.theme.PRIMARY_COLOR
         }}
 
       >

@@ -16,6 +16,7 @@ const HomeScreen = (props) => {
       tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
         setallClinics(results.rows.raw())
         // props.navigation.navigate('ClinicMenu', { clinicID: 2 })
+        // props.navigation.navigate('Setting')
       })
     })
 
