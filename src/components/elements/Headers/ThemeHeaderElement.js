@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Text, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import { Header } from 'react-native-elements'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
+import { ClinicIcon } from '../../../config/icon-font'
+
 
 const ThemeHeaderElement = props => {
 
@@ -30,7 +32,7 @@ const ThemeHeaderElement = props => {
             }}
           >
 
-            <FontAwesome5Icon name='arrow-right' size={30} color={props.theme.SECONDARY_COLOR} />
+            <ClinicIcon name='right-arrow' size={30} color={props.theme.SECONDARY_COLOR} />
 
           </TouchableWithoutFeedback>
 

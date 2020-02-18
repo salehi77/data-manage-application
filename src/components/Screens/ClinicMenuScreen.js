@@ -4,27 +4,11 @@ import { connect } from 'react-redux'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
 import { ListItem } from 'react-native-elements'
 import Toast from 'react-native-simple-toast'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import { ClinicIcon } from '../../config/icon-font'
 
 
 
 const ClinicMenuScreen = (props) => {
-
-
 
 
 
@@ -138,7 +122,7 @@ const ClinicMenuScreen = (props) => {
               }}
             >
 
-              <FontAwesome5Icon name='home' size={30} color='white' solid />
+              <ClinicIcon name='home' size={32} color='white' solid />
 
             </TouchableOpacity>
 
@@ -246,8 +230,8 @@ const ClinicMenuScreen = (props) => {
                       ]
                     }}
                   >
-                    <FontAwesome5Icon
-                      name={'heart'} size={60} color='white'
+                    <ClinicIcon
+                      name='like' size={60} color='white'
                     />
                   </Animated.View>
 
@@ -269,8 +253,8 @@ const ClinicMenuScreen = (props) => {
                       ]
                     }}
                   >
-                    <FontAwesome5Icon
-                      name={'project-diagram'} size={50} color='white'
+                    <ClinicIcon
+                      name='diagram' size={70} color='white'
                     />
                   </Animated.View>
 
@@ -291,8 +275,8 @@ const ClinicMenuScreen = (props) => {
                       ]
                     }}
                   >
-                    <FontAwesome5Icon
-                      name={'arrow-left'} size={60} color='white'
+                    <ClinicIcon
+                      name='left-arrow' size={60} color='white'
                     />
                   </Animated.View>
 
@@ -355,7 +339,7 @@ const ClinicMenuScreen = (props) => {
           <ListItem
             Component={TouchableOpacity}
             title={<Text style={{ fontFamily: 'XMYekan', fontSize: 18, color: props.theme.PRIMARY_TEXT_COLOR }}>توضیحات</Text>}
-            leftIcon={<FontAwesome5Icon name='clipboard' size={40} color={props.theme.PRIMARY_TEXT_COLOR} />}
+            leftIcon={<ClinicIcon name='clipboards' size={40} color={props.theme.PRIMARY_TEXT_COLOR} />}
             subtitle={<Text style={{ alignSelf: 'flex-start', color: props.theme.PRIMARY_TEXT_COLOR, fontSize: 12 }}>توضیحات کلی درباره Something</Text>}
             containerStyle={{
               backgroundColor: props.theme.PRIMARY_BACKGROUND_COLOR_LIGHT

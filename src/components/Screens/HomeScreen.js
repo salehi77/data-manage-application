@@ -4,14 +4,12 @@ import { View, StyleSheet, Text, TouchableOpacity, ActivityIndicator, } from 're
 import { SectionGrid } from 'react-native-super-grid'
 import HomeHeaderElement from '../elements/Headers/HomeHeaderElement'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
-
+import { ClinicIcon } from '../../config/icon-font'
 
 const HomeScreen = (props) => {
   const [allClinics, setallClinics] = React.useState(null)
 
-
   React.useEffect(() => {
-
     props.sqlite && props.sqlite.transaction(tx => {
       tx.executeSql('SELECT * FROM clinics', [], (tx, results) => {
         setallClinics(results.rows.raw())
@@ -60,12 +58,12 @@ const HomeScreen = (props) => {
                         })
                       }}>
                       <View style={styles.itemView}>
-                        <FontAwesome5Icon
-                          name={item.iconName ? item.iconName : 'clinic-medical'}
+                        <ClinicIcon
+                          name={item.iconName ? item.iconName : 'cross'}
                           color={item.iconColor ? item.iconColor : 'blue'}
                           size={50}
                         />
-                        <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY }]}>
+                        <Text style={[styles.itemName, { fontFamily: props.theme.PRIMARY_FONT_FAMILY, color: props.theme.PRIMARY_TEXT_COLOR }]}>
                           {item.clinicName}
                         </Text>
                       </View>

@@ -9,7 +9,7 @@ import { changeMainFont, changePrimaryColor, changeThemeBackground } from '../..
 import Slider from '../elements/SliderElement'
 import { colorOptions } from '../../reducers/theme'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
-
+import { ClinicIcon } from '../../config/icon-font'
 
 
 let basicColors = Object.entries(colorOptions).map(color => {
@@ -73,7 +73,8 @@ const SettingScreen = (props) => {
             <Text
               style={{
                 fontFamily: props.theme.PRIMARY_FONT_FAMILY,
-                fontSize: 16
+                fontSize: 16,
+                color: props.theme.PRIMARY_TEXT_COLOR
               }}
             >تغییر اندازه فونت</Text>
           </View>
@@ -97,7 +98,12 @@ const SettingScreen = (props) => {
                 justifyContent: 'center'
               }}
             >
-              <Text >
+              <Text
+                style={{
+                  fontFamily: props.theme.PRIMARY_FONT_FAMILY,
+                  fontSize: 16,
+                  color: props.theme.PRIMARY_TEXT_COLOR
+                }}>
                 {props.theme.MAIN_FONT_SIZE}
               </Text>
 
@@ -181,6 +187,7 @@ const SettingScreen = (props) => {
               style={{
                 fontFamily: props.theme.PRIMARY_FONT_FAMILY,
                 fontSize: 18,
+                color: props.theme.PRIMARY_TEXT_COLOR
               }}
             >حالت شب</Text>
           </View>
@@ -237,7 +244,7 @@ const SettingScreen = (props) => {
                 marginLeft: 'auto'
               }}
             >
-              <FontAwesome5Icon name='arrow-left' color='white' size={28} />
+              <ClinicIcon name='left-arrow' color='white' size={28} />
             </View>
           </TouchableOpacity>
 

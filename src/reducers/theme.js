@@ -51,13 +51,6 @@ export const Theme = {
 
 
 export const colorOptions = {
-  white: {
-    PRIMARY_COLOR_FAINT: '#FFF3E0',
-    PRIMARY_COLOR_LIGHT: '#FFB74D',
-    PRIMARY_COLOR: '#d9d9d9',
-    PRIMARY_COLOR_BOLD: '#cfcfcf',
-    PRIMARY_FOREGROUND_COLOR: '#ffffff',
-  },
   orange: {
     PRIMARY_COLOR_FAINT: '#FFF3E0',
     PRIMARY_COLOR_LIGHT: '#FFB74D',
@@ -118,13 +111,6 @@ export const colorOptions = {
 
 
 export const colorOptionsSecondary = {
-  white: {
-    SECONDARY_COLOR_FAINT: '#FFF3E0',
-    SECONDARY_COLOR_LIGHT: '#FFB74D',
-    SECONDARY_COLOR: '#d9d9d9',
-    SECONDARY_COLOR_BOLD: '#cfcfcf',
-    SECONDARY_FOREGROUND_COLOR: '#ffffff',
-  },
   orange: {
     SECONDARY_COLOR_FAINT: '#FFF3E0',
     SECONDARY_COLOR_LIGHT: '#FFB74D',

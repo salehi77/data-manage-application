@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Text, View, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Image } from 'react-native'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
 import { ListItem, Divider } from 'react-native-elements'
+import { ClinicIcon } from '../../config/icon-font'
 
 
 const DrawerElement = (props) => {
@@ -54,7 +55,7 @@ const DrawerElement = (props) => {
           Component={TouchableOpacity}
           onPress={() => props.navigation.navigate('Tools')}
           title={<Text style={{ fontFamily: props.theme.PRIMARY_FONT_FAMILY, fontSize: props.theme.FONT_SIZE_MEDIUM }}>ابزارها</Text>}
-          leftIcon={<FontAwesome5Icon name='tools' size={35} color='#484848' style={{ marginEnd: 5 }} />}
+          leftIcon={<ClinicIcon name='tools' size={35} color='#484848' style={{ marginEnd: 5 }} />}
         />
 
 
@@ -65,7 +66,7 @@ const DrawerElement = (props) => {
           Component={TouchableOpacity}
           onPress={() => props.navigation.navigate('About')}
           title={<Text style={{ fontFamily: props.theme.PRIMARY_FONT_FAMILY, fontSize: props.theme.FONT_SIZE_MEDIUM }}>درباره ما</Text>}
-          leftIcon={<FontAwesome5Icon name='users' size={35} color='#484848' style={{ marginEnd: 5 }} />}
+          leftIcon={<ClinicIcon name='about-us' size={35} color='#484848' style={{ marginEnd: 5 }} />}
         />
 
 

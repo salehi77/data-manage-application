@@ -23,6 +23,7 @@
 		35A8FE07D1984CCF807E7398 /* XMYekan.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 786533152281473DBA19EB5A /* XMYekan.ttf */; };
 		13580B9F06464CCBBF80F499 /* clinic_icon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 468EE6A42AFD48FD8CA0AEB3 /* clinic_icon.ttf */; };
 		01751B2C889242C9A920BD58 /* app.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 458AE675793E4DD4B319667B /* app.sqlite3 */; };
+		32644A5DC4F24F3197056CDD /* clinic-icon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A349A70A5AB54B38A2AFD773 /* clinic-icon.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		786533152281473DBA19EB5A /* XMYekan.ttf */ = {isa = PBXFileReference; name = "XMYekan.ttf"; path = "../src/assets/source/fonts/XMYekan.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		468EE6A42AFD48FD8CA0AEB3 /* clinic_icon.ttf */ = {isa = PBXFileReference; name = "clinic_icon.ttf"; path = "../src/assets/source/fonts/clinic_icon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		458AE675793E4DD4B319667B /* app.sqlite3 */ = {isa = PBXFileReference; name = "app.sqlite3"; path = "../src/assets/source/db/app.sqlite3"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A349A70A5AB54B38A2AFD773 /* clinic-icon.ttf */ = {isa = PBXFileReference; name = "clinic-icon.ttf"; path = "../src/assets/source/fonts/clinic-icon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				786533152281473DBA19EB5A /* XMYekan.ttf */,
 				468EE6A42AFD48FD8CA0AEB3 /* clinic_icon.ttf */,
 				458AE675793E4DD4B319667B /* app.sqlite3 */,
+				A349A70A5AB54B38A2AFD773 /* clinic-icon.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				35A8FE07D1984CCF807E7398 /* XMYekan.ttf in Resources */,
 				13580B9F06464CCBBF80F499 /* clinic_icon.ttf in Resources */,
 				01751B2C889242C9A920BD58 /* app.sqlite3 in Resources */,
+				32644A5DC4F24F3197056CDD /* clinic-icon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

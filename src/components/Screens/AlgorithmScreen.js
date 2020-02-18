@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-nati
 import { connect } from 'react-redux'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
 import Toast from 'react-native-simple-toast'
+import { ClinicIcon } from '../../config/icon-font'
 
 
 
@@ -37,7 +38,7 @@ const HeaderAlgo = (props) => {
             props.navigation.goBack()
           }}
         >
-          <FontAwesome5Icon name='arrow-right' size={25} color={props.theme.PRIMARY_TEXT_COLOR} />
+          <ClinicIcon name='right-arrow' size={25} color={props.theme.PRIMARY_TEXT_COLOR} />
         </TouchableOpacity>
       </View>
 
@@ -188,9 +189,9 @@ export const SelectAlgo = (props) => {
                       {
                         option.selected
                           ?
-                          <FontAwesome5Icon name='check-square' solid size={props.theme.MAIN_FONT_SIZE} color='white' />
+                          <ClinicIcon name='check' solid size={props.theme.MAIN_FONT_SIZE} color='white' />
                           :
-                          <FontAwesome5Icon name='square' light size={props.theme.MAIN_FONT_SIZE} color='white' />
+                          <ClinicIcon name='circle' light size={props.theme.MAIN_FONT_SIZE} color='white' />
                       }
                     </View>
                   </View>
@@ -268,6 +269,7 @@ const ResultPath = (props) => {
                   backgroundColor: '#a1a1a1',
                   marginVertical: 5,
                   padding: 10,
+                  borderRadius: 5,
                   width: '90%',
                   backgroundColor: props.theme.PRIMARY_COLOR
                 }}
@@ -286,7 +288,7 @@ const ResultPath = (props) => {
               {
                 props.pathToThis.length !== index + 1
                   ?
-                  <FontAwesome5Icon name='arrow-down' color={props.theme.PRIMARY_COLOR} size={20} />
+                  <ClinicIcon name='down-arrow' color={props.theme.PRIMARY_COLOR} size={20} />
                   :
                   null
               }

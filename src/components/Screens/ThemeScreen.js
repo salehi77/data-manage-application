@@ -76,7 +76,7 @@ const ThemeScreen = (props) => {
                     <View
                       key={index}
                       style={{
-                        margin: 3,
+                        margin: 5,
                         padding: 2,
                         borderColor: 'black',
                         borderRadius: 100,

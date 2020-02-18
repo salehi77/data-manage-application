@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Text, View, TouchableOpacity, TouchableWithoutFeedback, Animated, Easing } from 'react-native'
 import { Header } from 'react-native-elements'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
-
+import { ClinicIcon, Clinic_Icon } from '../../../config/icon-font'
 
 
 
@@ -55,10 +55,9 @@ const HomeHeaderElement = props => {
               style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
             >
 
-              <FontAwesome5Icon name='bars' size={30} color='white' />
+              <ClinicIcon name='list' size={30} color='white' />
 
               <Text
-
                 style={{
                   fontFamily: props.theme.PRIMARY_FONT_FAMILY_BOLD,
                   fontSize: props.theme.FONT_SIZE_EXTRA_LARGE,
@@ -98,7 +97,7 @@ const HomeHeaderElement = props => {
                   }]
                 }}
               >
-                <FontAwesome5Icon name='cog' color='white' size={30} />
+                <ClinicIcon name='settings' color='white' size={30} />
               </Animated.View>
 
             </TouchableOpacity>
@@ -109,7 +108,7 @@ const HomeHeaderElement = props => {
           <View style={{ marginEnd: 25 }}>
 
             <TouchableOpacity>
-              <FontAwesome5Icon name='search' color='white' size={25} />
+              <ClinicIcon name='magnifier' color='white' size={25} />
             </TouchableOpacity>
 
           </View>
